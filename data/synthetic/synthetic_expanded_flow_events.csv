@@ -1,0 +1,219 @@
+event_id,mrn,facility,event_type,event_datetime,location,service,constraint_flag,synthetic_detail
+SYN-EVENT-000001,SYN-MRN-100027,South Calgary Ambulatory Care Centre,diagnostic_ordered,2026-05-28 08:09:00,Zone 3,Medicine,N,Synthetic diagnostic ordered event
+SYN-EVENT-000002,SYN-MRN-100027,South Calgary Ambulatory Care Centre,consult_requested,2026-05-28 09:28:00,Zone 3,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000003,SYN-MRN-100027,South Calgary Ambulatory Care Centre,diagnostic_resulted,2026-05-28 09:42:00,Zone 3,Medicine,N,Synthetic diagnostic resulted event
+SYN-EVENT-000004,SYN-MRN-100027,South Calgary Ambulatory Care Centre,diagnostic_ordered,2026-05-28 08:32:00,Zone 3,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000005,SYN-MRN-100027,South Calgary Ambulatory Care Centre,consult_requested,2026-05-28 10:52:00,Zone 2,Pediatrics,Y,Synthetic consult requested event
+SYN-EVENT-000006,SYN-MRN-100027,South Calgary Ambulatory Care Centre,location_update,2026-05-28 08:33:00,Zone 3,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000007,SYN-MRN-100027,South Calgary Ambulatory Care Centre,bed_cleaning_started,2026-05-28 09:03:00,Zone 5,Pediatrics,Y,Synthetic bed cleaning started event
+SYN-EVENT-000008,SYN-MRN-101550,Alberta Children's Hospital,location_update,2026-05-28 06:31:00,Zone 4,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000009,SYN-MRN-101550,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 07:24:00,Zone 3,Mental Health,N,Synthetic diagnostic resulted event
+SYN-EVENT-000010,SYN-MRN-101550,Alberta Children's Hospital,location_update,2026-05-28 04:30:00,Zone 3,Pediatrics,Y,Synthetic location update event
+SYN-EVENT-000011,SYN-MRN-101550,Alberta Children's Hospital,transport_requested,2026-05-28 10:46:00,Zone 2,Emergency,N,Synthetic transport requested event
+SYN-EVENT-000012,SYN-MRN-100137,Stollery Children's Hospital,transport_requested,2026-05-28 00:52:00,Zone 5,Emergency,N,Synthetic transport requested event
+SYN-EVENT-000013,SYN-MRN-100137,Stollery Children's Hospital,bed_assigned,2026-05-28 05:47:00,Zone 5,Pediatrics,N,Synthetic bed assigned event
+SYN-EVENT-000014,SYN-MRN-100137,Stollery Children's Hospital,bed_assigned,2026-05-28 03:48:00,Zone 2,Surgery,N,Synthetic bed assigned event
+SYN-EVENT-000015,SYN-MRN-100137,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 03:08:00,Zone 4,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000016,SYN-MRN-100137,Stollery Children's Hospital,location_update,2026-05-28 01:45:00,Zone 3,Emergency,Y,Synthetic location update event
+SYN-EVENT-000017,SYN-MRN-100137,Stollery Children's Hospital,consult_requested,2026-05-28 06:24:00,Zone 1,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000018,SYN-MRN-100104,Stollery Children's Hospital,bed_assigned,2026-05-28 08:55:00,Zone 1,Pediatrics,N,Synthetic bed assigned event
+SYN-EVENT-000019,SYN-MRN-100104,Stollery Children's Hospital,bed_cleaning_started,2026-05-28 10:25:00,Zone 3,Pediatrics,N,Synthetic bed cleaning started event
+SYN-EVENT-000020,SYN-MRN-100104,Stollery Children's Hospital,bed_assigned,2026-05-28 05:24:00,Zone 4,Emergency,N,Synthetic bed assigned event
+SYN-EVENT-000021,SYN-MRN-100104,Stollery Children's Hospital,location_update,2026-05-28 05:22:00,Zone 2,Medicine,N,Synthetic location update event
+SYN-EVENT-000022,SYN-MRN-100104,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 06:21:00,Zone 5,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000023,SYN-MRN-100155,Alberta Children's Hospital,location_update,2026-05-28 10:47:00,Zone 4,Emergency,Y,Synthetic location update event
+SYN-EVENT-000024,SYN-MRN-100155,Alberta Children's Hospital,bed_cleaning_started,2026-05-28 08:51:00,Zone 1,Surgery,N,Synthetic bed cleaning started event
+SYN-EVENT-000025,SYN-MRN-100155,Alberta Children's Hospital,consult_completed,2026-05-28 09:26:00,Zone 1,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000026,SYN-MRN-100155,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 13:13:00,Zone 4,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000027,SYN-MRN-100155,Alberta Children's Hospital,bed_cleaning_completed,2026-05-28 08:13:00,Zone 1,Pediatrics,Y,Synthetic bed cleaning completed event
+SYN-EVENT-000028,SYN-MRN-100155,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 14:11:00,Zone 2,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000029,SYN-MRN-101679,Stollery Children's Hospital,bed_request,2026-05-28 03:12:00,Zone 3,Pediatrics,N,Synthetic bed request event
+SYN-EVENT-000030,SYN-MRN-101679,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 07:42:00,Zone 1,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000031,SYN-MRN-101679,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 06:18:00,Zone 2,Mental Health,N,Synthetic diagnostic ordered event
+SYN-EVENT-000032,SYN-MRN-101679,Stollery Children's Hospital,bed_request,2026-05-28 07:22:00,Zone 3,Pediatrics,N,Synthetic bed request event
+SYN-EVENT-000033,SYN-MRN-101679,Stollery Children's Hospital,location_update,2026-05-28 07:09:00,Zone 5,Emergency,N,Synthetic location update event
+SYN-EVENT-000034,SYN-MRN-101147,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 01:59:00,Zone 3,Medicine,N,Synthetic bed cleaning completed event
+SYN-EVENT-000035,SYN-MRN-101147,Stollery Children's Hospital,consult_requested,2026-05-28 07:12:00,Zone 3,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000036,SYN-MRN-101147,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 05:45:00,Zone 3,Pediatrics,N,Synthetic bed cleaning completed event
+SYN-EVENT-000037,SYN-MRN-101147,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 03:25:00,Zone 4,Emergency,N,Synthetic bed cleaning completed event
+SYN-EVENT-000038,SYN-MRN-101147,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 02:32:00,Zone 2,Medicine,N,Synthetic diagnostic ordered event
+SYN-EVENT-000039,SYN-MRN-101147,Stollery Children's Hospital,location_update,2026-05-28 06:29:00,Zone 2,Surgery,N,Synthetic location update event
+SYN-EVENT-000040,SYN-MRN-100505,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 04:20:00,Zone 4,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000041,SYN-MRN-100505,Stollery Children's Hospital,bed_cleaning_started,2026-05-28 08:41:00,Zone 4,Pediatrics,N,Synthetic bed cleaning started event
+SYN-EVENT-000042,SYN-MRN-100505,Stollery Children's Hospital,consult_requested,2026-05-28 08:55:00,Zone 5,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000043,SYN-MRN-100505,Stollery Children's Hospital,location_update,2026-05-28 08:27:00,Zone 4,Emergency,N,Synthetic location update event
+SYN-EVENT-000044,SYN-MRN-100505,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 07:14:00,Zone 3,Mental Health,N,Synthetic diagnostic ordered event
+SYN-EVENT-000045,SYN-MRN-100505,Stollery Children's Hospital,location_update,2026-05-28 06:13:00,Zone 5,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000046,SYN-MRN-101600,South Calgary Ambulatory Care Centre,bed_request,2026-05-28 10:29:00,Zone 5,Mental Health,Y,Synthetic bed request event
+SYN-EVENT-000047,SYN-MRN-101600,South Calgary Ambulatory Care Centre,diagnostic_ordered,2026-05-28 08:39:00,Zone 2,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000048,SYN-MRN-101600,South Calgary Ambulatory Care Centre,diagnostic_ordered,2026-05-28 09:51:00,Zone 4,Mental Health,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000049,SYN-MRN-101600,South Calgary Ambulatory Care Centre,location_update,2026-05-28 10:37:00,Zone 4,Emergency,N,Synthetic location update event
+SYN-EVENT-000050,SYN-MRN-101600,South Calgary Ambulatory Care Centre,diagnostic_resulted,2026-05-28 07:30:00,Zone 4,Surgery,N,Synthetic diagnostic resulted event
+SYN-EVENT-000051,SYN-MRN-101600,South Calgary Ambulatory Care Centre,consult_requested,2026-05-28 05:56:00,Zone 4,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000052,SYN-MRN-101600,South Calgary Ambulatory Care Centre,location_update,2026-05-28 05:09:00,Zone 5,Emergency,N,Synthetic location update event
+SYN-EVENT-000053,SYN-MRN-100761,Northeast Community Health Centre,diagnostic_resulted,2026-05-28 11:29:00,Zone 4,Medicine,N,Synthetic diagnostic resulted event
+SYN-EVENT-000054,SYN-MRN-100761,Northeast Community Health Centre,consult_completed,2026-05-28 10:45:00,Zone 5,Emergency,N,Synthetic consult completed event
+SYN-EVENT-000055,SYN-MRN-100761,Northeast Community Health Centre,transport_requested,2026-05-28 08:37:00,Zone 2,Pediatrics,N,Synthetic transport requested event
+SYN-EVENT-000056,SYN-MRN-100761,Northeast Community Health Centre,transport_requested,2026-05-28 11:30:00,Zone 4,Medicine,N,Synthetic transport requested event
+SYN-EVENT-000057,SYN-MRN-101113,Alberta Children's Hospital,location_update,2026-05-28 07:31:00,Zone 3,Emergency,Y,Synthetic location update event
+SYN-EVENT-000058,SYN-MRN-101113,Alberta Children's Hospital,consult_requested,2026-05-28 06:57:00,Zone 1,Surgery,N,Synthetic consult requested event
+SYN-EVENT-000059,SYN-MRN-101113,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 07:03:00,Zone 5,Mental Health,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000060,SYN-MRN-101113,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 06:07:00,Zone 5,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000061,SYN-MRN-101113,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 05:50:00,Zone 5,Mental Health,N,Synthetic diagnostic resulted event
+SYN-EVENT-000062,SYN-MRN-101795,Stollery Children's Hospital,location_update,2026-05-28 01:51:00,Zone 1,Medicine,Y,Synthetic location update event
+SYN-EVENT-000063,SYN-MRN-101795,Stollery Children's Hospital,location_update,2026-05-28 07:21:00,Zone 3,Emergency,N,Synthetic location update event
+SYN-EVENT-000064,SYN-MRN-101795,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 05:18:00,Zone 4,Emergency,N,Synthetic bed cleaning completed event
+SYN-EVENT-000065,SYN-MRN-101795,Stollery Children's Hospital,bed_request,2026-05-28 00:49:00,Zone 2,Emergency,N,Synthetic bed request event
+SYN-EVENT-000066,SYN-MRN-100300,Stollery Children's Hospital,location_update,2026-05-28 08:17:00,Zone 3,Medicine,N,Synthetic location update event
+SYN-EVENT-000067,SYN-MRN-100300,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 13:56:00,Zone 4,Pediatrics,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000068,SYN-MRN-100300,Stollery Children's Hospital,location_update,2026-05-28 07:09:00,Zone 4,Emergency,N,Synthetic location update event
+SYN-EVENT-000069,SYN-MRN-100300,Stollery Children's Hospital,location_update,2026-05-28 07:38:00,Zone 5,Emergency,N,Synthetic location update event
+SYN-EVENT-000070,SYN-MRN-100300,Stollery Children's Hospital,bed_assigned,2026-05-28 12:30:00,Zone 1,Pediatrics,N,Synthetic bed assigned event
+SYN-EVENT-000071,SYN-MRN-101486,Red Deer Regional Hospital Centre,consult_completed,2026-05-28 09:41:00,Zone 5,Pediatrics,Y,Synthetic consult completed event
+SYN-EVENT-000072,SYN-MRN-101486,Red Deer Regional Hospital Centre,consult_requested,2026-05-28 09:47:00,Zone 5,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000073,SYN-MRN-101486,Red Deer Regional Hospital Centre,diagnostic_resulted,2026-05-28 08:55:00,Zone 3,Medicine,N,Synthetic diagnostic resulted event
+SYN-EVENT-000074,SYN-MRN-101486,Red Deer Regional Hospital Centre,consult_completed,2026-05-28 10:10:00,Zone 5,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000075,SYN-MRN-101486,Red Deer Regional Hospital Centre,diagnostic_ordered,2026-05-28 07:05:00,Zone 2,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000076,SYN-MRN-101486,Red Deer Regional Hospital Centre,bed_cleaning_started,2026-05-28 07:02:00,Zone 4,Pediatrics,N,Synthetic bed cleaning started event
+SYN-EVENT-000077,SYN-MRN-101486,Red Deer Regional Hospital Centre,bed_request,2026-05-28 07:26:00,Zone 2,Emergency,N,Synthetic bed request event
+SYN-EVENT-000078,SYN-MRN-100633,Stollery Children's Hospital,consult_completed,2026-05-28 07:45:00,Zone 3,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000079,SYN-MRN-100633,Stollery Children's Hospital,bed_request,2026-05-28 08:21:00,Zone 4,Pediatrics,N,Synthetic bed request event
+SYN-EVENT-000080,SYN-MRN-100633,Stollery Children's Hospital,location_update,2026-05-28 07:55:00,Zone 1,Emergency,Y,Synthetic location update event
+SYN-EVENT-000081,SYN-MRN-100633,Stollery Children's Hospital,location_update,2026-05-28 08:55:00,Zone 4,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000082,SYN-MRN-100633,Stollery Children's Hospital,bed_assigned,2026-05-28 04:52:00,Zone 1,Emergency,Y,Synthetic bed assigned event
+SYN-EVENT-000083,SYN-MRN-100633,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 03:36:00,Zone 4,Pediatrics,N,Synthetic bed cleaning completed event
+SYN-EVENT-000084,SYN-MRN-100543,Northeast Community Health Centre,bed_request,2026-05-28 04:32:00,Zone 4,Emergency,N,Synthetic bed request event
+SYN-EVENT-000085,SYN-MRN-100543,Northeast Community Health Centre,bed_request,2026-05-28 06:31:00,Zone 4,Pediatrics,N,Synthetic bed request event
+SYN-EVENT-000086,SYN-MRN-100543,Northeast Community Health Centre,diagnostic_ordered,2026-05-28 04:13:00,Zone 3,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000087,SYN-MRN-100543,Northeast Community Health Centre,diagnostic_ordered,2026-05-28 00:59:00,Zone 1,Medicine,N,Synthetic diagnostic ordered event
+SYN-EVENT-000088,SYN-MRN-100543,Northeast Community Health Centre,location_update,2026-05-28 02:02:00,Zone 2,Emergency,N,Synthetic location update event
+SYN-EVENT-000089,SYN-MRN-100543,Northeast Community Health Centre,consult_requested,2026-05-28 01:57:00,Zone 4,Surgery,N,Synthetic consult requested event
+SYN-EVENT-000090,SYN-MRN-100543,Northeast Community Health Centre,transport_requested,2026-05-28 07:06:00,Zone 5,Surgery,N,Synthetic transport requested event
+SYN-EVENT-000091,SYN-MRN-100348,Alberta Children's Hospital,bed_cleaning_started,2026-05-28 03:12:00,Zone 1,Emergency,Y,Synthetic bed cleaning started event
+SYN-EVENT-000092,SYN-MRN-100348,Alberta Children's Hospital,consult_completed,2026-05-28 03:35:00,Zone 2,Emergency,Y,Synthetic consult completed event
+SYN-EVENT-000093,SYN-MRN-100348,Alberta Children's Hospital,bed_cleaning_completed,2026-05-28 04:49:00,Zone 3,Pediatrics,N,Synthetic bed cleaning completed event
+SYN-EVENT-000094,SYN-MRN-100348,Alberta Children's Hospital,consult_requested,2026-05-28 03:09:00,Zone 3,Pediatrics,Y,Synthetic consult requested event
+SYN-EVENT-000095,SYN-MRN-100348,Alberta Children's Hospital,transport_requested,2026-05-28 07:28:00,Zone 2,Surgery,N,Synthetic transport requested event
+SYN-EVENT-000096,SYN-MRN-100348,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 08:14:00,Zone 5,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000097,SYN-MRN-100930,Alberta Children's Hospital,consult_requested,2026-05-28 03:49:00,Zone 1,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000098,SYN-MRN-100930,Alberta Children's Hospital,consult_completed,2026-05-28 02:35:00,Zone 3,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000099,SYN-MRN-100930,Alberta Children's Hospital,bed_cleaning_started,2026-05-28 01:23:00,Zone 3,Emergency,N,Synthetic bed cleaning started event
+SYN-EVENT-000100,SYN-MRN-100930,Alberta Children's Hospital,consult_requested,2026-05-28 05:11:00,Zone 2,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000101,SYN-MRN-100255,South Calgary Ambulatory Care Centre,location_update,2026-05-28 05:48:00,Zone 5,Pediatrics,Y,Synthetic location update event
+SYN-EVENT-000102,SYN-MRN-100255,South Calgary Ambulatory Care Centre,consult_requested,2026-05-28 00:00:00,Zone 1,Mental Health,N,Synthetic consult requested event
+SYN-EVENT-000103,SYN-MRN-100255,South Calgary Ambulatory Care Centre,diagnostic_ordered,2026-05-28 04:06:00,Zone 5,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000104,SYN-MRN-100255,South Calgary Ambulatory Care Centre,location_update,2026-05-28 00:19:00,Zone 2,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000105,SYN-MRN-100255,South Calgary Ambulatory Care Centre,location_update,2026-05-28 04:27:00,Zone 2,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000106,SYN-MRN-100255,South Calgary Ambulatory Care Centre,location_update,2026-05-28 05:15:00,Zone 2,Emergency,N,Synthetic location update event
+SYN-EVENT-000107,SYN-MRN-100255,South Calgary Ambulatory Care Centre,diagnostic_resulted,2026-05-28 04:03:00,Zone 4,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000108,SYN-MRN-100683,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 08:52:00,Zone 4,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000109,SYN-MRN-100683,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 11:29:00,Zone 4,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000110,SYN-MRN-100683,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 06:42:00,Zone 2,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000111,SYN-MRN-100683,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 07:37:00,Zone 2,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000112,SYN-MRN-100683,Stollery Children's Hospital,bed_request,2026-05-28 05:31:00,Zone 2,Medicine,N,Synthetic bed request event
+SYN-EVENT-000113,SYN-MRN-100683,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 07:02:00,Zone 5,Emergency,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000114,SYN-MRN-100683,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 05:37:00,Zone 4,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000115,SYN-MRN-100941,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 04:04:00,Zone 1,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000116,SYN-MRN-100941,Alberta Children's Hospital,bed_cleaning_completed,2026-05-28 05:00:00,Zone 1,Emergency,Y,Synthetic bed cleaning completed event
+SYN-EVENT-000117,SYN-MRN-100941,Alberta Children's Hospital,bed_cleaning_started,2026-05-28 03:49:00,Zone 5,Emergency,N,Synthetic bed cleaning started event
+SYN-EVENT-000118,SYN-MRN-100941,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 04:38:00,Zone 4,Medicine,N,Synthetic diagnostic resulted event
+SYN-EVENT-000119,SYN-MRN-100941,Alberta Children's Hospital,bed_cleaning_completed,2026-05-28 03:19:00,Zone 2,Medicine,N,Synthetic bed cleaning completed event
+SYN-EVENT-000120,SYN-MRN-100941,Alberta Children's Hospital,bed_cleaning_started,2026-05-28 03:42:00,Zone 1,Emergency,N,Synthetic bed cleaning started event
+SYN-EVENT-000121,SYN-MRN-100941,Alberta Children's Hospital,consult_completed,2026-05-28 04:51:00,Zone 3,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000122,SYN-MRN-101045,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 09:54:00,Zone 5,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000123,SYN-MRN-101045,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 06:05:00,Zone 5,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000124,SYN-MRN-101045,Stollery Children's Hospital,consult_requested,2026-05-28 09:55:00,Zone 3,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000125,SYN-MRN-101045,Stollery Children's Hospital,bed_assigned,2026-05-28 07:06:00,Zone 2,Emergency,N,Synthetic bed assigned event
+SYN-EVENT-000126,SYN-MRN-101045,Stollery Children's Hospital,consult_requested,2026-05-28 05:57:00,Zone 1,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000127,SYN-MRN-101045,Stollery Children's Hospital,location_update,2026-05-28 10:12:00,Zone 5,Medicine,N,Synthetic location update event
+SYN-EVENT-000128,SYN-MRN-100224,Alberta Children's Hospital,consult_requested,2026-05-28 04:06:00,Zone 1,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000129,SYN-MRN-100224,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 09:46:00,Zone 4,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000130,SYN-MRN-100224,Alberta Children's Hospital,consult_requested,2026-05-28 05:57:00,Zone 1,Medicine,N,Synthetic consult requested event
+SYN-EVENT-000131,SYN-MRN-100054,Stollery Children's Hospital,bed_assigned,2026-05-28 03:11:00,Zone 5,Pediatrics,Y,Synthetic bed assigned event
+SYN-EVENT-000132,SYN-MRN-100054,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 00:19:00,Zone 3,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000133,SYN-MRN-100054,Stollery Children's Hospital,location_update,2026-05-28 03:14:00,Zone 4,Emergency,N,Synthetic location update event
+SYN-EVENT-000134,SYN-MRN-100054,Stollery Children's Hospital,bed_cleaning_completed,2026-05-27 23:31:00,Zone 3,Pediatrics,Y,Synthetic bed cleaning completed event
+SYN-EVENT-000135,SYN-MRN-100054,Stollery Children's Hospital,consult_requested,2026-05-28 05:08:00,Zone 2,Pediatrics,Y,Synthetic consult requested event
+SYN-EVENT-000136,SYN-MRN-100054,Stollery Children's Hospital,location_update,2026-05-28 00:42:00,Zone 3,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000137,SYN-MRN-100054,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 04:52:00,Zone 1,Emergency,N,Synthetic diagnostic resulted event
+SYN-EVENT-000138,SYN-MRN-100247,Stollery Children's Hospital,consult_completed,2026-05-28 00:55:00,Zone 2,Pediatrics,Y,Synthetic consult completed event
+SYN-EVENT-000139,SYN-MRN-100247,Stollery Children's Hospital,location_update,2026-05-28 01:01:00,Zone 1,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000140,SYN-MRN-100247,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 05:26:00,Zone 1,Pediatrics,Y,Synthetic bed cleaning completed event
+SYN-EVENT-000141,SYN-MRN-100247,Stollery Children's Hospital,bed_request,2026-05-28 02:46:00,Zone 4,Pediatrics,N,Synthetic bed request event
+SYN-EVENT-000142,SYN-MRN-100247,Stollery Children's Hospital,bed_request,2026-05-28 04:59:00,Zone 4,Pediatrics,N,Synthetic bed request event
+SYN-EVENT-000143,SYN-MRN-100247,Stollery Children's Hospital,bed_cleaning_completed,2026-05-27 23:44:00,Zone 2,Pediatrics,Y,Synthetic bed cleaning completed event
+SYN-EVENT-000144,SYN-MRN-100247,Stollery Children's Hospital,location_update,2026-05-27 23:07:00,Zone 2,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000145,SYN-MRN-101175,Stollery Children's Hospital,diagnostic_ordered,2026-05-28 10:09:00,Zone 5,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000146,SYN-MRN-101175,Stollery Children's Hospital,consult_completed,2026-05-28 06:54:00,Zone 4,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000147,SYN-MRN-101175,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 07:33:00,Zone 4,Pediatrics,N,Synthetic bed cleaning completed event
+SYN-EVENT-000148,SYN-MRN-101175,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 07:54:00,Zone 4,Emergency,Y,Synthetic diagnostic resulted event
+SYN-EVENT-000149,SYN-MRN-101175,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 08:42:00,Zone 5,Mental Health,N,Synthetic diagnostic resulted event
+SYN-EVENT-000150,SYN-MRN-101460,Red Deer Regional Hospital Centre,bed_assigned,2026-05-28 03:16:00,Zone 4,Emergency,N,Synthetic bed assigned event
+SYN-EVENT-000151,SYN-MRN-101460,Red Deer Regional Hospital Centre,location_update,2026-05-28 04:21:00,Zone 2,Medicine,N,Synthetic location update event
+SYN-EVENT-000152,SYN-MRN-101460,Red Deer Regional Hospital Centre,diagnostic_ordered,2026-05-28 04:36:00,Zone 2,Pediatrics,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000153,SYN-MRN-101460,Red Deer Regional Hospital Centre,location_update,2026-05-28 05:25:00,Zone 2,Mental Health,N,Synthetic location update event
+SYN-EVENT-000154,SYN-MRN-101460,Red Deer Regional Hospital Centre,consult_completed,2026-05-28 04:48:00,Zone 3,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000155,SYN-MRN-101154,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 14:22:00,Zone 1,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000156,SYN-MRN-101154,Alberta Children's Hospital,location_update,2026-05-28 12:44:00,Zone 1,Emergency,Y,Synthetic location update event
+SYN-EVENT-000157,SYN-MRN-101154,Alberta Children's Hospital,consult_requested,2026-05-28 12:14:00,Zone 4,Medicine,N,Synthetic consult requested event
+SYN-EVENT-000158,SYN-MRN-101154,Alberta Children's Hospital,bed_assigned,2026-05-28 09:45:00,Zone 3,Surgery,N,Synthetic bed assigned event
+SYN-EVENT-000159,SYN-MRN-101290,Foothills Medical Centre,bed_request,2026-05-28 09:06:00,Zone 1,Medicine,N,Synthetic bed request event
+SYN-EVENT-000160,SYN-MRN-101290,Foothills Medical Centre,consult_completed,2026-05-28 12:24:00,Zone 2,Emergency,N,Synthetic consult completed event
+SYN-EVENT-000161,SYN-MRN-101290,Foothills Medical Centre,consult_completed,2026-05-28 08:40:00,Zone 3,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000162,SYN-MRN-101290,Foothills Medical Centre,consult_requested,2026-05-28 07:07:00,Zone 1,Medicine,N,Synthetic consult requested event
+SYN-EVENT-000163,SYN-MRN-101290,Foothills Medical Centre,consult_requested,2026-05-28 12:59:00,Zone 5,Emergency,N,Synthetic consult requested event
+SYN-EVENT-000164,SYN-MRN-100484,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 05:27:00,Zone 1,Pediatrics,N,Synthetic bed cleaning completed event
+SYN-EVENT-000165,SYN-MRN-100484,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 09:55:00,Zone 4,Pediatrics,Y,Synthetic diagnostic resulted event
+SYN-EVENT-000166,SYN-MRN-100484,Stollery Children's Hospital,bed_cleaning_started,2026-05-28 04:59:00,Zone 5,Pediatrics,Y,Synthetic bed cleaning started event
+SYN-EVENT-000167,SYN-MRN-100484,Stollery Children's Hospital,location_update,2026-05-28 06:26:00,Zone 5,Emergency,N,Synthetic location update event
+SYN-EVENT-000168,SYN-MRN-100484,Stollery Children's Hospital,location_update,2026-05-28 05:17:00,Zone 1,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000169,SYN-MRN-100720,Stollery Children's Hospital,consult_requested,2026-05-28 03:47:00,Zone 3,Medicine,N,Synthetic consult requested event
+SYN-EVENT-000170,SYN-MRN-100720,Stollery Children's Hospital,bed_assigned,2026-05-28 03:53:00,Zone 2,Medicine,N,Synthetic bed assigned event
+SYN-EVENT-000171,SYN-MRN-100720,Stollery Children's Hospital,consult_requested,2026-05-28 01:01:00,Zone 2,Surgery,Y,Synthetic consult requested event
+SYN-EVENT-000172,SYN-MRN-100720,Stollery Children's Hospital,bed_request,2026-05-28 02:44:00,Zone 5,Medicine,N,Synthetic bed request event
+SYN-EVENT-000173,SYN-MRN-101355,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 05:31:00,Zone 2,Emergency,N,Synthetic diagnostic resulted event
+SYN-EVENT-000174,SYN-MRN-101355,Stollery Children's Hospital,bed_cleaning_started,2026-05-28 07:33:00,Zone 5,Pediatrics,N,Synthetic bed cleaning started event
+SYN-EVENT-000175,SYN-MRN-101355,Stollery Children's Hospital,bed_request,2026-05-28 03:40:00,Zone 4,Emergency,N,Synthetic bed request event
+SYN-EVENT-000176,SYN-MRN-101355,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 03:04:00,Zone 5,Surgery,N,Synthetic bed cleaning completed event
+SYN-EVENT-000177,SYN-MRN-100400,Alberta Children's Hospital,bed_request,2026-05-28 04:08:00,Zone 1,Surgery,N,Synthetic bed request event
+SYN-EVENT-000178,SYN-MRN-100400,Alberta Children's Hospital,bed_assigned,2026-05-28 00:30:00,Zone 2,Pediatrics,N,Synthetic bed assigned event
+SYN-EVENT-000179,SYN-MRN-100400,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 04:53:00,Zone 3,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000180,SYN-MRN-100122,Alberta Children's Hospital,consult_requested,2026-05-28 05:13:00,Zone 3,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000181,SYN-MRN-100122,Alberta Children's Hospital,location_update,2026-05-28 05:13:00,Zone 3,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000182,SYN-MRN-100122,Alberta Children's Hospital,consult_requested,2026-05-28 10:14:00,Zone 1,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000183,SYN-MRN-100122,Alberta Children's Hospital,bed_request,2026-05-28 07:05:00,Zone 3,Emergency,Y,Synthetic bed request event
+SYN-EVENT-000184,SYN-MRN-100122,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 05:42:00,Zone 5,Mental Health,Y,Synthetic diagnostic resulted event
+SYN-EVENT-000185,SYN-MRN-100122,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 09:15:00,Zone 3,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000186,SYN-MRN-100530,Red Deer Regional Hospital Centre,bed_request,2026-05-28 04:11:00,Zone 1,Emergency,N,Synthetic bed request event
+SYN-EVENT-000187,SYN-MRN-100530,Red Deer Regional Hospital Centre,diagnostic_resulted,2026-05-28 09:41:00,Zone 4,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000188,SYN-MRN-100530,Red Deer Regional Hospital Centre,diagnostic_ordered,2026-05-28 06:55:00,Zone 4,Pediatrics,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000189,SYN-MRN-100530,Red Deer Regional Hospital Centre,consult_requested,2026-05-28 07:43:00,Zone 4,Pediatrics,N,Synthetic consult requested event
+SYN-EVENT-000190,SYN-MRN-100530,Red Deer Regional Hospital Centre,diagnostic_resulted,2026-05-28 07:30:00,Zone 1,Pediatrics,Y,Synthetic diagnostic resulted event
+SYN-EVENT-000191,SYN-MRN-101649,Royal Alexandra Hospital,diagnostic_resulted,2026-05-28 06:22:00,Zone 2,Pediatrics,N,Synthetic diagnostic resulted event
+SYN-EVENT-000192,SYN-MRN-101649,Royal Alexandra Hospital,diagnostic_resulted,2026-05-28 06:03:00,Zone 3,Mental Health,N,Synthetic diagnostic resulted event
+SYN-EVENT-000193,SYN-MRN-101649,Royal Alexandra Hospital,bed_cleaning_started,2026-05-28 06:09:00,Zone 3,Surgery,N,Synthetic bed cleaning started event
+SYN-EVENT-000194,SYN-MRN-101649,Royal Alexandra Hospital,bed_assigned,2026-05-28 06:07:00,Zone 2,Pediatrics,Y,Synthetic bed assigned event
+SYN-EVENT-000195,SYN-MRN-101649,Royal Alexandra Hospital,diagnostic_ordered,2026-05-28 05:41:00,Zone 1,Emergency,N,Synthetic diagnostic ordered event
+SYN-EVENT-000196,SYN-MRN-101649,Royal Alexandra Hospital,consult_requested,2026-05-28 02:07:00,Zone 5,Pediatrics,Y,Synthetic consult requested event
+SYN-EVENT-000197,SYN-MRN-100619,Stollery Children's Hospital,location_update,2026-05-28 01:53:00,Zone 5,Medicine,N,Synthetic location update event
+SYN-EVENT-000198,SYN-MRN-100619,Stollery Children's Hospital,location_update,2026-05-28 05:09:00,Zone 3,Pediatrics,Y,Synthetic location update event
+SYN-EVENT-000199,SYN-MRN-100619,Stollery Children's Hospital,location_update,2026-05-28 06:22:00,Zone 5,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000200,SYN-MRN-100619,Stollery Children's Hospital,consult_requested,2026-05-28 02:01:00,Zone 1,Medicine,N,Synthetic consult requested event
+SYN-EVENT-000201,SYN-MRN-100619,Stollery Children's Hospital,location_update,2026-05-28 00:05:00,Zone 4,Emergency,N,Synthetic location update event
+SYN-EVENT-000202,SYN-MRN-100619,Stollery Children's Hospital,bed_cleaning_completed,2026-05-28 01:02:00,Zone 3,Pediatrics,N,Synthetic bed cleaning completed event
+SYN-EVENT-000203,SYN-MRN-100526,Alberta Children's Hospital,diagnostic_ordered,2026-05-28 08:28:00,Zone 5,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000204,SYN-MRN-100526,Alberta Children's Hospital,location_update,2026-05-28 12:25:00,Zone 5,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000205,SYN-MRN-100526,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 14:08:00,Zone 3,Medicine,N,Synthetic diagnostic resulted event
+SYN-EVENT-000206,SYN-MRN-100526,Alberta Children's Hospital,diagnostic_resulted,2026-05-28 12:41:00,Zone 1,Medicine,N,Synthetic diagnostic resulted event
+SYN-EVENT-000207,SYN-MRN-100526,Alberta Children's Hospital,location_update,2026-05-28 10:38:00,Zone 2,Pediatrics,N,Synthetic location update event
+SYN-EVENT-000208,SYN-MRN-100669,Red Deer Regional Hospital Centre,consult_requested,2026-05-28 06:35:00,Zone 3,Medicine,Y,Synthetic consult requested event
+SYN-EVENT-000209,SYN-MRN-100669,Red Deer Regional Hospital Centre,diagnostic_ordered,2026-05-28 06:24:00,Zone 4,Pediatrics,N,Synthetic diagnostic ordered event
+SYN-EVENT-000210,SYN-MRN-100669,Red Deer Regional Hospital Centre,diagnostic_ordered,2026-05-28 06:28:00,Zone 4,Pediatrics,Y,Synthetic diagnostic ordered event
+SYN-EVENT-000211,SYN-MRN-100669,Red Deer Regional Hospital Centre,consult_completed,2026-05-28 08:18:00,Zone 2,Pediatrics,N,Synthetic consult completed event
+SYN-EVENT-000212,SYN-MRN-100669,Red Deer Regional Hospital Centre,location_update,2026-05-28 07:47:00,Zone 1,Emergency,N,Synthetic location update event
+SYN-EVENT-000213,SYN-MRN-100479,Stollery Children's Hospital,bed_assigned,2026-05-28 02:36:00,Zone 1,Pediatrics,N,Synthetic bed assigned event
+SYN-EVENT-000214,SYN-MRN-100479,Stollery Children's Hospital,location_update,2026-05-28 04:04:00,Zone 4,Pediatrics,Y,Synthetic location update event
+SYN-EVENT-000215,SYN-MRN-100479,Stollery Children's Hospital,consult_completed,2026-05-28 04:03:00,Zone 3,Pediatrics,Y,Synthetic consult completed event
+SYN-EVENT-000216,SYN-MRN-100479,Stollery Children's Hospital,bed_cleaning_started,2026-05-28 03:31:00,Zone 2,Pediatrics,N,Synthetic bed cleaning started event
+SYN-EVENT-000217,SYN-MRN-100479,Stollery Children's Hospital,location_update,2026-05-28 03:33:00,Zone 3,Pediatrics,Y,Synthetic location update event
+SYN-EVENT-000218,SYN-MRN-100479,Stollery Children's Hospital,diagnostic_resulted,2026-05-28 00:50:00,Zone 5,Emergency,N,Synthetic diagnostic resulted event
