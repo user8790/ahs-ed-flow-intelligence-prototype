@@ -4,9 +4,15 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
 
 import pandas as pd
 import streamlit as st
+
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
 
 from ed_flow.ai_layer import get_model_client
 from ed_flow.chart_review import summarize_chart_context
