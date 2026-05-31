@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import pandas as pd
+
+from app import LINEAGE_STATUS_DISPLAY_COLUMNS, lineage_status_display_frame
 from ed_flow_intelligence.constants import V2_TAB_NAMES
 from ed_flow_intelligence.data_sources.public_adapters import OpenDataHub
 from ed_flow_intelligence.data_sources.registry import load_data_source_registry
@@ -21,3 +24,20 @@ def test_lineage_legend_and_tab_order_are_complete() -> None:
     assert set(legend["category"]) == {category.value for category in LineageCategory}
     assert V2_TAB_NAMES[-1] == "Data Linkages & Refresh Status"
     assert len(V2_TAB_NAMES) == 16
+
+
+def test_lineage_status_display_frame_tolerates_older_cached_columns() -> None:
+    older_cached_status = pd.DataFrame(
+        [
+            {
+                "source_id": "ahs_public_wait_times",
+                "display_name": "AHS estimated ED wait times",
+                "category": "OPEN_DATA",
+                "freshness_state": "synthetic fallback current",
+            }
+        ]
+    )
+    display = lineage_status_display_frame(older_cached_status)
+    assert list(display.columns) == LINEAGE_STATUS_DISPLAY_COLUMNS
+    assert display.loc[0, "source_id"] == "ahs_public_wait_times"
+    assert display.loc[0, "activation_status"] == ""

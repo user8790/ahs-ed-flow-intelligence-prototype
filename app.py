@@ -65,6 +65,27 @@ from ed_flow_intelligence.simulation_vnext import lwbs_hazard, run_enhanced_simu
 from ed_flow_intelligence.snowflake_sql import available_sql_templates, load_sql_template
 
 
+LINEAGE_STATUS_DISPLAY_COLUMNS = [
+    "source_id",
+    "display_name",
+    "category",
+    "activation_status",
+    "freshness_state",
+    "row_count",
+    "quality_score",
+    "expected_refresh_minutes",
+    "max_source_timestamp",
+    "grain",
+    "geography",
+    "snowflake_target",
+    "downstream_usage",
+    "pii_risk",
+    "internal_activation_need",
+    "blocking_issue",
+    "fallback_reason",
+]
+
+
 def configure_page() -> None:
     """Configure Streamlit and shared styling."""
 
@@ -255,6 +276,14 @@ def huddle_brief_component(lines: list[str]) -> None:
     st.markdown("**Capacity Huddle Brief**")
     for line in lines[:5]:
         st.write(f"- {line}")
+
+
+def lineage_status_display_frame(statuses: object) -> pd.DataFrame:
+    """Return a cache-tolerant lineage dataframe for display."""
+
+    if not isinstance(statuses, pd.DataFrame):
+        return pd.DataFrame(columns=LINEAGE_STATUS_DISPLAY_COLUMNS)
+    return statuses.reindex(columns=LINEAGE_STATUS_DISPLAY_COLUMNS, fill_value="")
 
 
 def lineage_strip(categories: list[str]) -> None:
@@ -1095,26 +1124,7 @@ def lineage_refresh_tab(open_bundle: dict[str, object]) -> None:
     st.markdown("**Configured source registry**")
     st.dataframe(registry, width="stretch", hide_index=True, height=300)
     st.markdown("**Refresh, quality, and Snowflake target status**")
-    display_cols = [
-        "source_id",
-        "display_name",
-        "category",
-        "activation_status",
-        "freshness_state",
-        "row_count",
-        "quality_score",
-        "expected_refresh_minutes",
-        "max_source_timestamp",
-        "grain",
-        "geography",
-        "snowflake_target",
-        "downstream_usage",
-        "pii_risk",
-        "internal_activation_need",
-        "blocking_issue",
-        "fallback_reason",
-    ]
-    status_df = statuses[display_cols] if isinstance(statuses, pd.DataFrame) else pd.DataFrame()
+    status_df = lineage_status_display_frame(statuses)
     st.dataframe(status_df, width="stretch", hide_index=True, height=420)
     method_note("This tab is intentionally last. It is the control panel for source provenance, refresh cadence, fallback status, Snowflake target mapping, and PHI/identifier risk.")
 
