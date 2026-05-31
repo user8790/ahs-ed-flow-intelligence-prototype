@@ -1,0 +1,344 @@
+facility,zone,city,posted_timestamp,estimated_wait_mins,site_open,public_message,source_category,official_source
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 09:00:00,84,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 10:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 11:00:00,107,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 12:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 13:00:00,143,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 14:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 15:00:00,112,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 16:00:00,141,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 17:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 18:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 19:00:00,97,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 20:00:00,120,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 21:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 22:00:00,74,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-29 23:00:00,73,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 00:00:00,98,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 01:00:00,75,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 02:00:00,95,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 03:00:00,49,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 04:00:00,89,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 05:00:00,59,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 06:00:00,73,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 07:00:00,79,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 08:00:00,83,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 09:00:00,74,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 10:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 11:00:00,112,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 12:00:00,121,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 13:00:00,136,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 14:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 15:00:00,127,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 16:00:00,108,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 17:00:00,122,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 18:00:00,118,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 19:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 20:00:00,105,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 21:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 22:00:00,86,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-30 23:00:00,117,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 00:00:00,62,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 01:00:00,65,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 02:00:00,61,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 03:00:00,79,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 04:00:00,69,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 05:00:00,76,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 06:00:00,101,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 07:00:00,74,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 08:00:00,77,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Stollery Children's Hospital,Edmonton,Edmonton,2026-05-31 09:00:00,132,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 09:00:00,68,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 10:00:00,92,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 11:00:00,66,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 12:00:00,93,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 13:00:00,119,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 14:00:00,143,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 15:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 16:00:00,96,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 17:00:00,110,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 18:00:00,112,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 19:00:00,97,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 20:00:00,89,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 21:00:00,118,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 22:00:00,91,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-29 23:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 00:00:00,57,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 01:00:00,68,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 02:00:00,42,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 03:00:00,76,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 04:00:00,66,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 05:00:00,69,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 06:00:00,80,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 07:00:00,53,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 08:00:00,61,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 09:00:00,101,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 10:00:00,89,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 11:00:00,121,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 12:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 13:00:00,90,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 14:00:00,101,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 15:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 16:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 17:00:00,110,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 18:00:00,109,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 19:00:00,87,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 20:00:00,93,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 21:00:00,115,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 22:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-30 23:00:00,66,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 00:00:00,72,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 01:00:00,60,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 02:00:00,75,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 03:00:00,66,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 04:00:00,56,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 05:00:00,76,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 06:00:00,56,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 07:00:00,79,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 08:00:00,99,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Alberta Children's Hospital,Calgary,Calgary,2026-05-31 09:00:00,107,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 09:00:00,124,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 10:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 11:00:00,148,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 12:00:00,161,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 13:00:00,157,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 14:00:00,150,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 15:00:00,138,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 16:00:00,138,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 17:00:00,140,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 18:00:00,124,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 19:00:00,119,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 20:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 21:00:00,146,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 22:00:00,102,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-29 23:00:00,105,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 00:00:00,84,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 01:00:00,80,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 02:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 03:00:00,90,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 04:00:00,89,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 05:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 06:00:00,120,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 07:00:00,123,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 08:00:00,102,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 09:00:00,122,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 10:00:00,134,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 11:00:00,141,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 12:00:00,130,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 13:00:00,162,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 14:00:00,136,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 15:00:00,98,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 16:00:00,162,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 17:00:00,140,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 18:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 19:00:00,118,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 20:00:00,145,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 21:00:00,108,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 22:00:00,106,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-30 23:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 00:00:00,134,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 01:00:00,101,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 02:00:00,119,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 03:00:00,119,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 04:00:00,93,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 05:00:00,89,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 06:00:00,96,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 07:00:00,89,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 08:00:00,122,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Royal Alexandra Hospital,Edmonton,Edmonton,2026-05-31 09:00:00,137,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 09:00:00,151,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 10:00:00,99,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 11:00:00,121,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 12:00:00,137,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 13:00:00,175,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 14:00:00,141,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 15:00:00,151,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 16:00:00,135,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 17:00:00,128,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 18:00:00,139,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 19:00:00,132,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 20:00:00,148,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 21:00:00,100,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 22:00:00,110,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-29 23:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 00:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 01:00:00,117,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 02:00:00,123,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 03:00:00,90,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 04:00:00,83,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 05:00:00,90,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 06:00:00,111,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 07:00:00,87,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 08:00:00,160,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 09:00:00,108,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 10:00:00,141,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 11:00:00,137,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 12:00:00,161,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 13:00:00,138,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 14:00:00,125,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 15:00:00,150,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 16:00:00,123,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 17:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 18:00:00,158,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 19:00:00,142,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 20:00:00,128,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 21:00:00,124,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 22:00:00,99,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-30 23:00:00,106,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 00:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 01:00:00,69,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 02:00:00,85,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 03:00:00,119,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 04:00:00,102,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 05:00:00,93,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 06:00:00,92,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 07:00:00,70,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 08:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Foothills Medical Centre,Calgary,Calgary,2026-05-31 09:00:00,122,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 09:00:00,128,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 10:00:00,118,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 11:00:00,148,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 12:00:00,113,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 13:00:00,155,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 14:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 15:00:00,111,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 16:00:00,146,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 17:00:00,160,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 18:00:00,128,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 19:00:00,167,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 20:00:00,127,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 21:00:00,109,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 22:00:00,115,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-29 23:00:00,106,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 00:00:00,115,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 01:00:00,67,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 02:00:00,96,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 03:00:00,83,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 04:00:00,88,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 05:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 06:00:00,113,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 07:00:00,113,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 08:00:00,97,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 09:00:00,127,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 10:00:00,139,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 11:00:00,120,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 12:00:00,136,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 13:00:00,132,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 14:00:00,153,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 15:00:00,140,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 16:00:00,128,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 17:00:00,115,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 18:00:00,129,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 19:00:00,129,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 20:00:00,98,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 21:00:00,136,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 22:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-30 23:00:00,108,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 00:00:00,95,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 01:00:00,90,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 02:00:00,109,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 03:00:00,115,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 04:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 05:00:00,97,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 06:00:00,69,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 07:00:00,108,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 08:00:00,134,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Red Deer Regional Hospital Centre,Central,Red Deer,2026-05-31 09:00:00,131,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 09:00:00,126,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 10:00:00,97,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 11:00:00,140,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 12:00:00,107,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 13:00:00,147,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 14:00:00,144,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 15:00:00,165,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 16:00:00,136,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 17:00:00,175,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 18:00:00,135,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 19:00:00,132,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 20:00:00,129,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 21:00:00,137,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 22:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-29 23:00:00,156,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 00:00:00,139,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 01:00:00,130,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 02:00:00,118,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 03:00:00,103,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 04:00:00,95,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 05:00:00,121,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 06:00:00,120,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 07:00:00,105,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 08:00:00,116,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 09:00:00,92,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 10:00:00,122,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 11:00:00,153,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 12:00:00,122,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 13:00:00,137,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 14:00:00,174,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 15:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 16:00:00,146,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 17:00:00,141,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 18:00:00,131,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 19:00:00,125,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 20:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 21:00:00,127,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 22:00:00,110,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-30 23:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 00:00:00,115,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 01:00:00,117,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 02:00:00,104,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 03:00:00,114,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 04:00:00,84,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 05:00:00,79,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 06:00:00,121,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 07:00:00,118,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 08:00:00,123,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+Northeast Community Health Centre,Edmonton,Edmonton,2026-05-31 09:00:00,125,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 09:00:00,65,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 10:00:00,86,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 11:00:00,99,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 12:00:00,96,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 13:00:00,90,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 14:00:00,108,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 15:00:00,119,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 16:00:00,61,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 17:00:00,70,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 18:00:00,102,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 19:00:00,92,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 20:00:00,74,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 21:00:00,55,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 22:00:00,73,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-29 23:00:00,31,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 00:00:00,64,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 01:00:00,38,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 02:00:00,37,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 03:00:00,44,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 04:00:00,20,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 05:00:00,41,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 06:00:00,43,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 07:00:00,62,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 08:00:00,36,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 09:00:00,83,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 10:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 11:00:00,109,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 12:00:00,93,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 13:00:00,79,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 14:00:00,77,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 15:00:00,74,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 16:00:00,91,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 17:00:00,94,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 18:00:00,69,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 19:00:00,69,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 20:00:00,62,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 21:00:00,39,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 22:00:00,78,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-30 23:00:00,52,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 00:00:00,75,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 01:00:00,33,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 02:00:00,58,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 03:00:00,41,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 04:00:00,53,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 05:00:00,78,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 06:00:00,57,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 07:00:00,78,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 08:00:00,37,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times
+South Calgary Ambulatory Care Centre,Calgary,Calgary,2026-05-31 09:00:00,39,True,Synthetic fallback shaped like public estimated ED wait times.,HYBRID_OPEN_SYNTHETIC,AHS estimated ED wait times

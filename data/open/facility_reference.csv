@@ -1,0 +1,8 @@
+facility,zone,city,latitude,longitude,peer_group,pediatric_site
+Stollery Children's Hospital,Edmonton,Edmonton,53.536,-113.5,Pediatric Academic,True
+Alberta Children's Hospital,Calgary,Calgary,51.074,-114.148,Pediatric Academic,True
+Royal Alexandra Hospital,Edmonton,Edmonton,53.558,-113.497,Urban Tertiary,False
+Foothills Medical Centre,Calgary,Calgary,51.065,-114.133,Urban Tertiary,False
+Red Deer Regional Hospital Centre,Central,Red Deer,52.269,-113.811,Regional,False
+Northeast Community Health Centre,Edmonton,Edmonton,53.596,-113.407,Urban Community,False
+South Calgary Ambulatory Care Centre,Calgary,Calgary,50.9,-114.063,Ambulatory,False

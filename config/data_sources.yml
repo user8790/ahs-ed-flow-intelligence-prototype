@@ -1,0 +1,150 @@
+version: 2
+mode: local_synthetic_with_public_source_metadata
+notes: >
+  The external prototype never ingests PHI. Public/open-data sources are represented
+  by source metadata and synthetic fallback cache files. Snowflake tasks can replace
+  these local CSVs with governed open-data landing tables.
+sources:
+  - source_id: ahs_public_wait_times
+    display_name: AHS estimated ED wait times
+    source_family: public_ed_wait_times
+    category: OPEN_DATA
+    official_url: https://www.albertahealthservices.ca/waittimes/waittimes.aspx
+    owner: Alberta Health Services
+    expected_refresh_minutes: 5
+    local_dataset: public_wait_times
+    snowflake_target: OPEN_DATA.AHS_ED_WAIT_TIMES
+    pii_risk: none
+    notes: Local synthetic fallback shaped for AHS posted wait-time monitoring.
+  - source_id: hqca_ed_metrics
+    display_name: HQCA ED historical flow metrics
+    source_family: public_historical_ed_metrics
+    category: OPEN_DATA
+    official_url: https://focus.hqca.ca/
+    owner: Health Quality Council of Alberta
+    expected_refresh_minutes: 10080
+    local_dataset: historical_public_ed_metrics
+    snowflake_target: OPEN_DATA.HQCA_ED_METRICS
+    pii_risk: none
+    notes: Public aggregate validation context where available.
+  - source_id: alberta_respiratory_dashboard
+    display_name: Alberta respiratory virus dashboard
+    source_family: respiratory_surveillance
+    category: OPEN_DATA
+    official_url: https://www.alberta.ca/stats/dashboard/respiratory-virus-dashboard.htm
+    owner: Government of Alberta
+    expected_refresh_minutes: 4320
+    local_dataset: respiratory_surveillance
+    snowflake_target: OPEN_DATA.AB_RESPIRATORY_SURVEILLANCE
+    pii_risk: none
+    notes: Public respiratory context for pediatric surge features.
+  - source_id: eccc_geomet_weather_alerts
+    display_name: ECCC MSC GeoMet weather and alerts
+    source_family: weather_air_quality
+    category: OPEN_DATA
+    official_url: https://api.weather.gc.ca/
+    owner: Environment and Climate Change Canada
+    expected_refresh_minutes: 15
+    local_dataset: environmental_stress
+    snowflake_target: OPEN_DATA.ECCC_WEATHER_ALERTS
+    pii_risk: none
+    notes: Weather, alerts, and climate API source metadata; local values are synthetic.
+  - source_id: alberta_aqhi
+    display_name: Alberta AQHI data
+    source_family: weather_air_quality
+    category: OPEN_DATA
+    official_url: https://open.alberta.ca/interact/aqhi
+    owner: Government of Alberta
+    expected_refresh_minutes: 60
+    local_dataset: environmental_stress
+    snowflake_target: OPEN_DATA.AB_AQHI
+    pii_risk: none
+    notes: AQHI context is synthetic in local mode.
+  - source_id: alberta_wildfire
+    display_name: Alberta wildfire maps and data
+    source_family: wildfire_smoke
+    category: OPEN_DATA
+    official_url: https://www.alberta.ca/wildfire-maps-and-data
+    owner: Government of Alberta
+    expected_refresh_minutes: 60
+    local_dataset: environmental_stress
+    snowflake_target: OPEN_DATA.AB_WILDFIRE_STATUS
+    pii_risk: none
+    notes: Wildfire/smoke stress is synthetic in local mode.
+  - source_id: alberta_511_events
+    display_name: 511 Alberta events and road conditions
+    source_family: travel_friction
+    category: OPEN_DATA
+    official_url: https://511.alberta.ca/developers/doc
+    owner: Government of Alberta
+    expected_refresh_minutes: 15
+    local_dataset: travel_friction
+    snowflake_target: OPEN_DATA.AB_511_EVENTS
+    pii_risk: none
+    notes: Road/closure counts are synthetic in local mode.
+  - source_id: municipal_open_data_traffic
+    display_name: Edmonton and Calgary open traffic data
+    source_family: travel_friction
+    category: OPEN_DATA
+    official_url: https://data.edmonton.ca/
+    owner: Municipal open-data programs
+    expected_refresh_minutes: 60
+    local_dataset: travel_friction
+    snowflake_target: OPEN_DATA.MUNICIPAL_TRAFFIC_EVENTS
+    pii_risk: none
+    notes: Municipal traffic/event layers are configured as future open-data jobs.
+  - source_id: calgary_transit_gtfs
+    display_name: Calgary Transit GTFS scheduling data
+    source_family: travel_friction
+    category: OPEN_DATA
+    official_url: https://data.calgary.ca/Transportation-Transit/Calgary-Transit-Scheduling-Data/npk7-z3bj
+    owner: City of Calgary
+    expected_refresh_minutes: 1440
+    local_dataset: travel_friction
+    snowflake_target: OPEN_DATA.CALGARY_TRANSIT_GTFS
+    pii_risk: none
+    notes: Future transit-access friction feature.
+  - source_id: alberta_general_holidays
+    display_name: Alberta general holidays
+    source_family: calendar_context
+    category: OPEN_DATA
+    official_url: https://www.alberta.ca/alberta-general-holidays
+    owner: Government of Alberta
+    expected_refresh_minutes: 525600
+    local_dataset: calendar_context
+    snowflake_target: OPEN_DATA.AB_HOLIDAYS
+    pii_risk: none
+    notes: Calendar features for predictable demand shifts.
+  - source_id: tb_ed_visits
+    display_name: TB_ED_VISITS curated internal visit table
+    source_family: secure_internal_ed_flow
+    category: SECURE_INTERNAL_READY_SCHEMA
+    official_url:
+    owner: AHS internal governed Snowflake
+    expected_refresh_minutes: 60
+    local_dataset: synthetic_ed_visits
+    snowflake_target: CURATED.TB_ED_VISITS
+    pii_risk: sensitive identifiers in source; constrained module excludes direct identifiers
+    notes: Local v2 uses synthetic rows shaped to the supplied data contract.
+  - source_id: chart_review_semantic_views
+    display_name: MRN chart-review semantic views
+    source_family: secure_internal_chart_review
+    category: SECURE_INTERNAL_READY_SCHEMA
+    official_url:
+    owner: AHS internal governed Snowflake
+    expected_refresh_minutes: 60
+    local_dataset: synthetic_chart_notes
+    snowflake_target: DB_TEAM_STOLLERY_AND_ALBERTA_CHILDRENS_HOSPITAL_ANALYTICS.MSB_CLINICAL_GENETICS
+    pii_risk: PHI and identifiers in source; mock local summaries only
+    notes: PATIENT_CHART to PAT_MRN_ID mapping must be validated before internal use.
+  - source_id: expanded_operational_feeds
+    display_name: Expanded operational system feeds
+    source_family: secure_internal_placeholders
+    category: SECURE_INTERNAL_PLACEHOLDER
+    official_url:
+    owner: Future AHS curated Snowflake feeds
+    expected_refresh_minutes: 15
+    local_dataset: synthetic_beds_staffing_diagnostics
+    snowflake_target: OPERATIONS.*
+    pii_risk: operationally sensitive; may include PHI depending on grain
+    notes: ADT, bed board, EVS, staffing, consult, diagnostics, EMS, transfer, and unit-capacity placeholders.

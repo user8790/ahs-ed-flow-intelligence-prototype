@@ -1,0 +1,8 @@
+facility,zone,city,pediatric_catchment_population,all_age_catchment_population,rurality_access_index,source_category
+Stollery Children's Hospital,Edmonton,Edmonton,163861,750672,0.23967800221058963,HYBRID_OPEN_SYNTHETIC
+Alberta Children's Hospital,Calgary,Calgary,184998,763633,0.3044354790299023,HYBRID_OPEN_SYNTHETIC
+Royal Alexandra Hospital,Edmonton,Edmonton,38152,327585,0.26908795115177087,HYBRID_OPEN_SYNTHETIC
+Foothills Medical Centre,Calgary,Calgary,94263,181337,0.31383144168361615,HYBRID_OPEN_SYNTHETIC
+Red Deer Regional Hospital Centre,Central,Red Deer,93478,197102,0.28313208282220687,HYBRID_OPEN_SYNTHETIC
+Northeast Community Health Centre,Edmonton,Edmonton,94591,493511,0.08800347958337297,HYBRID_OPEN_SYNTHETIC
+South Calgary Ambulatory Care Centre,Calgary,Calgary,73597,650667,0.12796863946423237,HYBRID_OPEN_SYNTHETIC

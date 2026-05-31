@@ -43,3 +43,10 @@ Audit records should include:
 
 Interpretable empirical methods should be the baseline. AI-generated narratives may summarize chart context or explain scenario results, but they must not generate simulation outcomes or be presented as source data.
 
+## V2 Additions
+
+- Public/open-data values are labelled as synthetic fallback in local mode.
+- Every app tab shows lineage badges.
+- The final tab centralizes source registry, refresh status, Snowflake target mapping, fallback reason, quality score, and PHI/identifier risk.
+- Snowflake pilot should persist scenario audit logs, model-call audit logs, refresh audit logs, and data-source registry updates.
+- Chart-summary prompts and outputs require PHI/model approval before real semantic-view content is summarized.

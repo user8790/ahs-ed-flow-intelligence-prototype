@@ -1,12 +1,12 @@
-"""Streamlit application for the AHS ED flow intelligence prototype."""
+"""Streamlit application for AHS ED Flow Intelligence Prototype v2."""
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
 from pathlib import Path
 import sys
 
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
@@ -17,7 +17,12 @@ if str(SRC) not in sys.path:
 from ed_flow.ai_layer import get_model_client
 from ed_flow.chart_review import summarize_chart_context
 from ed_flow.config import AppConfig, get_config
-from ed_flow.data_contracts import VisitFilters, ScenarioConfig, constrained_projection
+from ed_flow.data_contracts import (
+    CONSTRAINED_ANALYSIS_COLUMNS,
+    ScenarioConfig,
+    VisitFilters,
+    constrained_projection,
+)
 from ed_flow.event_log import construct_event_log, observed_concurrency, reconstruct_stage_intervals
 from ed_flow.feature_engineering import (
     add_flow_features,
@@ -26,7 +31,7 @@ from ed_flow.feature_engineering import (
     route_probabilities,
     stage_duration_distributions,
 )
-from ed_flow.forecasting import hourly_arrival_forecast, next_constraint_forecast
+from ed_flow.forecasting import hourly_arrival_forecast
 from ed_flow.governance import governance_summary, holdout_split_by_date
 from ed_flow.local_backend import LocalBackend
 from ed_flow.metrics import (
@@ -47,14 +52,22 @@ from ed_flow.snowflake_backend import (
 )
 from ed_flow.synthetic_data import ensure_synthetic_data
 from ed_flow.visualizations import duration_distribution, line_chart, metric_bar, uncertainty_interval_chart
-
-
-PEDIATRIC_AGE_GROUPS = ["Newborn", "Neonate", "Paediatric"]
+from ed_flow_intelligence.constants import PEDIATRIC_AGE_GROUPS, SECURE_INTERNAL_DATASETS, V2_TAB_NAMES
+from ed_flow_intelligence.data_sources.public_adapters import OpenDataHub
+from ed_flow_intelligence.data_sources.registry import load_data_source_registry, registry_to_frame
+from ed_flow_intelligence.data_sources.synthetic_open_data import OPEN_DATA_DIR, ensure_public_open_data
+from ed_flow_intelligence.forecasting import hybrid_arrival_forecast, likely_binding_constraints, public_pressure_index
+from ed_flow_intelligence.lineage import category_legend_frame, lineage_badge, statuses_to_frame
+from ed_flow_intelligence.quality import constrained_boundary_check, public_data_quality_summary
+from ed_flow_intelligence.scenarios import run_public_scenario
+from ed_flow_intelligence.snowflake_sql import available_sql_templates, load_sql_template
 
 
 def configure_page() -> None:
+    """Configure Streamlit and shared styling."""
+
     st.set_page_config(
-        page_title="AHS ED Flow Intelligence Prototype",
+        page_title="AHS ED Flow Intelligence Prototype v2",
         page_icon="AHS",
         layout="wide",
         initial_sidebar_state="expanded",
@@ -72,32 +85,32 @@ def configure_page() -> None:
           --ed-band: #f5f7f8;
           --ed-line: #d8e1e5;
         }
-        .block-container {padding-top: 1.1rem; padding-bottom: 2rem;}
+        .block-container {padding-top: 1rem; padding-bottom: 2rem; max-width: 1500px;}
         h1, h2, h3 {letter-spacing: 0;}
         .metric-card {
             border: 1px solid var(--ed-line);
             border-left: 5px solid var(--ed-teal);
             border-radius: 8px;
-            padding: 0.8rem 0.9rem;
+            padding: 0.72rem 0.85rem;
             background: #ffffff;
-            min-height: 94px;
+            min-height: 90px;
         }
-        .metric-label {font-size: 0.78rem; color: var(--ed-muted); text-transform: uppercase;}
-        .metric-value {font-size: 1.55rem; font-weight: 720; color: var(--ed-ink);}
+        .metric-label {font-size: 0.76rem; color: var(--ed-muted); text-transform: uppercase;}
+        .metric-value {font-size: 1.42rem; font-weight: 720; color: var(--ed-ink);}
         .method-note {
             border: 1px solid var(--ed-line);
             border-radius: 8px;
             background: var(--ed-band);
-            padding: 0.7rem 0.85rem;
+            padding: 0.68rem 0.82rem;
             color: var(--ed-ink);
-            font-size: 0.92rem;
+            font-size: 0.91rem;
         }
         .warning-note {
             border: 1px solid #efc36a;
             border-left: 5px solid var(--ed-amber);
             border-radius: 8px;
             background: #fff8e8;
-            padding: 0.75rem 0.85rem;
+            padding: 0.72rem 0.82rem;
             color: #4d3b13;
         }
         .patient-card {
@@ -109,7 +122,7 @@ def configure_page() -> None:
             background: #ffffff;
         }
         .small-muted {color: var(--ed-muted); font-size: 0.85rem;}
-        div[data-testid="stMetricValue"] {font-size: 1.45rem;}
+        div[data-testid="stMetricValue"] {font-size: 1.35rem;}
         </style>
         """,
         unsafe_allow_html=True,
@@ -118,59 +131,71 @@ def configure_page() -> None:
 
 @st.cache_resource
 def get_backend(data_dir: str) -> LocalBackend:
+    """Return the synthetic local backend."""
+
     ensure_synthetic_data(Path(data_dir))
     return LocalBackend(Path(data_dir))
 
 
 @st.cache_data(show_spinner=False)
-def load_data(data_dir: str) -> dict[str, pd.DataFrame]:
+def load_core_data(data_dir: str) -> dict[str, pd.DataFrame]:
+    """Load synthetic internal-ready data."""
+
     backend = LocalBackend(Path(data_dir))
     all_visits = backend.load_ed_visits(VisitFilters(include_invalid_los=True, include_scheduled=True))
-    filtered_visits = backend.load_ed_visits(VisitFilters())
-    active = backend.load_current_active_visits(VisitFilters())
-    expanded_events = backend.load_expanded_flow_events()
-    capacity = backend.load_beds_staffing_diagnostics()
+    visits = backend.load_ed_visits(VisitFilters())
     return {
         "all_visits": all_visits,
-        "visits": filtered_visits,
-        "active": active,
-        "expanded_events": expanded_events,
-        "capacity": capacity,
+        "visits": visits,
+        "active": backend.load_current_active_visits(VisitFilters()),
+        "expanded_events": backend.load_expanded_flow_events(),
+        "capacity": backend.load_beds_staffing_diagnostics(),
+    }
+
+
+@st.cache_data(show_spinner=False)
+def load_open_bundle() -> dict[str, object]:
+    """Load public/open source metadata and synthetic fallback cache."""
+
+    ensure_public_open_data(OPEN_DATA_DIR)
+    registry = load_data_source_registry()
+    hub = OpenDataHub(registry, OPEN_DATA_DIR)
+    return {
+        "registry": registry_to_frame(registry),
+        "public_data": hub.datasets(),
+        "refresh_status": statuses_to_frame(hub.status_rows()),
     }
 
 
 def sidebar_controls(config: AppConfig, visits: pd.DataFrame) -> tuple[str, bool, int]:
-    st.sidebar.title("ED Flow Prototype")
-    st.sidebar.caption("Synthetic local mode. No PHI. Snowflake-ready adapter design.")
+    """Global controls."""
+
+    st.sidebar.title("ED Flow Intelligence v2")
+    st.sidebar.caption("Synthetic local mode. Public sources use synthetic fallback cache. No PHI.")
     facilities = sorted(visits["INSTITUTION_NAME"].dropna().unique().tolist())
     default_index = facilities.index(config.default_facility) if config.default_facility in facilities else 0
-    facility = st.sidebar.selectbox(
-        "Facility",
-        facilities,
-        index=default_index,
-        help="Filters the synthetic operational and constrained-data views.",
-    )
-    pediatric_only = st.sidebar.toggle(
-        "Pediatric focus",
-        value=config.default_pediatric_only,
-        help="Uses Newborn, Neonate, and Paediatric age groups where supported by synthetic data.",
-    )
-    horizon_hours = st.sidebar.slider(
-        "Default horizon (hours)",
-        min_value=6,
-        max_value=72,
-        value=24,
-        step=6,
-        help="Used for arrival forecasts and simulation defaults.",
-    )
+    facility = st.sidebar.selectbox("Facility", facilities, index=default_index)
+    pediatric_only = st.sidebar.toggle("Pediatric focus", value=config.default_pediatric_only)
+    horizon_hours = st.sidebar.slider("Planning horizon", min_value=6, max_value=96, value=24, step=6)
+    if st.sidebar.button("Refresh synthetic public cache"):
+        ensure_public_open_data(OPEN_DATA_DIR, force=True)
+        load_open_bundle.clear()
+        st.rerun()
     st.sidebar.markdown(
-        "<div class='method-note'>This prototype supports operational decision-making. It does not automate clinical judgement.</div>",
+        "<div class='method-note'>Decision support only. The app estimates operational effects; it does not automate clinical judgement.</div>",
         unsafe_allow_html=True,
     )
     return facility, pediatric_only, horizon_hours
 
 
-def filtered_view(visits: pd.DataFrame, active: pd.DataFrame, facility: str, pediatric_only: bool) -> tuple[pd.DataFrame, pd.DataFrame]:
+def filtered_view(
+    visits: pd.DataFrame,
+    active: pd.DataFrame,
+    facility: str,
+    pediatric_only: bool,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Apply shared facility and population filters."""
+
     visit_view = visits[visits["INSTITUTION_NAME"] == facility].copy()
     active_view = active[active["facility"] == facility].copy() if "facility" in active.columns else pd.DataFrame()
     if pediatric_only:
@@ -180,7 +205,18 @@ def filtered_view(visits: pd.DataFrame, active: pd.DataFrame, facility: str, ped
     return visit_view.reset_index(drop=True), active_view.reset_index(drop=True)
 
 
+def pct(value: float | int) -> str:
+    """Format a probability."""
+
+    try:
+        return f"{float(value) * 100:.0f}%"
+    except Exception:
+        return "n/a"
+
+
 def metric_card(label: str, value: str, help_text: str | None = None) -> None:
+    """Render a compact metric card."""
+
     tooltip = f" title='{help_text}'" if help_text else ""
     st.markdown(
         f"<div class='metric-card'{tooltip}><div class='metric-label'>{label}</div><div class='metric-value'>{value}</div></div>",
@@ -188,36 +224,54 @@ def metric_card(label: str, value: str, help_text: str | None = None) -> None:
     )
 
 
-def pct(value: float | int) -> str:
-    try:
-        return f"{float(value) * 100:.0f}%"
-    except Exception:
-        return "n/a"
+def lineage_strip(categories: list[str]) -> None:
+    """Render lineage badges."""
+
+    badges = " ".join(lineage_badge(category) for category in categories)
+    st.markdown(badges, unsafe_allow_html=True)
 
 
-def executive_tab(visits: pd.DataFrame, active: pd.DataFrame, all_visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int) -> None:
+def method_note(text: str) -> None:
+    st.markdown(f"<div class='method-note'>{text}</div>", unsafe_allow_html=True)
+
+
+def warning_note(text: str) -> None:
+    st.markdown(f"<div class='warning-note'>{text}</div>", unsafe_allow_html=True)
+
+
+def latest_open_frame(public_data: dict[str, pd.DataFrame], dataset: str, timestamp_col: str) -> pd.DataFrame:
+    frame = public_data.get(dataset, pd.DataFrame())
+    if frame.empty or timestamp_col not in frame or "facility" not in frame:
+        return frame
+    return frame.sort_values(timestamp_col).groupby("facility", as_index=False).tail(1)
+
+
+def executive_tab(
+    visits: pd.DataFrame,
+    active: pd.DataFrame,
+    all_visits: pd.DataFrame,
+    public_data: dict[str, pd.DataFrame],
+    facility: str,
+    pediatric_only: bool,
+    horizon_hours: int,
+) -> None:
     st.subheader("Executive Command Centre")
+    lineage_strip(["SYNTHETIC_DATA", "HYBRID_OPEN_SYNTHETIC", "SECURE_INTERNAL_READY_SCHEMA"])
     visit_view, active_view = filtered_view(visits, active, facility, pediatric_only)
     quality = calculate_data_quality(all_visits[all_visits["INSTITUTION_NAME"] == facility])
     freshness = quality.max_row_update_datetime.isoformat(timespec="minutes") if quality.max_row_update_datetime else "unknown"
-    st.markdown(
-        f"<div class='warning-note'><b>Data quality and freshness:</b> {quality.row_count} synthetic rows loaded; latest row update {freshness}. "
-        f"{' '.join(quality.warnings[:2])}</div>",
-        unsafe_allow_html=True,
+    warning_note(
+        f"Data quality and freshness: {quality.row_count} synthetic TB_ED_VISITS-shaped rows loaded for {facility}; "
+        f"latest synthetic row update {freshness}. {' '.join(quality.warnings[:2])}"
     )
-
-    start = visit_view["FIRST_CONTACT_DATETIME"].min() if not visit_view.empty else None
-    end = visit_view["FIRST_CONTACT_DATETIME"].max() if not visit_view.empty else None
-    col_a, col_b, col_c = st.columns([1.5, 1, 1])
-    col_a.write(f"Facility: **{facility}**")
-    col_b.write(f"Population: **{'Pediatric' if pediatric_only else 'All ages'}**")
-    col_c.write(f"Horizon: **{horizon_hours}h**")
-    if start is not None and end is not None:
-        st.caption(f"Historical synthetic window for selected view: {start:%Y-%m-%d} to {end:%Y-%m-%d}")
+    pressure = public_pressure_index(public_data)
+    site_pressure = pressure[pressure["facility"] == facility] if not pressure.empty else pd.DataFrame()
+    pressure_value = float(site_pressure["public_pressure_index"].iloc[0]) if not site_pressure.empty else 0.0
+    pressure_band = str(site_pressure["pressure_band"].iloc[0]) if not site_pressure.empty else "Unknown"
 
     metrics = current_state_metrics(active_view, visit_view)
     metric_items = [
-        ("Arrivals", f"{metrics['arrivals']:,}", "Selected historical synthetic arrivals after default rules."),
+        ("Arrivals", f"{metrics['arrivals']:,}", "Selected synthetic historical arrivals after default rules."),
         ("Waiting to triage", str(metrics["waiting_to_triage"]), None),
         ("Triaged waiting", str(metrics["triaged_waiting"]), None),
         ("Roomed not yet seen", str(metrics["roomed_not_seen"]), None),
@@ -229,6 +283,7 @@ def executive_tab(visits: pd.DataFrame, active: pd.DataFrame, all_visits: pd.Dat
         ("Discharged within 4h", pct(metrics["discharged_within_4_hours"]), None),
         ("LWBS risk", pct(metrics["lwbs_risk"]), "Mean synthetic waiting-room LWBS risk."),
         ("Median / p90 LOS", f"{metrics['median_ed_los']:.1f} / {metrics['p90_ed_los']:.1f}h", None),
+        ("Public pressure", f"{pressure_value:.2f}", pressure_band),
     ]
     for idx in range(0, len(metric_items), 4):
         cols = st.columns(4)
@@ -236,32 +291,215 @@ def executive_tab(visits: pd.DataFrame, active: pd.DataFrame, all_visits: pd.Dat
             with col:
                 metric_card(*item)
 
-    left, right = st.columns([1.15, 1])
+    left, right = st.columns([1.1, 1])
     with left:
         st.markdown("**Current Simulated ED State**")
         if active_view.empty:
             st.info("No active synthetic patients match this filter.")
         else:
             stage_counts = active_view["current_stage"].value_counts().rename_axis("stage").reset_index(name="patients")
-            st.plotly_chart(metric_bar(stage_counts, "stage", "patients", title="Active patients by stage"), use_container_width=True)
+            st.plotly_chart(metric_bar(stage_counts, "stage", "patients", title="Active patients by stage"), width="stretch")
     with right:
         st.markdown("**Bottleneck Summary**")
-        st.dataframe(bottleneck_summary(active_view, visit_view), use_container_width=True, hide_index=True)
+        st.dataframe(bottleneck_summary(active_view, visit_view), width="stretch", hide_index=True)
 
-    forecast = hourly_arrival_forecast(visit_view, horizon_hours=horizon_hours)
-    st.plotly_chart(line_chart(forecast, "hour_ahead", "expected_arrivals", title="Empirical arrival forecast"), use_container_width=True)
-    st.markdown(
-        "<div class='method-note'>Method note: current-state counts come from the synthetic waiting-room registry; historical metrics apply default business rules excluding invalid LOS and scheduled visits.</div>",
-        unsafe_allow_html=True,
-    )
+    forecast = hybrid_arrival_forecast(visit_view, public_data, facility, horizon_hours)
+    st.plotly_chart(line_chart(forecast, "hour_ahead", "expected_arrivals", title="Hybrid empirical + public pressure arrival forecast"), width="stretch")
+    method_note("Current-state counts come from the synthetic waiting-room registry. Public pressure combines synthetic fallback wait-time, respiratory, weather/AQHI, wildfire/smoke, travel, and calendar features.")
+
+
+def public_pressure_tab(public_data: dict[str, pd.DataFrame], facility: str) -> None:
+    st.subheader("Alberta Public Pressure Map & Site Explorer")
+    lineage_strip(["OPEN_DATA", "HYBRID_OPEN_SYNTHETIC"])
+    pressure = public_pressure_index(public_data)
+    if pressure.empty:
+        st.info("No synthetic public pressure data loaded.")
+        return
+    map_kwargs = {
+        "data_frame": pressure,
+        "lat": "latitude",
+        "lon": "longitude",
+        "color": "pressure_band",
+        "size": "public_pressure_index",
+        "hover_name": "facility",
+        "hover_data": ["zone", "estimated_wait_mins", "aqhi", "travel_friction_index", "pediatric_pressure_index"],
+        "zoom": 4.2,
+        "height": 430,
+        "title": "Synthetic public pressure by ED/UCC/AACC site",
+    }
+    if hasattr(px, "scatter_map"):
+        map_fig = px.scatter_map(**map_kwargs, map_style="open-street-map")
+    else:
+        map_fig = px.scatter_mapbox(**map_kwargs, mapbox_style="open-street-map")
+    st.plotly_chart(map_fig, width="stretch")
+    selected = pressure[pressure["facility"] == facility]
+    cols = st.columns(4)
+    if not selected.empty:
+        row = selected.iloc[0]
+        cols[0].metric("Public pressure index", f"{row['public_pressure_index']:.2f}", row["pressure_band"])
+        cols[1].metric("Posted wait fallback", f"{row['estimated_wait_mins']:.0f} min")
+        cols[2].metric("AQHI fallback", f"{row['aqhi']:.0f}")
+        cols[3].metric("Travel friction", f"{row['travel_friction_index']:.2f}")
+    st.dataframe(pressure, width="stretch", hide_index=True)
+    method_note("The public map is site-level and non-identifying. It is suitable for public-context pressure modelling, not patient-level clinical decision-making.")
+
+
+def public_wait_times_tab(public_data: dict[str, pd.DataFrame]) -> None:
+    st.subheader("Public ED Wait Times Monitor")
+    lineage_strip(["OPEN_DATA", "HYBRID_OPEN_SYNTHETIC"])
+    wait = public_data.get("public_wait_times", pd.DataFrame())
+    historical = public_data.get("historical_public_ed_metrics", pd.DataFrame())
+    latest = latest_open_frame(public_data, "public_wait_times", "posted_timestamp")
+    if latest.empty:
+        st.info("No public wait-time fallback cache available.")
+        return
+    cols = st.columns(3)
+    cols[0].metric("Tracked public sites", latest["facility"].nunique())
+    cols[1].metric("Median posted wait fallback", f"{latest['estimated_wait_mins'].median():.0f} min")
+    cols[2].metric("Max posted wait fallback", f"{latest['estimated_wait_mins'].max():.0f} min")
+    st.dataframe(latest.sort_values("estimated_wait_mins", ascending=False), width="stretch", hide_index=True)
+    st.plotly_chart(line_chart(wait, "posted_timestamp", "estimated_wait_mins", color="facility", title="48-hour posted wait-time fallback trend"), width="stretch")
+    if not historical.empty:
+        st.plotly_chart(
+            line_chart(historical, "week_start", "discharged_within_4h_pct", color="facility", title="Public aggregate discharged-within-4h fallback"),
+            width="stretch",
+        )
+    method_note("Future Snowflake jobs should retain official-source timestamps, scrape/API method, refresh status, and licensing metadata. Local numbers are synthetic fallback values.")
+
+
+def respiratory_tab(public_data: dict[str, pd.DataFrame], facility: str) -> None:
+    st.subheader("Pediatric Respiratory Surge")
+    lineage_strip(["OPEN_DATA", "HYBRID_OPEN_SYNTHETIC"])
+    respiratory = public_data.get("respiratory_surveillance", pd.DataFrame())
+    facilities = public_data.get("facility_reference", pd.DataFrame())
+    zone = facilities.loc[facilities["facility"] == facility, "zone"].iloc[0] if not facilities.empty and facility in facilities["facility"].values else "Edmonton"
+    zone_view = respiratory[respiratory["zone"] == zone].copy()
+    latest = zone_view.sort_values("week_start").groupby("pathogen", as_index=False).tail(1)
+    cols = st.columns(4)
+    for col, pathogen in zip(cols, ["RSV", "Influenza", "COVID-19", "Other respiratory"]):
+        row = latest[latest["pathogen"] == pathogen]
+        value = float(row["test_positivity"].iloc[0]) if not row.empty else 0
+        col.metric(pathogen, pct(value), "synthetic positivity")
+    st.plotly_chart(line_chart(zone_view, "week_start", "test_positivity", color="pathogen", title=f"{zone} respiratory positivity fallback"), width="stretch")
+    st.dataframe(latest, width="stretch", hide_index=True)
+    method_note("Respiratory features are public aggregate context. They can inform pediatric surge preparation but cannot identify individual patients or replace local clinical surveillance.")
+
+
+def environmental_tab(public_data: dict[str, pd.DataFrame], facility: str) -> None:
+    st.subheader("Smoke, Heat, Weather & Air Quality Stress")
+    lineage_strip(["OPEN_DATA", "HYBRID_OPEN_SYNTHETIC"])
+    env = public_data.get("environmental_stress", pd.DataFrame())
+    site = env[env["facility"] == facility].copy()
+    if site.empty:
+        st.info("No environmental stress fallback data available.")
+        return
+    latest = site.sort_values("timestamp").tail(1).iloc[0]
+    cols = st.columns(5)
+    cols[0].metric("Temperature", f"{latest['temperature_c']:.1f} C")
+    cols[1].metric("Humidex", f"{latest['humidex']:.1f}")
+    cols[2].metric("AQHI", f"{latest['aqhi']:.0f}")
+    cols[3].metric("Smoke risk", f"{latest['wildfire_smoke_risk']:.2f}")
+    cols[4].metric("Stress index", f"{latest['environmental_stress_index']:.2f}")
+    st.plotly_chart(line_chart(site, "timestamp", "environmental_stress_index", title=f"{facility} environmental stress index"), width="stretch")
+    st.dataframe(site.head(96), width="stretch", hide_index=True, height=320)
+    method_note("Future source adapters should separate weather observations, forecast alerts, AQHI, wildfire status, and smoke-model features with independent freshness checks.")
+
+
+def travel_tab(public_data: dict[str, pd.DataFrame], facility: str) -> None:
+    st.subheader("Travel Friction & Access Disruption")
+    lineage_strip(["OPEN_DATA", "HYBRID_OPEN_SYNTHETIC"])
+    travel = public_data.get("travel_friction", pd.DataFrame())
+    site = travel[travel["facility"] == facility].copy()
+    if site.empty:
+        st.info("No travel friction fallback data available.")
+        return
+    latest = site.sort_values("timestamp").tail(1).iloc[0]
+    cols = st.columns(4)
+    cols[0].metric("Travel friction", f"{latest['travel_friction_index']:.2f}")
+    cols[1].metric("Road incidents", f"{latest['road_incidents']:.0f}")
+    cols[2].metric("Road closures", f"{latest['road_closures']:.0f}")
+    cols[3].metric("Transit disruption", f"{latest['transit_disruption_index']:.2f}")
+    st.plotly_chart(line_chart(site, "timestamp", "travel_friction_index", title=f"{facility} access disruption forecast"), width="stretch")
+    st.dataframe(site.head(96), width="stretch", hide_index=True, height=320)
+    method_note("Travel context is operational planning context: it can explain timing, EMS access, and staff/patient arrival friction, but local mode remains synthetic.")
+
+
+def public_scenario_tab(visits: pd.DataFrame, public_data: dict[str, pd.DataFrame], facility: str, horizon_hours: int) -> None:
+    st.subheader("Public Scenario Workbench")
+    lineage_strip(["USER_INPUT", "HYBRID_OPEN_SYNTHETIC", "MODEL_OUTPUT"])
+    controls, output = st.columns([0.9, 1.5])
+    with controls:
+        respiratory_multiplier = st.slider("Respiratory surge multiplier", 0.5, 2.5, 1.0, 0.1)
+        smoke_heat_multiplier = st.slider("Smoke/heat stress multiplier", 0.5, 2.5, 1.0, 0.1)
+        travel_friction_multiplier = st.slider("Travel friction multiplier", 0.5, 2.5, 1.0, 0.1)
+        wait_override = st.number_input("Optional public wait override (minutes)", 0, 300, 0, 5)
+        if st.button("Run public stress scenario"):
+            st.session_state.public_scenario_result = run_public_scenario(
+                visits,
+                public_data,
+                facility,
+                horizon_hours,
+                respiratory_multiplier,
+                smoke_heat_multiplier,
+                travel_friction_multiplier,
+                wait_override if wait_override > 0 else None,
+            )
+    if "public_scenario_result" not in st.session_state:
+        st.session_state.public_scenario_result = run_public_scenario(
+            visits, public_data, facility, horizon_hours, 1.0, 1.0, 1.0, None
+        )
+    scenario_result = st.session_state.public_scenario_result
+    with output:
+        st.dataframe(scenario_result, width="stretch", hide_index=True)
+        st.plotly_chart(metric_bar(scenario_result, "scenario", "expected_arrivals", color="scenario", title="Expected arrivals under public-context stress"), width="stretch")
+    method_note("Public scenario outputs are transparent pressure estimates. They are not used as clinical recommendations and should be calibrated against internal TB_ED_VISITS data before operations use.")
+
+
+def constrained_internal_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int) -> None:
+    st.subheader("TB_ED_VISITS Internal-Ready Flow Analytics")
+    lineage_strip(["SECURE_INTERNAL_READY_SCHEMA", "SYNTHETIC_DATA"])
+    visit_view, _ = filtered_view(visits, pd.DataFrame(), facility, pediatric_only)
+    constrained = constrained_projection(visit_view)
+    if constrained.empty:
+        st.info("No constrained synthetic visits match this filter.")
+        return
+    st.dataframe(constrained_boundary_check(constrained, CONSTRAINED_ANALYSIS_COLUMNS), width="stretch", hide_index=True)
+    tabs = st.tabs(["Explorer", "Event Log", "Patterns", "Parameters", "Replay Validation"])
+    with tabs[0]:
+        cols = ["DATA_RECORD_ID", "DEPARTMENT_TYPE", "TRIAGE_LEVEL", "PATIENT_AGE_GROUP", "PRESENTING_COMPLAINT", "DISPOSITION_GROUP", "ED_LOS_HRS"]
+        st.dataframe(constrained[[c for c in cols if c in constrained.columns]].head(300), width="stretch", hide_index=True, height=310)
+        st.plotly_chart(duration_distribution(add_flow_features(constrained), "ED_LOS_HRS", color="DISPOSITION_GROUP", title="ED LOS distribution"), width="stretch")
+    with tabs[1]:
+        event_log = construct_event_log(constrained)
+        intervals = reconstruct_stage_intervals(constrained)
+        concurrency = observed_concurrency(intervals)
+        c1, c2 = st.columns(2)
+        c1.dataframe(event_log.head(400), width="stretch", hide_index=True, height=350)
+        c2.dataframe(intervals.head(400), width="stretch", hide_index=True, height=350)
+        if not concurrency.empty:
+            stage_hour = concurrency.groupby(["stage", "timestamp"], as_index=False)["concurrency"].sum()
+            st.plotly_chart(line_chart(stage_hour, "timestamp", "concurrency", color="stage", title="Observed concurrency by reconstructed stage"), width="stretch")
+    with tabs[2]:
+        arrivals = arrival_patterns(constrained)
+        hour_summary = arrivals.groupby("arrival_hour", as_index=False)["arrivals"].sum()
+        st.plotly_chart(metric_bar(hour_summary, "arrival_hour", "arrivals", title="Arrival patterns by hour"), width="stretch")
+        c1, c2 = st.columns(2)
+        c1.dataframe(route_probabilities(constrained).head(80), width="stretch", hide_index=True)
+        c2.dataframe(stage_duration_distributions(constrained), width="stretch", hide_index=True)
+    with tabs[3]:
+        st.json(estimate_baseline_parameters(constrained), expanded=False)
+        method_note("Baseline simulation parameters are inferred from constrained timestamps, route probabilities, consult probability, boarding delay, and observed concurrency assumptions.")
+    with tabs[4]:
+        scenario = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=10)
+        output = run_simulation(constrained, scenario)
+        st.dataframe(validation_metric_summary(constrained, output.patients), width="stretch", hide_index=True)
+        st.plotly_chart(uncertainty_interval_chart(summarize_with_uncertainty(output.summary)), width="stretch")
 
 
 def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str, pediatric_only: bool, config: AppConfig) -> None:
     st.subheader("Waiting Room MRN Chart Summaries")
-    st.markdown(
-        "<div class='warning-note'>Synthetic chart summarization aid only. It is not a substitute for chart review, clinical assessment, or source-system verification.</div>",
-        unsafe_allow_html=True,
-    )
+    lineage_strip(["SYNTHETIC_DATA", "SECURE_INTERNAL_READY_SCHEMA", "MODEL_OUTPUT"])
+    warning_note("Synthetic chart summarization aid only. It is not a substitute for chart review, clinical assessment, or source-system verification.")
     active_view = active[active["facility"] == facility].copy()
     if pediatric_only:
         active_view = active_view[active_view["age_group"].isin(PEDIATRIC_AGE_GROUPS)]
@@ -274,7 +512,7 @@ def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str,
         add = col2.form_submit_button("Add MRN")
         if add and entered:
             mrn = entered.strip()
-            if mrn not in st.session_state.selected_mrns:
+            if mrn and mrn not in st.session_state.selected_mrns:
                 st.session_state.selected_mrns.append(mrn)
 
     remove_options = st.session_state.selected_mrns.copy()
@@ -284,12 +522,11 @@ def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str,
         st.session_state.selected_mrns = [m for m in st.session_state.selected_mrns if m != remove_mrn]
         st.rerun()
 
-    left, right = st.columns([0.85, 1.6])
+    left, right = st.columns([0.86, 1.6])
     with left:
         st.markdown("**Scrollable waiting-room list**")
         list_cols = ["mrn", "triage_level", "age_group", "presenting_complaint", "current_stage", "lwbs_risk"]
-        sorted_active = active_view.sort_values(["triage_level", "arrival_datetime"]) if "arrival_datetime" in active_view else active_view
-        st.dataframe(sorted_active[list_cols], use_container_width=True, hide_index=True, height=520)
+        st.dataframe(active_view[list_cols].sort_values(["triage_level", "mrn"]), width="stretch", hide_index=True, height=560)
     with right:
         model_client = get_model_client(config)
         if not st.session_state.selected_mrns:
@@ -299,7 +536,7 @@ def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str,
             summary = summarize_chart_context(context, model_client)
             demographics = context.demographics
             st.markdown("<div class='patient-card'>", unsafe_allow_html=True)
-            top_cols = st.columns([1.4, 1, 0.8])
+            top_cols = st.columns([1.35, 1, 0.8])
             top_cols[0].markdown(f"**{mrn}**")
             top_cols[0].caption(
                 f"{demographics.get('age_group', 'Unknown age group')} | CTAS {demographics.get('triage_level', 'unknown')} | {demographics.get('presenting_complaint', 'No complaint')}"
@@ -345,69 +582,30 @@ def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str,
             st.markdown("</div>", unsafe_allow_html=True)
 
 
-def constrained_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int) -> None:
-    st.subheader("Constrained ED Curated Data Module")
-    st.caption("This module uses only fields available in the `TB_ED_VISITS` data contract.")
-    visit_view, _ = filtered_view(visits, pd.DataFrame(), facility, pediatric_only)
-    constrained = constrained_projection(visit_view)
-    featured = add_flow_features(constrained)
-    if constrained.empty:
-        st.info("No visits match this constrained filter.")
-        return
-
-    tabs = st.tabs(["Explorer", "Event Log", "Patterns", "Parameters", "Replay Validation"])
-    with tabs[0]:
-        st.markdown("**Historical flow explorer**")
-        cols = ["DATA_RECORD_ID", "DEPARTMENT_TYPE", "TRIAGE_LEVEL", "PATIENT_AGE_GROUP", "PRESENTING_COMPLAINT", "DISPOSITION_GROUP", "ED_LOS_HRS"]
-        st.dataframe(constrained[[c for c in cols if c in constrained]].head(300), use_container_width=True, hide_index=True, height=320)
-        st.plotly_chart(duration_distribution(featured, "ED_LOS_HRS", color="DISPOSITION_GROUP", title="ED LOS distribution"), use_container_width=True)
-    with tabs[1]:
-        event_log = construct_event_log(constrained)
-        intervals = reconstruct_stage_intervals(constrained)
-        concurrency = observed_concurrency(intervals)
-        col1, col2 = st.columns(2)
-        col1.dataframe(event_log.head(400), use_container_width=True, hide_index=True, height=350)
-        col2.dataframe(intervals.head(400), use_container_width=True, hide_index=True, height=350)
-        if not concurrency.empty:
-            stage_hour = concurrency.groupby(["stage", "timestamp"], as_index=False)["concurrency"].sum()
-            st.plotly_chart(line_chart(stage_hour, "timestamp", "concurrency", color="stage", title="Observed concurrency by reconstructed stage"), use_container_width=True)
-    with tabs[2]:
-        st.markdown("**Arrival, route, consult, and boarding patterns**")
-        arrivals = arrival_patterns(constrained)
-        top_arrivals = arrivals.groupby(["arrival_hour"], as_index=False)["arrivals"].sum()
-        st.plotly_chart(metric_bar(top_arrivals, "arrival_hour", "arrivals", title="Arrivals by hour"), use_container_width=True)
-        left, right = st.columns(2)
-        left.dataframe(route_probabilities(constrained).head(80), use_container_width=True, hide_index=True)
-        duration_summary = stage_duration_distributions(constrained)
-        right.dataframe(duration_summary, use_container_width=True, hide_index=True)
-        consult_rate = (pd.to_numeric(constrained["CONSULT_COUNT"], errors="coerce").fillna(0) > 0).mean()
-        boarding = pd.to_numeric(constrained["ED_LOS_DECISION_TO_ADMIT_TO_LAST_CONTACT_HRS"], errors="coerce").dropna()
-        st.write(f"Consult probability: **{consult_rate:.1%}** | Median boarding delay when present: **{boarding.median() if not boarding.empty else 0:.1f}h**")
-    with tabs[3]:
-        params = estimate_baseline_parameters(constrained)
-        st.json(params, expanded=False)
-        st.markdown(
-            "<div class='method-note'>Capacity defaults are inferred from observed flow rates and duration distributions, then made explicit so they can be replaced by validated staffing, room, and bed feeds in Snowflake.</div>",
-            unsafe_allow_html=True,
-        )
-    with tabs[4]:
-        scenario = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=10)
-        output = run_simulation(constrained, scenario)
-        comparison = validation_metric_summary(constrained, output.patients)
-        st.dataframe(comparison, use_container_width=True, hide_index=True)
-        st.plotly_chart(uncertainty_interval_chart(summarize_with_uncertainty(output.summary)), use_container_width=True)
+def hybrid_forecasting_tab(visits: pd.DataFrame, public_data: dict[str, pd.DataFrame], facility: str, horizon_hours: int) -> None:
+    st.subheader("Hybrid Forecasting Lab")
+    lineage_strip(["HYBRID_OPEN_SYNTHETIC", "HYBRID_OPEN_INTERNAL_READY", "MODEL_OUTPUT"])
+    forecast = hybrid_arrival_forecast(visits, public_data, facility, horizon_hours)
+    st.plotly_chart(line_chart(forecast, "hour_ahead", "expected_arrivals", title="Hybrid expected arrivals"), width="stretch")
+    interval_fig = px.line(forecast, x="hour_ahead", y=["p10_arrivals", "expected_arrivals", "p90_arrivals"], title="Arrival forecast uncertainty band")
+    st.plotly_chart(interval_fig, width="stretch")
+    pressure = public_pressure_index(public_data)
+    site_pressure = pressure[pressure["facility"] == facility] if not pressure.empty else pd.DataFrame()
+    c1, c2 = st.columns(2)
+    c1.dataframe(forecast, width="stretch", hide_index=True)
+    c2.dataframe(site_pressure, width="stretch", hide_index=True)
+    method_note("Hybrid mode is ready to join TB_ED_VISITS-derived features to open-data context in Snowflake. Local mode keeps the open-data side synthetic and labelled.")
 
 
 def simulation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int, config: AppConfig) -> None:
     st.subheader("Simulation Lab")
+    lineage_strip(["SYNTHETIC_DATA", "USER_INPUT", "MODEL_OUTPUT"])
     visit_view, _ = filtered_view(visits, pd.DataFrame(), facility, pediatric_only)
     if visit_view.empty:
         st.info("No visits match this simulation filter.")
         return
-
     controls, results = st.columns([0.9, 1.7])
     with controls:
-        st.markdown("**Scenario Controls**")
         arrival_multiplier = st.slider("Arrival surge multiplier", 0.5, 2.5, 1.0, 0.1)
         triage_delta = st.number_input("Triage capacity change", -3, 8, 0, 1)
         physician_delta = st.number_input("Physician capacity change", -3, 12, 0, 1)
@@ -441,116 +639,105 @@ def simulation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, ho
     output = run_simulation(visit_view, scenario)
     uncertainty = summarize_with_uncertainty(output.summary)
     with results:
-        st.markdown("**Scenario Results with Uncertainty**")
-        st.plotly_chart(uncertainty_interval_chart(uncertainty), use_container_width=True)
-        st.dataframe(uncertainty, use_container_width=True, hide_index=True)
+        st.plotly_chart(uncertainty_interval_chart(uncertainty), width="stretch")
+        st.dataframe(uncertainty, width="stretch", hide_index=True)
         queue_avg = output.queue_lengths.groupby("hour", as_index=False)[["waiting_for_physician", "boarding", "total_active_pressure"]].mean()
-        st.plotly_chart(line_chart(queue_avg, "hour", "total_active_pressure", title="Expected active pressure over time"), use_container_width=True)
-
+        st.plotly_chart(line_chart(queue_avg, "hour", "total_active_pressure", title="Expected active pressure over time"), width="stretch")
     baseline = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=int(reps), random_seed=int(seed))
-    fast = baseline.model_copy(update={"fast_track_enabled": True})
-    bed = baseline.model_copy(update={"boarding_reduction": 0.25, "admission_bed_improvement": 0.2})
-    staffing = baseline.model_copy(update={"physician_capacity_delta": 1, "triage_capacity_delta": 1})
-    comparison = compare_scenarios(visit_view, [baseline, scenario, fast, bed, staffing])
-    ranked = rank_interventions(comparison)
-    left, right = st.columns(2)
-    left.markdown("**Scenario comparison table**")
-    left.dataframe(comparison, use_container_width=True, hide_index=True)
-    right.markdown("**Bottleneck shift analysis**")
-    right.dataframe(output.bottlenecks, use_container_width=True, hide_index=True)
+    comparison = compare_scenarios(
+        visit_view,
+        [
+            baseline,
+            scenario,
+            baseline.model_copy(update={"fast_track_enabled": True}),
+            baseline.model_copy(update={"boarding_reduction": 0.25, "admission_bed_improvement": 0.2}),
+            baseline.model_copy(update={"physician_capacity_delta": 1, "triage_capacity_delta": 1}),
+        ],
+    )
+    c1, c2 = st.columns(2)
+    c1.markdown("**Scenario comparison table**")
+    c1.dataframe(comparison, width="stretch", hide_index=True)
+    c2.markdown("**Bottleneck shift analysis**")
+    c2.dataframe(output.bottlenecks, width="stretch", hide_index=True)
     st.markdown("**Prioritized interventions**")
-    st.dataframe(ranked, use_container_width=True, hide_index=True)
+    st.dataframe(rank_interventions(comparison), width="stretch", hide_index=True)
     explanation = get_model_client(config).explain_scenario(comparison)
-    st.markdown(
-        f"<div class='method-note'><b>Practical interpretation:</b> {practical_interpretation(comparison)} {explanation}</div>",
-        unsafe_allow_html=True,
-    )
+    method_note(f"Practical interpretation: {practical_interpretation(comparison)} {explanation}")
 
 
-def expanded_tab(data: dict[str, pd.DataFrame], visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int) -> None:
-    st.subheader("Expanded System Intelligence Module")
-    st.markdown(
-        "<div class='warning-note'>Expanded module is assumption-based and synthetic. It demonstrates future AHS-curated Snowflake feeds, not current operational truth.</div>",
-        unsafe_allow_html=True,
-    )
+def bed_boarding_tab(data: dict[str, pd.DataFrame], public_data: dict[str, pd.DataFrame], facility: str, pediatric_only: bool) -> None:
+    st.subheader("Bed, Boarding, Discharge & Transfer Intelligence")
+    lineage_strip(["SECURE_INTERNAL_PLACEHOLDER", "SYNTHETIC_DATA", "HYBRID_OPEN_SYNTHETIC"])
+    warning_note("Expanded bed/boarding/transfer intelligence is synthetic and assumption-based in local mode.")
     active = data["active"][data["active"]["facility"] == facility].copy()
     if pediatric_only:
         active = active[active["age_group"].isin(PEDIATRIC_AGE_GROUPS)]
-    events = data["expanded_events"][data["expanded_events"]["facility"] == facility].copy()
     capacity = data["capacity"][data["capacity"]["facility"] == facility].copy()
-    visit_view, _ = filtered_view(visits, active, facility, pediatric_only)
-
-    top = st.columns(4)
-    latest_capacity = capacity.sort_values("snapshot_datetime").tail(1)
-    top[0].metric("Active synthetic patients", len(active))
-    top[1].metric("Inpatient beds available", int(latest_capacity["inpatient_available_beds"].iloc[0]) if not latest_capacity.empty else 0)
-    top[2].metric("Pending discharges", int(latest_capacity["pending_discharges"].iloc[0]) if not latest_capacity.empty else 0)
-    top[3].metric("Consult queue", int(latest_capacity["consult_queue"].iloc[0]) if not latest_capacity.empty else 0)
-
-    tabs = st.tabs(["Digital Twin", "Bed Placement", "Staffing", "Cascades & Transfers", "Next Constraint"])
+    events = data["expanded_events"][data["expanded_events"]["facility"] == facility].copy()
+    latest = capacity.sort_values("snapshot_datetime").tail(1)
+    cols = st.columns(4)
+    cols[0].metric("DTA boarders", int(active["current_stage"].eq("decision_to_admit_boarder").sum()))
+    cols[1].metric("Available inpatient beds", int(latest["inpatient_available_beds"].iloc[0]) if not latest.empty else 0)
+    cols[2].metric("Pending discharges", int(latest["pending_discharges"].iloc[0]) if not latest.empty else 0)
+    cols[3].metric("Transfer requests", int(latest["transfer_requests_waiting"].iloc[0]) if not latest.empty else 0)
+    tabs = st.tabs(["Digital Twin", "Bed Placement Optimizer", "Discharge Cascade", "Transfer Scenario"])
     with tabs[0]:
-        st.dataframe(active.sort_values(["triage_level", "arrival_datetime"]), use_container_width=True, hide_index=True, height=320)
-        event_counts = events["event_type"].value_counts().rename_axis("event_type").reset_index(name="events")
-        st.plotly_chart(metric_bar(event_counts, "event_type", "events", title="Synthetic real-time operational events"), use_container_width=True)
+        st.dataframe(active.sort_values(["triage_level", "arrival_datetime"]), width="stretch", hide_index=True, height=320)
+        st.plotly_chart(metric_bar(events["event_type"].value_counts().rename_axis("event_type").reset_index(name="events"), "event_type", "events", title="Synthetic operational event mix"), width="stretch")
     with tabs[1]:
-        st.dataframe(greedy_bed_placement_optimizer(active, capacity), use_container_width=True, hide_index=True)
-        st.markdown("<div class='method-note'>Optimizer objective: reduce ED boarding hours while respecting synthetic bed availability and priority signals. Future pilot should add isolation, specialty, team, age, and unit constraints.</div>", unsafe_allow_html=True)
+        st.dataframe(greedy_bed_placement_optimizer(active, capacity), width="stretch", hide_index=True)
+        method_note("Greedy objective: reduce ED boarding hours while respecting synthetic bed availability and priority signals. Future pilot requires specialty, isolation, age, team, and unit-level constraints.")
     with tabs[2]:
-        st.dataframe(staffing_sensitivity(active, capacity), use_container_width=True, hide_index=True)
-        st.plotly_chart(line_chart(capacity, "snapshot_datetime", "physicians_on_shift", title="Synthetic physician staffing forecast"), use_container_width=True)
-    with tabs[3]:
         cascade_cols = ["snapshot_datetime", "pending_discharges", "beds_cleaning", "inpatient_available_beds", "transfer_requests_waiting"]
-        st.dataframe(capacity[cascade_cols].head(48), use_container_width=True, hide_index=True)
-        transfer_events = events[events["event_type"].str.contains("transport|bed", case=False, regex=True)]
-        st.plotly_chart(metric_bar(transfer_events.groupby("event_type").size().reset_index(name="events"), "event_type", "events", title="Bed/transport event mix"), use_container_width=True)
-    with tabs[4]:
-        next_constraints = next_constraint_forecast(active, visit_view)
-        st.dataframe(next_constraints, use_container_width=True, hide_index=True)
-        baseline = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=10)
-        interventions = compare_scenarios(
-            visit_view,
-            [
-                baseline,
-                baseline.model_copy(update={"boarding_reduction": 0.25}),
-                baseline.model_copy(update={"physician_capacity_delta": 1}),
-                baseline.model_copy(update={"fast_track_enabled": True}),
-            ],
-        )
-        st.dataframe(rank_interventions(interventions), use_container_width=True, hide_index=True)
+        st.dataframe(capacity[cascade_cols].head(48), width="stretch", hide_index=True)
+        st.plotly_chart(line_chart(capacity, "snapshot_datetime", "inpatient_available_beds", title="Discharge-to-bed availability cascade"), width="stretch")
+    with tabs[3]:
+        constraints = likely_binding_constraints(active, capacity, public_data, facility)
+        st.dataframe(constraints, width="stretch", hide_index=True)
+        method_note("Transfer scenarios are framed as operational what-if analysis. They should be calibrated with transfer-centre, transport, receiving-unit, and bed-board feeds.")
 
 
-def validation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int) -> None:
-    st.subheader("Validation & Governance")
+def staffing_tab(data: dict[str, pd.DataFrame], facility: str) -> None:
+    st.subheader("Staffing & Resource Sensitivity")
+    lineage_strip(["SECURE_INTERNAL_PLACEHOLDER", "SYNTHETIC_DATA"])
+    active = data["active"][data["active"]["facility"] == facility].copy()
+    capacity = data["capacity"][data["capacity"]["facility"] == facility].copy()
+    st.dataframe(staffing_sensitivity(active, capacity), width="stretch", hide_index=True)
+    c1, c2 = st.columns(2)
+    c1.plotly_chart(line_chart(capacity, "snapshot_datetime", "physicians_on_shift", title="Physicians on shift fallback"), width="stretch")
+    c2.plotly_chart(line_chart(capacity, "snapshot_datetime", "nurses_on_shift", title="Nurses on shift fallback"), width="stretch")
+    st.plotly_chart(line_chart(capacity, "snapshot_datetime", "consult_queue", title="Consult queue sensitivity context"), width="stretch")
+    method_note("Staffing sensitivity is directional in local mode. Snowflake pilot should validate shift roster coverage, role grouping, breaks, surge teams, and task-specific capacity assumptions.")
+
+
+def validation_governance_tab(visits: pd.DataFrame, public_data: dict[str, pd.DataFrame], facility: str, pediatric_only: bool, horizon_hours: int) -> None:
+    st.subheader("Model Validation, Calibration & Governance")
+    lineage_strip(["SECURE_INTERNAL_READY_SCHEMA", "HYBRID_OPEN_SYNTHETIC", "MODEL_OUTPUT"])
     visit_view, _ = filtered_view(visits, pd.DataFrame(), facility, pediatric_only)
     if visit_view.empty:
         st.info("No visits match this validation filter.")
         return
     summary = governance_summary(visit_view)
-    quality = summary["data_quality"]
-    st.markdown(
-        f"<div class='warning-note'><b>Governance frame:</b> {quality.row_count} rows in selected validation view. "
-        "Human-in-the-loop review is required before operational use.</div>",
-        unsafe_allow_html=True,
-    )
     train, holdout = holdout_split_by_date(visit_view)
-    scenario = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=10)
-    simulation = run_simulation(holdout if not holdout.empty else visit_view, scenario)
-    st.markdown("**Holdout validation by date**")
-    st.write(f"Training rows: **{len(train):,}** | Holdout rows: **{len(holdout):,}**")
-    st.dataframe(validation_metric_summary(holdout if not holdout.empty else visit_view, simulation.patients), use_container_width=True, hide_index=True)
-
+    simulation = run_simulation(holdout if not holdout.empty else visit_view, ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=10))
+    c1, c2 = st.columns(2)
+    c1.markdown("**Holdout validation by date**")
+    c1.write(f"Training rows: **{len(train):,}** | Holdout rows: **{len(holdout):,}**")
+    c1.dataframe(validation_metric_summary(holdout if not holdout.empty else visit_view, simulation.patients), width="stretch", hide_index=True)
+    c2.markdown("**Open-data cache quality**")
+    c2.dataframe(public_data_quality_summary(public_data), width="stretch", hide_index=True)
     tabs = st.tabs(["Calibration", "Durations", "Data Quality", "Drift", "Controls"])
     with tabs[0]:
-        st.dataframe(summary["facility_calibration"], use_container_width=True, hide_index=True)
-        st.dataframe(summary["admission_calibration"], use_container_width=True, hide_index=True)
+        st.dataframe(summary["facility_calibration"], width="stretch", hide_index=True)
+        st.dataframe(summary["admission_calibration"], width="stretch", hide_index=True)
     with tabs[1]:
-        st.dataframe(stage_duration_distributions(visit_view), use_container_width=True, hide_index=True)
-        st.plotly_chart(duration_distribution(add_flow_features(visit_view), "ED_LOS_HRS", color="DISPOSITION_GROUP", title="Observed LOS by disposition"), use_container_width=True)
+        st.dataframe(stage_duration_distributions(visit_view), width="stretch", hide_index=True)
+        st.plotly_chart(duration_distribution(add_flow_features(visit_view), "ED_LOS_HRS", color="DISPOSITION_GROUP", title="Observed LOS by disposition"), width="stretch")
     with tabs[2]:
-        st.dataframe(summary["missing_timestamps"], use_container_width=True, hide_index=True)
-        st.write(quality.warnings)
+        st.dataframe(summary["missing_timestamps"], width="stretch", hide_index=True)
+        st.write(summary["data_quality"].warnings)
     with tabs[3]:
-        st.dataframe(summary["drift"], use_container_width=True, hide_index=True)
+        st.dataframe(summary["drift"], width="stretch", hide_index=True)
     with tabs[4]:
         st.markdown("**Explainability summaries**")
         for item in summary["explainability"]:
@@ -558,28 +745,30 @@ def validation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, ho
         st.markdown("**Audit log design**")
         for item in summary["audit_log_design"]:
             st.write(f"- {item}")
-        st.markdown(
-            "<div class='method-note'>Privacy/security note: local prototype uses synthetic identifiers only. Snowflake pilot must enforce role-based access, PHI minimization, model-call controls, and audit logging.</div>",
-            unsafe_allow_html=True,
-        )
+        method_note("Human-in-the-loop review, privacy/security controls, drift monitoring, calibration by facility, and scenario-audit logging are required before any internal pilot.")
 
 
-def snowflake_transfer_tab(config: AppConfig) -> None:
-    st.subheader("Snowflake Transfer Readiness")
+def snowflake_porting_tab(config: AppConfig) -> None:
+    st.subheader("Snowflake Porting & Day-One Internal Setup")
+    lineage_strip(["SECURE_INTERNAL_READY_SCHEMA", "SECURE_INTERNAL_PLACEHOLDER", "HYBRID_OPEN_INTERNAL_READY"])
     st.markdown(
         """
-        **Local to Snowflake architecture**
+        **Local v2 architecture**
 
-        `Synthetic CSVs -> LocalBackend -> pandas analytics -> Streamlit app`
+        `Synthetic CSVs + public fallback cache -> LocalBackend/OpenDataHub -> pandas analytics -> Streamlit app`
 
-        `TB_ED_VISITS / semantic views -> Snowpark Session -> SnowflakeBackend -> same contracts -> Streamlit in Snowflake`
+        **Snowflake target architecture**
 
-        `Mock/OpenAI/Snowflake model clients -> controlled AI layer -> chart summaries and scenario explanations only`
+        `TB_ED_VISITS + semantic views + open-data landing tables + governed operational feeds -> Snowpark adapters -> same app contracts -> Streamlit in Snowflake`
+
+        **Model layer**
+
+        `MockModelClient by default -> optional approved OpenAI/Snowflake-native provider -> explanations and summaries only`
         """
     )
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("**Snowflake config targets**")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("**Configuration targets**")
         st.json(
             {
                 "database": config.snowflake_database,
@@ -589,86 +778,114 @@ def snowflake_transfer_tab(config: AppConfig) -> None:
                 "local_fallback": "Environment variables for account/user/role/warehouse/database/schema",
             }
         )
-        st.markdown("**Package compatibility notes**")
-        st.write(
-            "Core code uses pandas, numpy, scipy/scikit-learn for interpretable models, pydantic for contracts, "
-            "plotly/Streamlit for display, and an isolated Snowpark adapter. SimPy is optional because the local "
-            "simulation engine has a portable fallback."
-        )
-    with col2:
+        st.markdown("**Expected secure internal datasets**")
+        st.write(", ".join(SECURE_INTERNAL_DATASETS))
+    with c2:
         checklist = pd.DataFrame(
             [
+                ("Create OPEN_DATA, CURATED, OPERATIONS, GOVERNANCE schemas", "Day one"),
+                ("Load TB_ED_VISITS secure constrained view", "Required"),
                 ("Validate PATIENT_CHART to PAT_MRN_ID mapping", "Required before chart-review pilot"),
-                ("Create governed secure views", "Minimize columns and enforce row-level access"),
-                ("Replace CSV backend with SnowflakeBackend", "No app contract changes expected"),
-                ("Calibrate facility parameters", "Use holdout by date and facility-level review"),
-                ("Approve model provider", "Mock, no model, Snowflake-native, or approved OpenAI path"),
-                ("Implement audit table", "Persist scenario inputs, data versions, seeds, prompts, outputs"),
-                ("Run privacy/security review", "PHI handling, identifiers, retention, access, logging"),
+                ("Deploy lineage and refresh audit tables", "Required"),
+                ("Replace local CSV loaders with SnowflakeBackend", "No UI contract change expected"),
+                ("Calibrate facility and pediatric strata", "Required for operations use"),
+                ("Approve model provider and PHI boundary", "Required before real note summarization"),
             ],
             columns=["Step", "Readiness note"],
         )
-        st.markdown("**Prototype to governed pilot checklist**")
-        st.dataframe(checklist, use_container_width=True, hide_index=True)
-
-    st.markdown("**`TB_ED_VISITS` extraction SQL template**")
+        st.dataframe(checklist, width="stretch", hide_index=True)
+    st.markdown("**TB_ED_VISITS extraction SQL template**")
     st.code(build_ed_visits_sql(), language="sql")
-    st.markdown("**Recent and active-visit SQL templates**")
+    st.markdown("**Recent and active visit SQL templates**")
     st.code(build_recent_ed_visits_sql(), language="sql")
     st.code(build_active_visits_sql(), language="sql")
     st.markdown("**Chart-review semantic view SQL templates**")
     templates = build_chart_context_sql(config.snowflake_database, config.snowflake_schema)
     selected = st.selectbox("Semantic view template", sorted(templates))
     st.code(templates[selected], language="sql")
-    st.markdown(
-        """
-        **Secure handling of PHI and identifiers**
+    st.markdown("**SQL file templates**")
+    sql_files = available_sql_templates()
+    selected_file = st.selectbox("Snowflake SQL file", sql_files)
+    st.code(load_sql_template(selected_file), language="sql")
+    warning_note("Snowflake mode must keep PHI and identifiers inside approved governed views. External model calls should remain disabled unless explicitly approved for the data class and audited.")
 
-        The local prototype contains only synthetic identifiers. In Snowflake, PATIENT_CHART, PAT_MRN_ID, PHN, ULI,
-        birthdate, postal code, note text, and patient ID fields must remain in governed views with least-privilege
-        role grants. External model calls should be disabled unless approved for the exact data class and audited.
-        """
-    )
+
+def lineage_refresh_tab(open_bundle: dict[str, object]) -> None:
+    st.subheader("Data Linkages & Refresh Status")
+    lineage_strip(["OPEN_DATA", "SYNTHETIC_DATA", "SECURE_INTERNAL_PLACEHOLDER", "SECURE_INTERNAL_READY_SCHEMA", "HYBRID_OPEN_SYNTHETIC", "HYBRID_OPEN_INTERNAL_READY", "MODEL_OUTPUT", "USER_INPUT"])
+    registry = open_bundle["registry"]
+    statuses = open_bundle["refresh_status"]
+    st.markdown("**Lineage category legend**")
+    st.dataframe(category_legend_frame(), width="stretch", hide_index=True)
+    st.markdown("**Configured source registry**")
+    st.dataframe(registry, width="stretch", hide_index=True, height=300)
+    st.markdown("**Refresh, quality, and Snowflake target status**")
+    display_cols = [
+        "source_id",
+        "display_name",
+        "category",
+        "freshness_state",
+        "row_count",
+        "quality_score",
+        "expected_refresh_minutes",
+        "max_source_timestamp",
+        "snowflake_target",
+        "pii_risk",
+        "fallback_reason",
+    ]
+    status_df = statuses[display_cols] if isinstance(statuses, pd.DataFrame) else pd.DataFrame()
+    st.dataframe(status_df, width="stretch", hide_index=True, height=420)
+    method_note("This tab is intentionally last. It is the control panel for source provenance, refresh cadence, fallback status, Snowflake target mapping, and PHI/identifier risk.")
 
 
 def main() -> None:
     configure_page()
     config = get_config()
     backend = get_backend(str(config.data_dir))
-    data = load_data(str(config.data_dir))
+    data = load_core_data(str(config.data_dir))
+    open_bundle = load_open_bundle()
+    public_data = open_bundle["public_data"]
     visits = data["visits"]
     all_visits = data["all_visits"]
     active = data["active"]
     facility, pediatric_only, horizon_hours = sidebar_controls(config, visits)
 
-    st.title("AHS ED Flow Intelligence Prototype")
-    st.caption("Synthetic, Snowflake-portable pediatric and provincial ED operations simulation and intelligence prototype.")
+    st.title("AHS ED Flow Intelligence Prototype v2")
+    st.caption("Snowflake-portable ED flow simulation, public pressure intelligence, internal-ready analytics, and governed AI-support layer. Synthetic local mode only.")
 
-    tabs = st.tabs(
-        [
-            "Executive Command Centre",
-            "Waiting Room MRN Chart Summaries",
-            "Constrained ED Curated Data Module",
-            "Simulation Lab",
-            "Expanded System Intelligence Module",
-            "Validation & Governance",
-            "Snowflake Transfer Readiness",
-        ]
-    )
+    tabs = st.tabs(V2_TAB_NAMES)
     with tabs[0]:
-        executive_tab(visits, active, all_visits, facility, pediatric_only, horizon_hours)
+        executive_tab(visits, active, all_visits, public_data, facility, pediatric_only, horizon_hours)
     with tabs[1]:
-        waiting_room_tab(backend, active, facility, pediatric_only, config)
+        public_pressure_tab(public_data, facility)
     with tabs[2]:
-        constrained_tab(visits, facility, pediatric_only, horizon_hours)
+        public_wait_times_tab(public_data)
     with tabs[3]:
-        simulation_tab(visits, facility, pediatric_only, horizon_hours, config)
+        respiratory_tab(public_data, facility)
     with tabs[4]:
-        expanded_tab(data, visits, facility, pediatric_only, horizon_hours)
+        environmental_tab(public_data, facility)
     with tabs[5]:
-        validation_tab(visits, facility, pediatric_only, horizon_hours)
+        travel_tab(public_data, facility)
     with tabs[6]:
-        snowflake_transfer_tab(config)
+        public_scenario_tab(visits, public_data, facility, horizon_hours)
+    with tabs[7]:
+        constrained_internal_tab(visits, facility, pediatric_only, horizon_hours)
+    with tabs[8]:
+        waiting_room_tab(backend, active, facility, pediatric_only, config)
+    with tabs[9]:
+        hybrid_forecasting_tab(visits, public_data, facility, horizon_hours)
+    with tabs[10]:
+        simulation_tab(visits, facility, pediatric_only, horizon_hours, config)
+    with tabs[11]:
+        bed_boarding_tab(data, public_data, facility, pediatric_only)
+    with tabs[12]:
+        staffing_tab(data, facility)
+    with tabs[13]:
+        validation_governance_tab(visits, public_data, facility, pediatric_only, horizon_hours)
+    with tabs[14]:
+        snowflake_porting_tab(config)
+    with tabs[15]:
+        lineage_refresh_tab(open_bundle)
 
 
 if __name__ == "__main__":

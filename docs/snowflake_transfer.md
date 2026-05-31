@@ -1,5 +1,7 @@
 # Snowflake Transfer Plan
 
+Prototype v2 adds a more complete Snowflake transfer package. See [snowflake_porting.md](snowflake_porting.md), [internal_data_activation.md](internal_data_activation.md), and [../sql/snowflake](../sql/snowflake).
+
 ## Target Runtime
 
 - Streamlit in Snowflake.
@@ -132,4 +134,3 @@ ORDER BY <available freshness columns> DESC;
 8. Implement audit tables.
 9. Complete privacy/security/model-governance review.
 10. Pilot with human-in-the-loop operational review.
-

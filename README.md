@@ -1,12 +1,10 @@
-# AHS ED Flow Intelligence Prototype
+# AHS ED Flow Intelligence Prototype v2
 
 Synthetic, Snowflake-portable Streamlit prototype for pediatric and provincial emergency department flow intelligence.
 
 Live app: [ahs-ed-flow-intelligence.streamlit.app](https://ahs-ed-flow-intelligence.streamlit.app/)
 
-The app demonstrates an internal capability layer for data-informed operational decisions: command-centre metrics, chart-summary workflow, constrained `TB_ED_VISITS` analytics, discrete-event simulation, expanded system-intelligence concepts, validation/governance, and Snowflake transfer readiness.
-
-It does **not** recommend vendor software, automate clinical judgement, or use real PHI.
+This is an internal-capability prototype, not a vendor recommendation. It combines ED flow simulation, public/open contextual pressure signals, constrained `TB_ED_VISITS` analytics, MRN chart-summary workflow design, validation/governance, and Snowflake transfer readiness. It uses synthetic local data only and does not contain real PHI.
 
 ## Quick Start
 
@@ -15,66 +13,91 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 python -m pytest
+python -m compileall src app.py
+python -c "import app; print('app import ok')"
 streamlit run app.py
 ```
 
-The first app run creates CSVs under `data/synthetic/` if they are missing.
+The first app run creates local CSVs under `data/synthetic/` and `data/open/` if they are missing.
+
+## V2 App Surface
+
+The app has 16 working tabs:
+
+1. Executive Command Centre
+2. Alberta Public Pressure Map & Site Explorer
+3. Public ED Wait Times Monitor
+4. Pediatric Respiratory Surge
+5. Smoke, Heat, Weather & Air Quality Stress
+6. Travel Friction & Access Disruption
+7. Public Scenario Workbench
+8. `TB_ED_VISITS` Internal-Ready Flow Analytics
+9. Waiting Room MRN Chart Summaries
+10. Hybrid Forecasting Lab
+11. Simulation Lab
+12. Bed, Boarding, Discharge & Transfer Intelligence
+13. Staffing & Resource Sensitivity
+14. Model Validation, Calibration & Governance
+15. Snowflake Porting & Day-One Internal Setup
+16. Data Linkages & Refresh Status
 
 ## What Works Locally
 
 - Synthetic `TB_ED_VISITS`-shaped ED/UCC/AACC visit data.
-- Synthetic current waiting-room registry and chart-note sources.
-- Manual synthetic MRN add/remove in the chart-summary tab.
-- Mock chart summarizer with required structured sections.
-- Constrained analytics using only `TB_ED_VISITS` columns.
-- Event-log construction, stage reconstruction, duration distributions, route probabilities, consult and boarding analysis.
-- Discrete-event simulation with Monte Carlo uncertainty intervals and scenario comparison.
+- Synthetic public/open-data fallback cache for wait times, respiratory surveillance, weather/AQHI/smoke, travel friction, calendar, population, and public aggregate ED metrics.
+- Current simulated ED state and bottleneck ranking.
+- Public pressure map and facility explorer.
+- Manual synthetic MRN add/remove and mock chart summaries.
+- Constrained analytics using only columns available in the supplied `TB_ED_VISITS` contract.
+- Event-log construction, stage reconstruction, observed concurrency, route probabilities, consult/boarding analysis, and replay validation.
+- Monte Carlo discrete-event simulation with uncertainty intervals and scenario comparison.
 - Expanded synthetic feeds for beds, staffing, diagnostics, consult queues, EMS, transfers, and operational events.
-- Validation and governance tables for holdout split, calibration, missing timestamps, drift, data quality, and audit design.
-- Snowflake SQL templates and backend adapter design.
+- Validation/governance views for holdout split, calibration, missing timestamps, drift, data quality, explainability, and audit design.
+- SQL templates for Snowflake open-data landing, constrained visit views, semantic-view queries, placeholders, lineage/audit tables, and hybrid joins.
 
 ## Repository Layout
 
 ```text
 app.py
-src/ed_flow/
-  config.py
-  data_contracts.py
-  synthetic_data.py
-  local_backend.py
-  snowflake_backend.py
-  feature_engineering.py
-  event_log.py
-  metrics.py
-  forecasting.py
-  simulation_engine.py
-  scenario_models.py
-  optimization.py
-  chart_review.py
-  ai_layer.py
-  governance.py
-  visualizations.py
+config/data_sources.yml
+src/ed_flow/                    # v1 core, still used by v2
+src/ed_flow_intelligence/       # v2 public/open-data, lineage, forecasting, SQL helpers
+sql/snowflake/                  # Snowflake transfer templates
 tests/
 docs/
 data/synthetic/
+data/open/
 ```
 
 ## Snowflake Direction
 
-The future secure deployment should run Streamlit in Snowflake and use:
+The target secure deployment is Streamlit in Snowflake with Snowpark Python:
 
-- `snowflake.snowpark.context.get_active_session()` for in-Snowflake execution.
-- `TB_ED_VISITS` for constrained historical flow analytics.
-- Governed semantic views for chart-review sources keyed by validated `PATIENT_CHART` to `PAT_MRN_ID` mapping.
-- Snowpark-backed dataframes or curated secure views for expanded system feeds.
-- A controlled model interface: mock/no model, approved OpenAI route, or Snowflake-native model calls.
+- Use `snowflake.snowpark.context.get_active_session()` inside Streamlit in Snowflake.
+- Use `TB_ED_VISITS` for constrained internal-ready historical flow analytics.
+- Use governed semantic views for chart-review sources keyed by validated `PATIENT_CHART` to `PAT_MRN_ID` mapping.
+- Add open-data landing tables and tasks for public context.
+- Add governed operational feeds for bed board, ADT, staffing, consult queues, diagnostics, EMS, transfer, EVS, and unit capacity.
+- Keep model calls isolated in `src/ed_flow/ai_layer.py`; local default is `MockModelClient`.
 
-See [docs/snowflake_transfer.md](docs/snowflake_transfer.md) for the transfer checklist and SQL templates.
+See [docs/snowflake_porting.md](docs/snowflake_porting.md), [docs/internal_data_activation.md](docs/internal_data_activation.md), and [sql/snowflake](sql/snowflake).
 
-## Known Limitations
+## No PHI
 
-- All data is synthetic and generated for demonstration, not operational calibration.
-- Expanded system intelligence is assumption-based until AHS curates corresponding Snowflake datasets.
-- The simulation uses transparent empirical distributions and simple resource scheduling; it is not clinically validated.
-- Chart summaries use a deterministic mock provider by default and must not be treated as clinical chart review.
-- Snowflake persistence for waiting-room registry/audit tables is intentionally not implemented until governed target tables are approved.
+Do not add real MRNs, PHNs, ULIs, birthdates, postal codes, patient IDs, provider IDs, source notes, or private facility extracts. Synthetic identifiers intentionally use `SYN-*` formats.
+
+## Validated Commands
+
+```powershell
+python -m pytest
+python -m compileall src app.py
+python -c "import app; print('app import ok')"
+```
+
+## Known Limits
+
+- All local results are synthetic and not operationally calibrated.
+- Public/open-data cache values are synthetic fallbacks with official-source metadata.
+- Expanded operational intelligence is assumption-based until AHS curates secure Snowflake feeds.
+- Simulation uses transparent empirical distributions and a lightweight resource model; it requires validation before operational use.
+- Chart summaries are deterministic mock summaries in local mode and are not clinical chart review.
