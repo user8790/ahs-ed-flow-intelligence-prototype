@@ -47,6 +47,12 @@ class SourceDefinition(BaseModel):
     local_dataset: str | None = None
     snowflake_target: str | None = None
     pii_risk: str = "none"
+    grain: str = "not specified"
+    geography: str = "not specified"
+    downstream_usage: str = ""
+    activation_status: str = "public fallback"
+    internal_activation_need: str = ""
+    blocking_issue: str = ""
     notes: str = ""
 
 
@@ -68,6 +74,12 @@ class SourceRefreshStatus(BaseModel):
     quality_score: float = Field(default=0.0, ge=0.0, le=1.0)
     fallback_reason: str = ""
     pii_risk: str = "none"
+    grain: str = "not specified"
+    geography: str = "not specified"
+    downstream_usage: str = ""
+    activation_status: str = "public fallback"
+    internal_activation_need: str = ""
+    blocking_issue: str = ""
     notes: str = ""
 
 

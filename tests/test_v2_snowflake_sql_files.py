@@ -14,6 +14,8 @@ def test_v2_snowflake_sql_files_are_available() -> None:
         "secure_internal_placeholders.sql",
         "lineage_and_refresh_tables.sql",
         "v_ed_visits_with_open_context.sql",
+        "hybrid_open_internal_features.sql",
+        "simulation_feature_tables.sql",
     }
     assert expected.issubset(templates)
 
@@ -32,3 +34,12 @@ def test_hybrid_sql_joins_open_context_without_patient_identifiers() -> None:
     assert "OPEN_DATA.AHS_ED_WAIT_TIMES" in sql
     assert "PATIENT_CHART" not in sql
     assert "PATIENT_PHN" not in sql
+
+
+def test_new_snowflake_model_and_simulation_sql_assets() -> None:
+    hybrid = load_sql_template("hybrid_open_internal_features.sql")
+    simulation = load_sql_template("simulation_feature_tables.sql")
+    assert "MODELS.V_SITE_HOUR_ARRIVAL_FEATURES" in hybrid
+    assert "OPEN_DATA.AHS_ED_WAIT_TIMES" in hybrid
+    assert "SIMULATION.BASELINE_STAGE_DISTRIBUTIONS" in simulation
+    assert "SIMULATION.SCENARIO_AUDIT_OUTPUTS" in simulation

@@ -50,3 +50,11 @@ Interpretable empirical methods should be the baseline. AI-generated narratives 
 - The final tab centralizes source registry, refresh status, Snowflake target mapping, fallback reason, quality score, and PHI/identifier risk.
 - Snowflake pilot should persist scenario audit logs, model-call audit logs, refresh audit logs, and data-source registry updates.
 - Chart-summary prompts and outputs require PHI/model approval before real semantic-view content is summarized.
+
+## vNext Additions
+
+- Every forecast model has registry metadata and validation metrics.
+- Public forecasts show baseline comparison, richer model comparison, and interval coverage.
+- Scenario outputs include uncertainty, implementation friction, watch-points, levers, and deterministic huddle briefs.
+- Simulation outputs include resource utilization, bottleneck migration, and pressure-to-action questions.
+- Lineage rows include grain, geography, downstream usage, activation status, internal activation needs, and blockers.

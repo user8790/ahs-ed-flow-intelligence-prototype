@@ -37,6 +37,18 @@ The app supports arrival surge, triage capacity, physician capacity, rooming cap
 
 Outputs include median and p90 wait, admitted/discharged LOS measures, admitted within 8 hours, discharged within 4 hours, LWBS risk, boarding hours, queue pressure over time, bottleneck shift analysis, uncertainty intervals, scenario comparison, and practical interpretation.
 
+## vNext Simulation Interpretation
+
+The app now adds:
+
+- resource utilization estimates for triage, rooms, physician capacity, diagnostics, consults, inpatient bed release, and EMS offload
+- stage occupancy over time
+- LWBS hazard sensitivity that increases with wait time, crowding, and lower-acuity triage
+- bottleneck migration interpretation
+- scenario ranking adjusted for uncertainty and implementation friction
+- pressure-to-action translation into operational questions
+- deterministic five-line capacity huddle brief
+
 ## Validation Requirement
 
 Simulation outputs should be compared against holdout periods by facility, age group, triage, disposition, and hour/day. No scenario should be used operationally until calibrated and reviewed with operational and clinical leaders.

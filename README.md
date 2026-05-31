@@ -1,4 +1,4 @@
-# AHS ED Flow Intelligence Prototype v2
+# AHS ED Flow Intelligence Prototype vNext
 
 Synthetic, Snowflake-portable Streamlit prototype for pediatric and provincial emergency department flow intelligence.
 
@@ -45,12 +45,14 @@ The app has 16 working tabs:
 
 - Synthetic `TB_ED_VISITS`-shaped ED/UCC/AACC visit data.
 - Synthetic public/open-data fallback cache for wait times, respiratory surveillance, weather/AQHI/smoke, travel friction, calendar, population, and public aggregate ED metrics.
-- Current simulated ED state and bottleneck ranking.
+- Executive Pressure Cockpit with Alberta/site/pediatric/respiratory/environmental/travel pressure cards, confidence, lineage, watch-points, levers, and pressure-movement explanation.
 - Public pressure map and facility explorer.
+- Ensemble external-pressure forecasting with baselines, regression, random forest, P10/P50/P90 intervals, validation, model registry, and feature drivers.
+- Combined open-data scenario builder with affected stages, scenario ranking, uncertainty, implementation friction, and deterministic huddle brief.
 - Manual synthetic MRN add/remove and mock chart summaries.
 - Constrained analytics using only columns available in the supplied `TB_ED_VISITS` contract.
 - Event-log construction, stage reconstruction, observed concurrency, route probabilities, consult/boarding analysis, and replay validation.
-- Monte Carlo discrete-event simulation with uncertainty intervals and scenario comparison.
+- Monte Carlo discrete-event simulation with uncertainty intervals, utilization, stage occupancy, LWBS hazard sensitivity, bottleneck migration, scenario ranking, and action interpretation.
 - Expanded synthetic feeds for beds, staffing, diagnostics, consult queues, EMS, transfers, and operational events.
 - Validation/governance views for holdout split, calibration, missing timestamps, drift, data quality, explainability, and audit design.
 - SQL templates for Snowflake open-data landing, constrained visit views, semantic-view queries, placeholders, lineage/audit tables, and hybrid joins.
@@ -81,6 +83,13 @@ The target secure deployment is Streamlit in Snowflake with Snowpark Python:
 - Keep model calls isolated in `src/ed_flow/ai_layer.py`; local default is `MockModelClient`.
 
 See [docs/snowflake_porting.md](docs/snowflake_porting.md), [docs/internal_data_activation.md](docs/internal_data_activation.md), and [sql/snowflake](sql/snowflake).
+
+## Recent Improvement Docs
+
+- [Current-state gap audit](docs/current_state_gap_audit.md)
+- [Research-to-capability map](docs/research_to_capability_map.md)
+- [vNext product brief](docs/product_brief_v_next.md)
+- [vNext release notes](docs/release_notes_v_next.md)
 
 ## No PHI
 

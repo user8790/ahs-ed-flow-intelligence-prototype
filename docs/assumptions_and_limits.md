@@ -13,6 +13,8 @@
 
 - Local results are not operationally valid.
 - Public pressure, respiratory, weather, AQHI, wildfire, travel, and calendar outputs are not official live values in local mode.
+- Forecast models are credible for demonstration but trained/validated on synthetic fallback history, not operational AHS truth.
+- Scenario huddle briefs are deterministic operational interpretations, not instructions.
 - Synthetic identifiers are not real and must not be replaced with PHI in the repo.
 - Bed-placement optimization is a greedy heuristic, not a governed placement policy.
 - Staffing sensitivity is illustrative until roster and workload feeds are validated.

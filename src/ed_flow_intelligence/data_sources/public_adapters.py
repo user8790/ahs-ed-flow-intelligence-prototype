@@ -84,6 +84,12 @@ class OpenDataHub:
                     quality_score=quality,
                     fallback_reason=fallback,
                     pii_risk=source.pii_risk,
+                    grain=source.grain,
+                    geography=source.geography,
+                    downstream_usage=source.downstream_usage,
+                    activation_status=source.activation_status,
+                    internal_activation_need=source.internal_activation_need,
+                    blocking_issue=source.blocking_issue,
                     notes=source.notes,
                 )
             )

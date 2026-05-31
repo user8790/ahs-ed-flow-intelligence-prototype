@@ -19,6 +19,21 @@
 - `semantic_view_queries.sql`
 - `secure_internal_placeholders.sql`
 - `lineage_and_refresh_tables.sql`
+- `hybrid_open_internal_features.sql`
+- `simulation_feature_tables.sql`
+
+## Day-One Activation Sequence
+
+1. Configure the Snowflake session or local fallback environment variables.
+2. Create/open `OPEN_DATA`, `CURATED`, `SEMANTIC`, `SYNTHETIC_DEMO`, `GOVERNANCE`, `MODELS`, `SIMULATION`, and `APP_CONFIG` schemas as approved.
+3. Load/register open-data tables and refresh audit tasks.
+4. Validate `TB_ED_VISITS` access and business rules.
+5. Validate semantic-view access.
+6. Validate `TB_ED_VISITS.PATIENT_CHART` to semantic-view `PAT_MRN_ID` mapping.
+7. Run feature views under `MODELS` and `SIMULATION`.
+8. Switch backend mode from local to Snowflake.
+9. Run validation dashboards and compare against known operational reports.
+10. Enable internal pilot users with human-in-the-loop governance.
 - `v_ed_visits_with_open_context.sql`
 
 ## Package Notes

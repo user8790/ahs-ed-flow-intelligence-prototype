@@ -1,4 +1,4 @@
-"""Streamlit application for AHS ED Flow Intelligence Prototype v2."""
+"""Streamlit application for AHS ED Flow Intelligence Prototype vNext."""
 
 from __future__ import annotations
 
@@ -31,7 +31,6 @@ from ed_flow.feature_engineering import (
     route_probabilities,
     stage_duration_distributions,
 )
-from ed_flow.forecasting import hourly_arrival_forecast
 from ed_flow.governance import governance_summary, holdout_split_by_date
 from ed_flow.local_backend import LocalBackend
 from ed_flow.metrics import (
@@ -53,13 +52,16 @@ from ed_flow.snowflake_backend import (
 from ed_flow.synthetic_data import ensure_synthetic_data
 from ed_flow.visualizations import duration_distribution, line_chart, metric_bar, uncertainty_interval_chart
 from ed_flow_intelligence.constants import PEDIATRIC_AGE_GROUPS, SECURE_INTERNAL_DATASETS, V2_TAB_NAMES
+from ed_flow_intelligence.advanced_scenarios import ScenarioShockConfig, run_combined_public_scenario
 from ed_flow_intelligence.data_sources.public_adapters import OpenDataHub
 from ed_flow_intelligence.data_sources.registry import load_data_source_registry, registry_to_frame
 from ed_flow_intelligence.data_sources.synthetic_open_data import OPEN_DATA_DIR, ensure_public_open_data
 from ed_flow_intelligence.forecasting import hybrid_arrival_forecast, likely_binding_constraints, public_pressure_index
 from ed_flow_intelligence.lineage import category_legend_frame, lineage_badge, statuses_to_frame
+from ed_flow_intelligence.modeling import build_public_feature_matrix, forecast_external_pressure, forecast_internal_targets, rolling_origin_backtest
+from ed_flow_intelligence.operational_intelligence import executive_pressure_cockpit, research_capability_map
 from ed_flow_intelligence.quality import constrained_boundary_check, public_data_quality_summary
-from ed_flow_intelligence.scenarios import run_public_scenario
+from ed_flow_intelligence.simulation_vnext import lwbs_hazard, run_enhanced_simulation_summary
 from ed_flow_intelligence.snowflake_sql import available_sql_templates, load_sql_template
 
 
@@ -67,7 +69,7 @@ def configure_page() -> None:
     """Configure Streamlit and shared styling."""
 
     st.set_page_config(
-        page_title="AHS ED Flow Intelligence Prototype v2",
+        page_title="AHS ED Flow Intelligence Prototype vNext",
         page_icon="AHS",
         layout="wide",
         initial_sidebar_state="expanded",
@@ -170,7 +172,7 @@ def load_open_bundle() -> dict[str, object]:
 def sidebar_controls(config: AppConfig, visits: pd.DataFrame) -> tuple[str, bool, int]:
     """Global controls."""
 
-    st.sidebar.title("ED Flow Intelligence v2")
+    st.sidebar.title("ED Flow Intelligence vNext")
     st.sidebar.caption("Synthetic local mode. Public sources use synthetic fallback cache. No PHI.")
     facilities = sorted(visits["INSTITUTION_NAME"].dropna().unique().tolist())
     default_index = facilities.index(config.default_facility) if config.default_facility in facilities else 0
@@ -224,6 +226,37 @@ def metric_card(label: str, value: str, help_text: str | None = None) -> None:
     )
 
 
+def operational_metric_card(row: pd.Series) -> None:
+    """Render an executive metric card with trend, confidence, lineage, and interpretation."""
+
+    badge = lineage_badge(str(row.get("lineage", "SYNTHETIC_DATA")))
+    trend = str(row.get("trend", "flat"))
+    confidence = str(row.get("confidence", "moderate"))
+    interpretation = str(row.get("interpretation", ""))
+    st.markdown(
+        f"""
+        <div class='metric-card'>
+          <div class='metric-label'>{row.get('label', '')}</div>
+          <div class='metric-value'>{row.get('display_value', row.get('value', 'n/a'))}</div>
+          <div class='small-muted'>Trend: <b>{trend}</b> | Confidence: <b>{confidence}</b></div>
+          <div style='margin-top:0.35rem'>{badge}</div>
+          <div class='small-muted' style='margin-top:0.35rem'>{interpretation}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def huddle_brief_component(lines: list[str]) -> None:
+    """Render a compact deterministic huddle brief."""
+
+    if not lines:
+        return
+    st.markdown("**Capacity Huddle Brief**")
+    for line in lines[:5]:
+        st.write(f"- {line}")
+
+
 def lineage_strip(categories: list[str]) -> None:
     """Render lineage badges."""
 
@@ -264,6 +297,42 @@ def executive_tab(
         f"Data quality and freshness: {quality.row_count} synthetic TB_ED_VISITS-shaped rows loaded for {facility}; "
         f"latest synthetic row update {freshness}. {' '.join(quality.warnings[:2])}"
     )
+    cockpit = executive_pressure_cockpit(visits, active, public_data, facility)
+    st.markdown("**Alberta Pressure Cockpit**")
+    cockpit_metrics = cockpit["metrics"]
+    for idx in range(0, len(cockpit_metrics), 4):
+        cols = st.columns(4)
+        for col, (_, row) in zip(cols, cockpit_metrics.iloc[idx : idx + 4].iterrows()):
+            with col:
+                operational_metric_card(row)
+
+    c_rank, c_changed, c_action = st.columns([1.05, 1, 1.05])
+    with c_rank:
+        st.markdown("**Site and zone pressure ranking**")
+        site_cols = ["facility", "zone", "public_pressure_index", "pressure_band", "estimated_wait_mins"]
+        st.dataframe(cockpit["site_ranking"][site_cols].head(7), width="stretch", hide_index=True)
+        st.dataframe(cockpit["zone_ranking"], width="stretch", hide_index=True)
+    with c_changed:
+        st.markdown("**What changed since last refresh**")
+        changed = cockpit["what_changed"]
+        if isinstance(changed, pd.DataFrame) and not changed.empty:
+            st.dataframe(changed, width="stretch", hide_index=True)
+        else:
+            st.write("No change signal available in the current fallback cache.")
+        st.markdown("**Why pressure moved**")
+        st.write(cockpit["why_pressure_moved"])
+    with c_action:
+        st.markdown("**Top watch-points**")
+        for item in cockpit["watchpoints"]:
+            st.write(f"- {item}")
+        st.markdown("**Operational levers to consider**")
+        for item in cockpit["levers"]:
+            st.write(f"- {item}")
+        method_note("These are operational questions and levers, not clinical orders or automated recommendations.")
+
+    with st.expander("Research-to-Capability Map", expanded=False):
+        st.dataframe(research_capability_map(), width="stretch", hide_index=True)
+
     pressure = public_pressure_index(public_data)
     site_pressure = pressure[pressure["facility"] == facility] if not pressure.empty else pd.DataFrame()
     pressure_value = float(site_pressure["public_pressure_index"].iloc[0]) if not site_pressure.empty else 0.0
@@ -382,6 +451,48 @@ def respiratory_tab(public_data: dict[str, pd.DataFrame], facility: str) -> None
         col.metric(pathogen, pct(value), "synthetic positivity")
     st.plotly_chart(line_chart(zone_view, "week_start", "test_positivity", color="pathogen", title=f"{zone} respiratory positivity fallback"), width="stretch")
     st.dataframe(latest, width="stretch", hide_index=True)
+    st.markdown("**Respiratory Scenario Controls**")
+    c1, c2, c3, c4, c5, c6 = st.columns(6)
+    rsv_accel = c1.slider("RSV acceleration", 0.0, 2.0, 0.4, 0.1, key="resp_rsv_accel")
+    flu_accel = c2.slider("Influenza acceleration", 0.0, 2.0, 0.3, 0.1, key="resp_flu_accel")
+    covid_wave = c3.slider("COVID wave", 0.0, 2.0, 0.2, 0.1, key="resp_covid_wave")
+    school_reopen = c4.toggle("School reopening", value=False, key="resp_school_reopen")
+    measles_cluster = c5.toggle("Measles exposure cluster", value=False, key="resp_measles_cluster")
+    smoke_overlay = c6.toggle("Smoke overlay", value=False, key="resp_smoke_overlay")
+    cold_snap = st.toggle("Cold snap overlay", value=False, key="resp_cold_snap_overlay")
+    base_index = float(zone_view.sort_values("week_start").tail(8)["pediatric_pressure_index"].mean()) if not zone_view.empty else 0.0
+    scenario_index = min(
+        1.0,
+        base_index
+        + 0.09 * rsv_accel
+        + 0.07 * flu_accel
+        + 0.05 * covid_wave
+        + 0.08 * school_reopen
+        + 0.06 * measles_cluster
+        + 0.07 * smoke_overlay
+        + 0.05 * cold_snap,
+    )
+    wastewater_proxy = min(1.0, base_index * 1.15 + 0.06 * covid_wave + 0.04 * flu_accel)
+    impact = pd.DataFrame(
+        [
+            ("respiratory_composite_index", base_index, scenario_index, "HYBRID_OPEN_SYNTHETIC"),
+            ("wastewater_trend_proxy", base_index * 0.9, wastewater_proxy, "HYBRID_OPEN_SYNTHETIC"),
+            ("expected_pediatric_arrival_lift", 0.0, (scenario_index - base_index) * 0.42, "MODEL_OUTPUT"),
+            ("expected_acuity_shift_ctas_2_3", 0.0, (scenario_index - base_index) * 0.18, "MODEL_OUTPUT"),
+        ],
+        columns=["signal", "baseline", "scenario", "lineage"],
+    )
+    impact["change"] = impact["scenario"] - impact["baseline"]
+    st.dataframe(impact, width="stretch", hide_index=True)
+    huddle_brief_component(
+        [
+            f"Respiratory composite changes from {base_index:.2f} to {scenario_index:.2f}.",
+            "Likely arrival pressure rises first at pediatric sites and respiratory complaint streams.",
+            "Watch CTAS mix, rooming, isolation/cohort capacity, and reassessment intervals.",
+            "Consider respiratory cohort pathway, fast-track eligibility, and diagnostic/consult pre-brief.",
+            "Internal data needed: real respiratory complaint volumes, CTAS mix, diagnostics, staffing, and room isolation flags.",
+        ]
+    )
     method_note("Respiratory features are public aggregate context. They can inform pediatric surge preparation but cannot identify individual patients or replace local clinical surveillance.")
 
 
@@ -402,6 +513,38 @@ def environmental_tab(public_data: dict[str, pd.DataFrame], facility: str) -> No
     cols[4].metric("Stress index", f"{latest['environmental_stress_index']:.2f}")
     st.plotly_chart(line_chart(site, "timestamp", "environmental_stress_index", title=f"{facility} environmental stress index"), width="stretch")
     st.dataframe(site.head(96), width="stretch", hide_index=True, height=320)
+    st.markdown("**Scenario Injection**")
+    e1, e2, e3, e4, e5 = st.columns(5)
+    aqhi_worsens = e1.slider("AQHI worsens", 0, 5, 2, 1, key="env_aqhi_worsens")
+    smoke_days = e2.slider("Smoke persists", 0, 5, 3, 1, key="env_smoke_days")
+    heat_wave = e3.toggle("Heat wave", value=False, key="env_heat_wave")
+    extreme_cold = e4.toggle("Extreme cold", value=False, key="env_extreme_cold")
+    snowstorm = e5.toggle("Freezing rain/snowstorm", value=False, key="env_snowstorm")
+    scenario_stress = min(
+        1.0,
+        float(latest["environmental_stress_index"])
+        + 0.035 * aqhi_worsens
+        + 0.04 * smoke_days
+        + 0.09 * heat_wave
+        + 0.06 * extreme_cold
+        + 0.08 * snowstorm,
+    )
+    station_map = pd.DataFrame(
+        [
+            {"facility": facility, "weather_station_mapping": f"{latest['city']} reference station", "mapping_status": "synthetic local placeholder", "confidence": "moderate"},
+        ]
+    )
+    st.dataframe(station_map, width="stretch", hide_index=True)
+    st.metric("Scenario environmental stress", f"{scenario_stress:.2f}", f"{scenario_stress - float(latest['environmental_stress_index']):+.2f}")
+    huddle_brief_component(
+        [
+            "Environmental stress may increase respiratory/asthma, heat/cold exposure, and access-friction pressure.",
+            f"Scenario stress index is {scenario_stress:.2f}; confidence is moderate-to-wide in public mode.",
+            "Watch AQHI, smoke duration, weather alerts, EMS offload, respiratory presentations, and staff access.",
+            "Consider respiratory cohorting, hydration/cooling or cold exposure readiness, and transport/access briefings.",
+            "Internal data needed: complaint mix, EMS/offload, location events, staffing access, diagnostic TAT, and bed state.",
+        ]
+    )
     method_note("Future source adapters should separate weather observations, forecast alerts, AQHI, wildfire status, and smoke-model features with independent freshness checks.")
 
 
@@ -421,6 +564,31 @@ def travel_tab(public_data: dict[str, pd.DataFrame], facility: str) -> None:
     cols[3].metric("Transit disruption", f"{latest['transit_disruption_index']:.2f}")
     st.plotly_chart(line_chart(site, "timestamp", "travel_friction_index", title=f"{facility} access disruption forecast"), width="stretch")
     st.dataframe(site.head(96), width="stretch", hide_index=True, height=320)
+    st.markdown("**Access Friction Scenario**")
+    t1, t2, t3, t4 = st.columns(4)
+    road_disruption = t1.slider("Major road disruption", 0.0, 1.0, 0.25, 0.05, key="travel_road_disruption")
+    downtown_event = t2.slider("Large public event", 0.0, 1.0, 0.20, 0.05, key="travel_downtown_event")
+    transit_disruption = t3.slider("Transit disruption", 0.0, 1.0, 0.15, 0.05, key="travel_transit_disruption")
+    severe_weather = t4.slider("Severe weather access", 0.0, 1.0, 0.20, 0.05, key="travel_severe_weather")
+    scenario_friction = min(1.0, float(latest["travel_friction_index"]) + 0.22 * road_disruption + 0.16 * downtown_event + 0.14 * transit_disruption + 0.18 * severe_weather)
+    access_rows = pd.DataFrame(
+        [
+            ("baseline travel friction", float(latest["travel_friction_index"]), "HYBRID_OPEN_SYNTHETIC", "access context only"),
+            ("scenario travel friction", scenario_friction, "MODEL_OUTPUT", "may shift ambulance/patient/staff arrival timing"),
+            ("estimated arrival clustering lift", (scenario_friction - float(latest["travel_friction_index"])) * 0.32, "MODEL_OUTPUT", "not a direct EMS feed"),
+        ],
+        columns=["signal", "value", "lineage", "interpretation"],
+    )
+    st.dataframe(access_rows, width="stretch", hide_index=True)
+    huddle_brief_component(
+        [
+            f"Travel friction scenario increases access index to {scenario_friction:.2f}.",
+            "Access may be impaired and arrival timing may cluster; this is not a direct EMS feed.",
+            "Watch EMS offload, front-door arrivals, staff access, and transfer/transport delays.",
+            "Consider access briefings, EMS/offload process attention, and arrival pulse readiness.",
+            "Internal data needed: EMS arrival estimates, offload timestamps, staff rosters, transport requests, and transfer centre feeds.",
+        ]
+    )
     method_note("Travel context is operational planning context: it can explain timing, EMS access, and staff/patient arrival friction, but local mode remains synthetic.")
 
 
@@ -429,30 +597,50 @@ def public_scenario_tab(visits: pd.DataFrame, public_data: dict[str, pd.DataFram
     lineage_strip(["USER_INPUT", "HYBRID_OPEN_SYNTHETIC", "MODEL_OUTPUT"])
     controls, output = st.columns([0.9, 1.5])
     with controls:
-        respiratory_multiplier = st.slider("Respiratory surge multiplier", 0.5, 2.5, 1.0, 0.1)
-        smoke_heat_multiplier = st.slider("Smoke/heat stress multiplier", 0.5, 2.5, 1.0, 0.1)
-        travel_friction_multiplier = st.slider("Travel friction multiplier", 0.5, 2.5, 1.0, 0.1)
-        wait_override = st.number_input("Optional public wait override (minutes)", 0, 300, 0, 5)
-        if st.button("Run public stress scenario"):
-            st.session_state.public_scenario_result = run_public_scenario(
-                visits,
-                public_data,
-                facility,
-                horizon_hours,
-                respiratory_multiplier,
-                smoke_heat_multiplier,
-                travel_friction_multiplier,
-                wait_override if wait_override > 0 else None,
-            )
-    if "public_scenario_result" not in st.session_state:
-        st.session_state.public_scenario_result = run_public_scenario(
-            visits, public_data, facility, horizon_hours, 1.0, 1.0, 1.0, None
+        respiratory_surge = st.slider("Respiratory surge", 0.0, 3.0, 1.2, 0.1, key="scenario_respiratory_surge")
+        school_reopening = st.toggle("School reopening", value=False, key="scenario_school_reopening")
+        long_weekend = st.toggle("Long weekend", value=False, key="scenario_long_weekend")
+        large_public_event = st.slider("Large public event", 0.0, 1.0, 0.15, 0.05, key="scenario_large_public_event")
+        smoke_event = st.slider("Smoke event", 0.0, 1.0, 0.15, 0.05, key="scenario_smoke_event")
+        heat_wave = st.slider("Heat wave", 0.0, 1.0, 0.10, 0.05, key="scenario_heat_wave")
+        cold_snap_snowstorm = st.slider("Cold snap/snowstorm", 0.0, 1.0, 0.10, 0.05, key="scenario_cold_snap_snowstorm")
+        traffic_disruption = st.slider("Traffic disruption", 0.0, 1.0, 0.15, 0.05, key="scenario_traffic_disruption")
+        wildfire_evacuation_access = st.slider("Wildfire evacuation/access issue", 0.0, 1.0, 0.05, 0.05, key="scenario_wildfire_access")
+        wait_deterioration = st.number_input("Public wait-time deterioration", 0, 300, 60, 5, key="scenario_wait_deterioration")
+        capacity_constraint = st.slider("Synthetic internal capacity constraint", 0.0, 1.0, 0.25, 0.05, key="scenario_capacity_constraint")
+        shocks = ScenarioShockConfig(
+            respiratory_surge=respiratory_surge,
+            school_reopening=school_reopening,
+            long_weekend=long_weekend,
+            large_public_event=large_public_event,
+            smoke_event=smoke_event,
+            heat_wave=heat_wave,
+            cold_snap_snowstorm=cold_snap_snowstorm,
+            traffic_disruption=traffic_disruption,
+            wildfire_evacuation_access=wildfire_evacuation_access,
+            public_wait_deterioration_mins=int(wait_deterioration),
+            synthetic_capacity_constraint=capacity_constraint,
         )
-    scenario_result = st.session_state.public_scenario_result
+        if st.button("Run combined public scenario"):
+            st.session_state.public_scenario_bundle = run_combined_public_scenario(visits, public_data, facility, horizon_hours, shocks)
+    if "public_scenario_bundle" not in st.session_state:
+        st.session_state.public_scenario_bundle = run_combined_public_scenario(
+            visits, public_data, facility, horizon_hours, ScenarioShockConfig(respiratory_surge=1.2, public_wait_deterioration_mins=60, synthetic_capacity_constraint=0.25)
+        )
+    scenario_bundle = st.session_state.public_scenario_bundle
     with output:
-        st.dataframe(scenario_result, width="stretch", hide_index=True)
-        st.plotly_chart(metric_bar(scenario_result, "scenario", "expected_arrivals", color="scenario", title="Expected arrivals under public-context stress"), width="stretch")
-    method_note("Public scenario outputs are transparent pressure estimates. They are not used as clinical recommendations and should be calibrated against internal TB_ED_VISITS data before operations use.")
+        forecast = scenario_bundle["forecast"]
+        impact = scenario_bundle["impact"]
+        affected = scenario_bundle["affected_stages"]
+        ranking = scenario_bundle["ranking"]
+        st.plotly_chart(px.line(forecast, x="timestamp", y="p50_pressure", color="scenario", title="Baseline vs combined public-stress forecast"), width="stretch")
+        st.dataframe(impact, width="stretch", hide_index=True)
+        st.markdown("**Top affected stages**")
+        st.dataframe(affected, width="stretch", hide_index=True)
+    st.markdown("**Scenario Ranking**")
+    st.dataframe(scenario_bundle["ranking"], width="stretch", hide_index=True)
+    huddle_brief_component(scenario_bundle["huddle"])
+    method_note("The huddle brief is generated deterministically from coded scenario outputs. Optional model providers may improve narrative wording, but numeric results come from code.")
 
 
 def constrained_internal_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int) -> None:
@@ -464,7 +652,16 @@ def constrained_internal_tab(visits: pd.DataFrame, facility: str, pediatric_only
         st.info("No constrained synthetic visits match this filter.")
         return
     st.dataframe(constrained_boundary_check(constrained, CONSTRAINED_ANALYSIS_COLUMNS), width="stretch", hide_index=True)
-    tabs = st.tabs(["Explorer", "Event Log", "Patterns", "Parameters", "Replay Validation"])
+    quality_flags = pd.DataFrame(
+        [
+            {"flag": "invalid_los_flagged", "count": int(visit_view.get("INVALID_LOS_CALC_FLAG", pd.Series(dtype=str)).fillna("N").eq("Y").sum())},
+            {"flag": "scheduled_ed_visits", "count": int(visit_view.get("SCHEDULED_ED_VISIT_FLAG", pd.Series(dtype=str)).fillna("N").eq("Y").sum())},
+            {"flag": "missing_first_contact", "count": int(constrained.get("FIRST_CONTACT_DATETIME", pd.Series(dtype="datetime64[ns]")).isna().sum())},
+            {"flag": "negative_los_or_duration", "count": int((pd.to_numeric(constrained.get("ED_LOS_HRS", pd.Series(dtype=float)), errors="coerce") < 0).sum())},
+            {"flag": "los_outlier_over_48h", "count": int((pd.to_numeric(constrained.get("ED_LOS_HRS", pd.Series(dtype=float)), errors="coerce") > 48).sum())},
+        ]
+    )
+    tabs = st.tabs(["Explorer", "Event Log", "Patterns", "Parameters", "Replay Validation", "Quality & Quantiles"])
     with tabs[0]:
         cols = ["DATA_RECORD_ID", "DEPARTMENT_TYPE", "TRIAGE_LEVEL", "PATIENT_AGE_GROUP", "PRESENTING_COMPLAINT", "DISPOSITION_GROUP", "ED_LOS_HRS"]
         st.dataframe(constrained[[c for c in cols if c in constrained.columns]].head(300), width="stretch", hide_index=True, height=310)
@@ -494,6 +691,36 @@ def constrained_internal_tab(visits: pd.DataFrame, facility: str, pediatric_only
         output = run_simulation(constrained, scenario)
         st.dataframe(validation_metric_summary(constrained, output.patients), width="stretch", hide_index=True)
         st.plotly_chart(uncertainty_interval_chart(summarize_with_uncertainty(output.summary)), width="stretch")
+    with tabs[5]:
+        st.markdown("**Data-quality flags**")
+        st.dataframe(quality_flags, width="stretch", hide_index=True)
+        quantile_cols = {
+            "ED_LOS_HRS": "ED LOS all",
+            "ED_LOS_ADMITTED_HRS": "ED LOS admitted",
+            "ED_LOS_DISCHARGED_HRS": "ED LOS discharged",
+            "ED_LOS_FIRST_CONTACT_TO_PHYSICIAN_INITIAL_ASSESSMENT_HRS": "time to PIA",
+            "ED_LOS_FIRST_CONTACT_TO_INITIAL_ROOMED_IN_ED_HRS": "time to roomed",
+            "ED_LOS_DECISION_TO_ADMIT_TO_LAST_CONTACT_HRS": "boarding measure",
+            "ED_LOS_FIRST_CONTACT_TO_EMS_HANDOFF_MINS": "EMS handoff minutes",
+        }
+        rows = []
+        for column, label in quantile_cols.items():
+            if column in constrained:
+                values = pd.to_numeric(constrained[column], errors="coerce").dropna()
+                if not values.empty:
+                    rows.append(
+                        {
+                            "measure": label,
+                            "p50": float(values.quantile(0.50)),
+                            "p75": float(values.quantile(0.75)),
+                            "p90": float(values.quantile(0.90)),
+                            "p95": float(values.quantile(0.95)),
+                            "n": int(len(values)),
+                        }
+                    )
+        st.markdown("**P50/P75/P90/P95 constrained measures**")
+        st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
+        method_note("Clinical-event timestamps come from the supplied TB_ED_VISITS fields. ROW_CREATE_DATETIME and ROW_UPDATE_DATETIME are not used as event timestamps.")
 
 
 def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str, pediatric_only: bool, config: AppConfig) -> None:
@@ -585,16 +812,43 @@ def waiting_room_tab(backend: LocalBackend, active: pd.DataFrame, facility: str,
 def hybrid_forecasting_tab(visits: pd.DataFrame, public_data: dict[str, pd.DataFrame], facility: str, horizon_hours: int) -> None:
     st.subheader("Hybrid Forecasting Lab")
     lineage_strip(["HYBRID_OPEN_SYNTHETIC", "HYBRID_OPEN_INTERNAL_READY", "MODEL_OUTPUT"])
-    forecast = hybrid_arrival_forecast(visits, public_data, facility, horizon_hours)
-    st.plotly_chart(line_chart(forecast, "hour_ahead", "expected_arrivals", title="Hybrid expected arrivals"), width="stretch")
-    interval_fig = px.line(forecast, x="hour_ahead", y=["p10_arrivals", "expected_arrivals", "p90_arrivals"], title="Arrival forecast uncertainty band")
-    st.plotly_chart(interval_fig, width="stretch")
-    pressure = public_pressure_index(public_data)
-    site_pressure = pressure[pressure["facility"] == facility] if not pressure.empty else pd.DataFrame()
-    c1, c2 = st.columns(2)
-    c1.dataframe(forecast, width="stretch", hide_index=True)
-    c2.dataframe(site_pressure, width="stretch", hide_index=True)
-    method_note("Hybrid mode is ready to join TB_ED_VISITS-derived features to open-data context in Snowflake. Local mode keeps the open-data side synthetic and labelled.")
+    bundle = forecast_external_pressure(public_data, facility, horizon_hours=max(horizon_hours, 72), horizon_days=14)
+    simple_arrivals = hybrid_arrival_forecast(visits, public_data, facility, horizon_hours)
+    internal_targets = forecast_internal_targets(visits, public_data, facility)
+    if bundle.hourly.empty:
+        st.info("No public feature matrix is available for this facility.")
+        return
+    feature_frame = build_public_feature_matrix(public_data, facility)
+    backtest = rolling_origin_backtest(feature_frame)
+    tabs = st.tabs(["Hourly Forecast", "Daily Forecast", "Model Validation", "Drivers & Registry", "Internal-Ready Targets"])
+    with tabs[0]:
+        st.plotly_chart(
+            px.line(bundle.hourly, x="timestamp", y=["p10_pressure", "p50_pressure", "p90_pressure"], title="External pressure forecast P10/P50/P90"),
+            width="stretch",
+        )
+        st.plotly_chart(line_chart(simple_arrivals, "hour_ahead", "expected_arrivals", title="Forecast-to-arrival pressure pipeline"), width="stretch")
+        st.dataframe(bundle.hourly.head(96), width="stretch", hide_index=True)
+    with tabs[1]:
+        st.plotly_chart(
+            px.line(bundle.daily, x="forecast_date", y=["p10_pressure", "p50_pressure", "p90_pressure", "peak_p50_pressure"], title="Daily external pressure forecast"),
+            width="stretch",
+        )
+        st.dataframe(bundle.daily, width="stretch", hide_index=True)
+    with tabs[2]:
+        c1, c2 = st.columns(2)
+        c1.markdown("**Holdout model comparison**")
+        c1.dataframe(bundle.validation, width="stretch", hide_index=True)
+        c2.markdown("**Rolling-origin backtest**")
+        c2.dataframe(backtest, width="stretch", hide_index=True)
+        method_note("Validation uses synthetic/public fallback history locally. In Snowflake, this framework should run by site, zone, pediatric flag, hour/day, and holdout period against real TB_ED_VISITS-linked outcomes.")
+    with tabs[3]:
+        st.markdown("**Feature drivers**")
+        st.dataframe(bundle.drivers, width="stretch", hide_index=True)
+        st.markdown("**Model registry**")
+        st.dataframe(bundle.registry, width="stretch", hide_index=True)
+    with tabs[4]:
+        st.dataframe(internal_targets, width="stretch", hide_index=True)
+        method_note("Public mode predicts external pressure and synthetic internal-ready targets. Snowflake mode should join public context to real TB_ED_VISITS by site/hour/day for arrivals, CTAS mix, admission probability, LWBS risk, LOS, PIA, and boarding risk.")
 
 
 def simulation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, horizon_hours: int, config: AppConfig) -> None:
@@ -617,7 +871,7 @@ def simulation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, ho
         boarding_reduce = st.slider("Boarding reduction", 0.0, 0.80, 0.10, 0.05)
         discharge_accel = st.slider("Discharge acceleration", 0.0, 0.50, 0.05, 0.05)
         ems_improve = st.slider("EMS offload process improvement", 0.0, 0.75, 0.10, 0.05)
-        reps = st.number_input("Monte Carlo replications", 10, 100, 10, 5)
+        reps = st.number_input("Monte Carlo replications", 10, 500, 50, 10)
         seed = st.number_input("Random seed", 1, 9999, 42, 1)
     scenario = ScenarioConfig(
         facility=facility,
@@ -636,19 +890,24 @@ def simulation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, ho
         discharge_acceleration=float(discharge_accel),
         ems_offload_improvement=float(ems_improve),
     )
-    output = run_simulation(visit_view, scenario)
-    uncertainty = summarize_with_uncertainty(output.summary)
+    enhanced = run_enhanced_simulation_summary(visit_view, scenario)
+    uncertainty = enhanced["uncertainty"]
     with results:
         st.plotly_chart(uncertainty_interval_chart(uncertainty), width="stretch")
         st.dataframe(uncertainty, width="stretch", hide_index=True)
-        queue_avg = output.queue_lengths.groupby("hour", as_index=False)[["waiting_for_physician", "boarding", "total_active_pressure"]].mean()
+        queue_avg = enhanced["queue_lengths"].groupby("hour", as_index=False)[["waiting_for_physician", "boarding", "total_active_pressure"]].mean()
         st.plotly_chart(line_chart(queue_avg, "hour", "total_active_pressure", title="Expected active pressure over time"), width="stretch")
-    baseline = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=int(reps), random_seed=int(seed))
+    st.markdown("**Resource utilization and stage occupancy**")
+    u1, u2 = st.columns(2)
+    u1.dataframe(enhanced["utilization"], width="stretch", hide_index=True)
+    u2.plotly_chart(px.line(enhanced["occupancy"], x="hour", y=["waiting_room", "roomed_not_seen", "diagnostics_consults", "boarding"], title="Stage occupancy over time"), width="stretch")
+
+    baseline = ScenarioConfig(facility=facility, horizon_hours=horizon_hours, replications=min(int(reps), 20), random_seed=int(seed))
     comparison = compare_scenarios(
         visit_view,
         [
             baseline,
-            scenario,
+            scenario.model_copy(update={"replications": min(int(reps), 20)}),
             baseline.model_copy(update={"fast_track_enabled": True}),
             baseline.model_copy(update={"boarding_reduction": 0.25, "admission_bed_improvement": 0.2}),
             baseline.model_copy(update={"physician_capacity_delta": 1, "triage_capacity_delta": 1}),
@@ -658,9 +917,25 @@ def simulation_tab(visits: pd.DataFrame, facility: str, pediatric_only: bool, ho
     c1.markdown("**Scenario comparison table**")
     c1.dataframe(comparison, width="stretch", hide_index=True)
     c2.markdown("**Bottleneck shift analysis**")
-    c2.dataframe(output.bottlenecks, width="stretch", hide_index=True)
-    st.markdown("**Prioritized interventions**")
+    c2.dataframe(enhanced["migration"], width="stretch", hide_index=True)
+    st.markdown("**Scenario Ranking and Pressure-to-Action Translator**")
+    r1, r2 = st.columns([1.35, 1])
+    r1.dataframe(enhanced["ranking"], width="stretch", hide_index=True)
+    with r2:
+        huddle_brief_component(enhanced["huddle"])
+        for action in enhanced["actions"]:
+            st.write(f"- {action}")
+    st.markdown("**Prioritized interventions from scenario comparison**")
     st.dataframe(rank_interventions(comparison), width="stretch", hide_index=True)
+    st.markdown("**LWBS hazard sensitivity check**")
+    hazard_rows = pd.DataFrame(
+        [
+            {"triage_level": triage, "wait_hours": wait, "crowding_index": crowd, "lwbs_hazard": lwbs_hazard(wait, crowd, triage)}
+            for triage in [2, 3, 4, 5]
+            for wait, crowd in [(1.0, 0.25), (3.0, 0.55), (5.0, 0.85)]
+        ]
+    )
+    st.dataframe(hazard_rows, width="stretch", hide_index=True)
     explanation = get_model_client(config).explain_scenario(comparison)
     method_note(f"Practical interpretation: {practical_interpretation(comparison)} {explanation}")
 
@@ -824,13 +1099,19 @@ def lineage_refresh_tab(open_bundle: dict[str, object]) -> None:
         "source_id",
         "display_name",
         "category",
+        "activation_status",
         "freshness_state",
         "row_count",
         "quality_score",
         "expected_refresh_minutes",
         "max_source_timestamp",
+        "grain",
+        "geography",
         "snowflake_target",
+        "downstream_usage",
         "pii_risk",
+        "internal_activation_need",
+        "blocking_issue",
         "fallback_reason",
     ]
     status_df = statuses[display_cols] if isinstance(statuses, pd.DataFrame) else pd.DataFrame()
@@ -850,7 +1131,7 @@ def main() -> None:
     active = data["active"]
     facility, pediatric_only, horizon_hours = sidebar_controls(config, visits)
 
-    st.title("AHS ED Flow Intelligence Prototype v2")
+    st.title("AHS ED Flow Intelligence Prototype vNext")
     st.caption("Snowflake-portable ED flow simulation, public pressure intelligence, internal-ready analytics, and governed AI-support layer. Synthetic local mode only.")
 
     tabs = st.tabs(V2_TAB_NAMES)

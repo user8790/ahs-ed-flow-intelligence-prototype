@@ -35,3 +35,15 @@ Generated cache files live in `data/open/`:
 ## Use In The App
 
 Public data supports site-level pressure and scenario context. It must not be interpreted as patient-level source data, and local fallback values must not be reported as official AHS/Government values.
+
+## vNext Uses
+
+The public/open layer now feeds:
+
+- Alberta/site/zone pressure cockpit
+- public wait-time deterioration nowcast
+- respiratory, environmental, and travel scenario controls
+- ensemble external-pressure forecasts
+- feature contribution tables
+- model validation and rolling-origin backtest
+- combined public scenario workbench

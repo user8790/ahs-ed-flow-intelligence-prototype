@@ -334,7 +334,7 @@ class ScenarioConfig(BaseModel):
 
     facility: str
     horizon_hours: int = Field(default=24, ge=4, le=168)
-    replications: int = Field(default=10, ge=1, le=200)
+    replications: int = Field(default=50, ge=1, le=500)
     random_seed: int = 42
     arrival_surge_multiplier: float = Field(default=1.0, ge=0.1, le=3.0)
     triage_capacity_delta: int = Field(default=0, ge=-5, le=10)
@@ -392,4 +392,3 @@ def constrained_projection(df: pd.DataFrame) -> pd.DataFrame:
 
     cols = [column for column in CONSTRAINED_ANALYSIS_COLUMNS if column in df.columns]
     return df.loc[:, cols].copy()
-

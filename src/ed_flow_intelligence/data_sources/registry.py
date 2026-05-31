@@ -177,7 +177,51 @@ DEFAULT_SOURCES: list[dict[str, Any]] = [
 def _normalise_source(raw: dict[str, Any]) -> SourceDefinition:
     raw = dict(raw)
     raw["category"] = LineageCategory(raw["category"])
+    raw = _enrich_source_metadata(raw)
     return SourceDefinition(**raw)
+
+
+def _enrich_source_metadata(raw: dict[str, Any]) -> dict[str, Any]:
+    """Fill operational lineage metadata when YAML keeps a source concise."""
+
+    family = str(raw.get("source_family", ""))
+    category = raw.get("category")
+    source_id = str(raw.get("source_id", ""))
+    defaults = {
+        "public_ed_wait_times": ("site-time snapshot", "facility", "Executive cockpit, public wait monitor, nowcast driver"),
+        "public_historical_ed_metrics": ("site-week aggregate", "facility/zone", "validation context and public benchmark"),
+        "respiratory_surveillance": ("zone-week aggregate", "zone", "pediatric respiratory surge, hybrid forecast driver"),
+        "weather_air_quality": ("site-hour contextual feature", "facility/city/zone", "environmental stress and scenario driver"),
+        "wildfire_smoke": ("site-hour contextual feature", "facility/city/zone", "smoke and wildfire stress driver"),
+        "travel_friction": ("site-hour contextual feature", "facility/city/zone", "travel/access friction and scenario driver"),
+        "calendar_context": ("date-level calendar feature", "province", "forecast feature and surge scenario context"),
+        "secure_internal_ed_flow": ("one row per ED/UCC/AACC visit", "facility/zone/corridor", "constrained flow analytics, calibration, simulation parameters"),
+        "secure_internal_chart_review": ("MRN-scoped semantic-view rows", "patient encounter", "chart-review summarization workflow"),
+        "secure_internal_placeholders": ("operational snapshot/event", "facility/unit/service", "digital twin, bed/staffing/diagnostics/transfer simulation"),
+    }
+    grain, geography, downstream = defaults.get(family, ("source-defined", "source-defined", "app context and lineage"))
+    raw.setdefault("grain", grain)
+    raw.setdefault("geography", geography)
+    raw.setdefault("downstream_usage", downstream)
+    if category == LineageCategory.OPEN_DATA:
+        raw.setdefault("activation_status", "public fallback")
+        raw.setdefault("internal_activation_need", "Create approved Snowflake open-data ingest and refresh audit job.")
+        raw.setdefault("blocking_issue", "Local mode uses synthetic fallback rather than live official feed.")
+    elif category == LineageCategory.SECURE_INTERNAL_READY_SCHEMA:
+        raw.setdefault("activation_status", "Snowflake day-one ready")
+        raw.setdefault("internal_activation_need", "Validate access, schema, row-level controls, and business rules in governed Snowflake.")
+        raw.setdefault("blocking_issue", "Requires internal AHS Snowflake session and approval.")
+    elif category == LineageCategory.SECURE_INTERNAL_PLACEHOLDER:
+        raw.setdefault("activation_status", "early feasible")
+        raw.setdefault("internal_activation_need", "Curate source system feed, data contract, PHI controls, and refresh SLA.")
+        raw.setdefault("blocking_issue", "No governed operational feed is connected in public mode.")
+    else:
+        raw.setdefault("activation_status", "public fallback")
+        raw.setdefault("internal_activation_need", "Review data contract and governance controls.")
+        raw.setdefault("blocking_issue", "Synthetic/public fallback status must remain visible.")
+    if source_id in {"calgary_transit_gtfs", "municipal_open_data_traffic"}:
+        raw["activation_status"] = "early feasible"
+    return raw
 
 
 def load_data_source_registry(path: Path | str | None = DEFAULT_REGISTRY_PATH) -> list[SourceDefinition]:

@@ -28,6 +28,22 @@
 6. Calibrate models by facility and population strata.
 7. Run human-in-the-loop tabletop validation before workflow pilot.
 
+## Internal-Ready Feature Views
+
+The Snowflake package now includes:
+
+- site-hour arrivals
+- site-day arrivals
+- pediatric respiratory features
+- weather/open-data context joined to site-hour
+- admission probability features
+- LWBS features
+- LOS and PIA quantile features
+- boarding features
+- flow stage duration distributions
+- observed concurrency estimates
+- simulation scenario audit outputs
+
 ## Validation Gates
 
 - Schema and column validation.

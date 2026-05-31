@@ -37,8 +37,17 @@ Curated Snowflake tables/views
 - `optimization.py`: scenario ranking and greedy bed-placement heuristic.
 - `ai_layer.py`: mock/OpenAI/Snowflake/no-model provider interface.
 - `governance.py`: validation, calibration, drift, missing timestamp, audit design helpers.
+- `ed_flow_intelligence/modeling.py`: public/hybrid forecasting, validation, model registry, and feature drivers.
+- `ed_flow_intelligence/advanced_scenarios.py`: combined public shock scenario workbench.
+- `ed_flow_intelligence/simulation_vnext.py`: utilization, occupancy, LWBS hazard, bottleneck migration, scenario ranking, and huddle brief wrappers.
+- `ed_flow_intelligence/operational_intelligence.py`: executive cockpit, watch-points, levers, huddle briefs, and research-to-capability map.
 
 ## Design Boundary
 
 The constrained module must only use columns from `TB_ED_VISITS`. Expanded features are explicitly labelled as synthetic and assumption-based until AHS curates additional Snowflake datasets.
 
+## Capability Tiers
+
+1. Public prototype: public-source metadata plus synthetic fallback data; computes external pressure, scenario stress, and plausible queue effects.
+2. Day-one Snowflake: real `TB_ED_VISITS`, semantic views, open-data landing tables, internal calibration, and governed model/audit controls.
+3. Early/aspirational Snowflake: bed board, ADT, staffing, diagnostics, consults, EMS/offload, transfers, EVS, inpatient capacity, and location-event feeds.

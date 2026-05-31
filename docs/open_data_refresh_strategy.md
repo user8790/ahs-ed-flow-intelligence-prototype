@@ -28,6 +28,10 @@ Each refresh job should write:
 - error or fallback reason
 - official source URL or API endpoint
 - licensing/terms note where needed
+- grain and geography
+- downstream app usage
+- activation status
+- current blocker and fallback reason
 
 ## Failure Mode
 
