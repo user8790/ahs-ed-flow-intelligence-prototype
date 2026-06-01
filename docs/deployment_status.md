@@ -33,10 +33,14 @@ Updated: 2026-06-01
 - Route: `/Reimagining-Alberta-ED-Flow-Intelligence`
 - Lowercase redirect: configured
 - Preferred SAO URL: `https://www.sao-advisory.com/Reimagining-Alberta-ED-Flow-Intelligence`
-- Local build: passing
+- Local build: passing after Stollery rebuild
 - Standalone Vercel deployment: `https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
 - Lowercase route verified: `https://reimagining-alberta-ed-flow-intelli.vercel.app/reimagining-alberta-ed-flow-intelligence`
-- Deployment status: standalone Vercel deployed; SAO integration awaits repo/project access
+- Latest Vercel deployment URL: `https://reimagining-alberta-ed-flow-intelligence-9i83nmlcl.vercel.app`
+- Latest Vercel deployment id: `dpl_7c57bVhkxNnkoQA9ohkZUoQ2VCdj`
+- Deployment status: Stollery rebuild deployed to production and smoke-tested
+- Public UX status: rebuilt around Open Data Context, Synthetic Stollery ED Operating Reality, Blended Predictive Intelligence, and Scenario & What-If Studio
+- Scenario smoke: passed; the `Severe RSV week` preset updated comparator outputs while baseline outputs remained fixed
 - Vercel/SAO note: `www.sao-advisory.com` is currently aliased in Vercel to an existing project (`v0-image-analysis...`). This branch did not modify or replace that production site.
 
 ## Validation
@@ -47,6 +51,6 @@ Updated: 2026-06-01
 - Next typecheck: passed with `npm run typecheck`
 - Next audit: passed with `npm audit --audit-level=moderate`
 - Next build: passed with `npm run build`
-- Browser smoke: passed for local Action Intelligence Streamlit app and public showcase route
-- Vercel deployment: completed as standalone fallback
+- Browser smoke: passed for local Action Intelligence Streamlit app and rebuilt public showcase route
+- Vercel deployment: completed for rebuilt Stollery public showcase
 - Streamlit deployment: completed and smoke-tested at `https://ahs-ed-flow-action-intelligence.streamlit.app/`

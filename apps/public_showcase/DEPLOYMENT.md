@@ -1,27 +1,41 @@
-# Deployment
+# Public Showcase Deployment
 
-Preferred destination:
+Current standalone destination:
 
-`https://www.sao-advisory.com/Reimagining-Alberta-ED-Flow-Intelligence`
+`https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
 
-If the SAO Advisory site repository is available, copy or merge this route into the existing site on a feature branch and deploy a Vercel preview first.
+Latest verified production deployment:
 
-Standalone fallback:
+`https://reimagining-alberta-ed-flow-intelligence-9i83nmlcl.vercel.app`
+
+## Build
 
 ```powershell
 cd apps/public_showcase
 npm install
+npm run typecheck
 npm run build
+```
+
+## Deploy
+
+Use the existing `.vercel/project.json` linkage unless intentionally moving projects.
+
+```powershell
+cd apps/public_showcase
 npx vercel
 npx vercel --prod
 ```
 
-Suggested standalone project name:
+No environment variables, secrets, private endpoints, or paid Vercel features are required.
 
-`reimagining-alberta-ed-flow-intelligence`
+## Safety Notes
 
-Current standalone deployment:
+- Do not add AHS secure data or patient-level data to `public/data`.
+- Do not add `.env` or `.streamlit/secrets.toml` material here.
+- Public facts are cited in `docs/stollery_public_facts_and_synthetic_assumptions.md`.
+- Synthetic assumptions and scenario mechanics are documented in `docs/stollery_synthetic_data_design.md` and `docs/stollery_scenario_engine.md`.
 
-`https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
+## SAO Advisory Site
 
-No environment variables or secrets are required. Avoid paid Vercel features on the Hobby account.
+The preferred long-term destination remains an integrated SAO Advisory page, but the current standalone project is the safe public deployment path. Do not overwrite the existing `www.sao-advisory.com` Vercel alias without explicit site/repo access and approval.

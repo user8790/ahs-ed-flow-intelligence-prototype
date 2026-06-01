@@ -1,25 +1,48 @@
 # Reimagining Alberta ED Flow Intelligence
 
-Public Vercel/Next.js showcase for SAO Advisory.
+Public Vercel showcase for a Stollery-focused ED flow intelligence product demo.
 
-Route:
+This is not a live AHS operational tool. It uses public references, public/open-data-shaped context signals, and synthetic internal ED operating data only. It contains no real patient data, real identifiers, secure AHS data, private Snowflake data, or private endpoints.
 
-- `/Reimagining-Alberta-ED-Flow-Intelligence`
-- Lowercase redirect: `/reimagining-alberta-ed-flow-intelligence`
+## Product Structure
 
-Run locally:
+The app is a one-page interactive showcase with four sections:
+
+1. Open Data Context
+2. Synthetic Stollery ED Operating Reality
+3. Blended Predictive Intelligence
+4. Scenario & What-If Studio
+
+The baseline forecasts are loaded from generated JSON artifacts and remain fixed. Scenario sliders and presets update browser-side comparator outputs through `lib/scenarioEngine.ts`.
+
+## Run Locally
 
 ```powershell
+cd apps/public_showcase
 npm install
 npm run typecheck
 npm run build
 npm run dev
 ```
 
-Refresh public artifacts from the repository root:
+## Regenerate Public Artifacts
+
+From the repository root:
 
 ```powershell
-python -m ed_flow_kernel.exports.public_showcase_export --out apps/public_showcase/public/data --mode public_demo --seed 20260601
+python -m ed_flow_kernel.exports.stollery_public_showcase_export --out apps/public_showcase/public/data --seed 20260601
 ```
 
-This app is public/synthetic only. It does not connect to Snowflake, AHS private systems, patient-level data, or secrets.
+Required artifacts are named `stollery_*.json` and include schema version, generation timestamp, focus site, data mode, source type, synthetic flag, caveats, and data.
+
+## Deployment
+
+Standalone Vercel project:
+
+`https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
+
+The route is also reachable through the lowercase redirect:
+
+`https://reimagining-alberta-ed-flow-intelli.vercel.app/reimagining-alberta-ed-flow-intelligence`
+
+No secrets or environment variables are required.
