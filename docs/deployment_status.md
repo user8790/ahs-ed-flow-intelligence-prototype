@@ -20,12 +20,12 @@ Updated: 2026-06-01
 ## Action Intelligence Streamlit App
 
 - Entry point: `apps/streamlit_action_intelligence/app.py`
-- Suggested slug: `ahs-ed-flow-action-intelligence`
-- Preferred URL: `https://ahs-ed-flow-action-intelligence.streamlit.app/`
+- Slug: `ahs-ed-flow-action-intelligence`
+- URL: `https://ahs-ed-flow-action-intelligence.streamlit.app/`
 - Local mode: working with synthetic/public fallback data
 - Secrets required: none for local/public demo
-- Deployment status: ready for new Streamlit Cloud app creation from `feature/action-intelligence-kernel-and-showcase-v4`
-- Current blocker: Streamlit Cloud showed a sign-in screen in the in-app browser. User interactive sign-in is required before creating the new app.
+- Deployment status: deployed as a separate Streamlit Cloud app from `feature/action-intelligence-kernel-and-showcase-v4`
+- Browser smoke: passed on 2026-06-01; public app rendered `AHS ED Flow Action Intelligence` with no console errors detected.
 
 ## Public Showcase
 
@@ -49,4 +49,4 @@ Updated: 2026-06-01
 - Next build: passed with `npm run build`
 - Browser smoke: passed for local Action Intelligence Streamlit app and public showcase route
 - Vercel deployment: completed as standalone fallback
-- Streamlit deployment: blocked pending interactive Streamlit Cloud sign-in
+- Streamlit deployment: completed and smoke-tested at `https://ahs-ed-flow-action-intelligence.streamlit.app/`
