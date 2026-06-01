@@ -23,11 +23,21 @@ This repository is a synthetic local prototype for AHS ED flow intelligence. It 
 - Keep Snowflake portability central: SQL templates, backend boundaries, feature views, audit logs, and activation sequence.
 - AI narrative output can explain or summarize; it must not be the source of simulation results.
 - When adding scenario controls, document the assumed mechanism and validation requirement.
+- Never modify, repoint, or redeploy the existing production Streamlit app without explicit user instruction.
+- Keep new Action Intelligence and public showcase work on feature branches/worktrees until explicitly merged.
+- Keep the shared capability kernel UI-independent: no Streamlit, React, Next.js, browser, or Vercel imports in `packages/ed_flow_kernel`.
+- Do not duplicate analytical logic in the Vercel app; export public-safe artifacts from the Python kernel.
+- Public artifacts must not contain real patient identifiers, secure AHS data, secrets, or private endpoints.
+- Run Python compile/tests and public-showcase typecheck/build before completion.
 
 ## Validation Commands
 
 ```powershell
 python -m pytest
 python -m compileall src app.py
+python -m compileall app.py apps packages src
 python -c "import app; print('app import ok')"
+cd apps/public_showcase
+npm run typecheck
+npm run build
 ```

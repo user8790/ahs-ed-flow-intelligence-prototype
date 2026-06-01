@@ -36,3 +36,7 @@ Each refresh job should write:
 ## Failure Mode
 
 If a public feed fails, the app should show stale/missing/fallback status and continue using internal-ready analytics. Public pressure should never silently become clinical truth.
+
+## Action Intelligence Additions
+
+The Action Intelligence branch adds `sql/snowflake/open_data_streams_and_refresh_log.sql` for a Snowflake refresh log, source registry, source-registry stream, and latest-refresh view. Public mode still uses cached/synthetic fallback artifacts and must never fail app startup because a public endpoint is unavailable.

@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.263297+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "OPEN_DATA",
+    "HYBRID_OPEN_SYNTHETIC"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included."
+  ],
+  "payload": {
+    "title": "Reimagining Alberta ED Flow Intelligence",
+    "subtitle": "From public pressure signals to secure operational intelligence",
+    "watchpoints": [
+      "pediatric respiratory arrivals, CTAS mix, and respiratory cohort capacity",
+      "decision-to-admit boarding and inpatient bed release timing",
+      "waiting-room queue, LWBS risk, and room turnover"
+    ],
+    "levers": [
+      "accelerate bed assignment, pending discharges, and bed cleaning handoffs",
+      "shift physician/rapid-assessment capacity toward initial assessment",
+      "activate CTAS 4/5 fast-track or respiratory cohort stream if staffing supports it"
+    ],
+    "why_pressure_moved": "Pressure is primarily explained by Travel/access friction, Pediatric pressure, Selected site pressure.",
+    "boundary": "Public showcase uses open-data-shaped and synthetic artifacts only."
+  }
+}

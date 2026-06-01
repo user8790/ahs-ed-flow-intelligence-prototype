@@ -16,6 +16,10 @@ def test_v2_snowflake_sql_files_are_available() -> None:
         "v_ed_visits_with_open_context.sql",
         "hybrid_open_internal_features.sql",
         "simulation_feature_tables.sql",
+        "open_data_streams_and_refresh_log.sql",
+        "lineage_and_governance_tables.sql",
+        "streamlit_in_snowflake_setup.sql",
+        "container_runtime_option.sql",
     }
     assert expected.issubset(templates)
 
@@ -39,7 +43,11 @@ def test_hybrid_sql_joins_open_context_without_patient_identifiers() -> None:
 def test_new_snowflake_model_and_simulation_sql_assets() -> None:
     hybrid = load_sql_template("hybrid_open_internal_features.sql")
     simulation = load_sql_template("simulation_feature_tables.sql")
+    governance = load_sql_template("lineage_and_governance_tables.sql")
+    streamlit = load_sql_template("streamlit_in_snowflake_setup.sql")
     assert "MODELS.V_SITE_HOUR_ARRIVAL_FEATURES" in hybrid
     assert "OPEN_DATA.AHS_ED_WAIT_TIMES" in hybrid
     assert "SIMULATION.BASELINE_STAGE_DISTRIBUTIONS" in simulation
     assert "SIMULATION.SCENARIO_AUDIT_OUTPUTS" in simulation
+    assert "GOVERNANCE.ACTION_INTELLIGENCE_AUDIT_LOG" in governance
+    assert "AHS_ED_FLOW_ACTION_INTELLIGENCE" in streamlit

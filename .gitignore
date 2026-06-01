@@ -10,3 +10,7 @@ venv/
 *.log
 tools/
 .runtime/
+node_modules/
+.next/
+.vercel/
+*.tsbuildinfo

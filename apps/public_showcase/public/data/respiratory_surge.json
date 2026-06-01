@@ -1,0 +1,752 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.071970+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "OPEN_DATA",
+    "HYBRID_OPEN_SYNTHETIC"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included."
+  ],
+  "payload": [
+    {
+      "zone": "South",
+      "week_start": "2026-05-31T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1109813909112654,
+      "new_hospital_admissions": 64,
+      "pediatric_pressure_index": 0.2950811941570005,
+      "school_absenteeism_proxy": 0.3153080726630489,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-31T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.1340791607163595,
+      "new_hospital_admissions": 49,
+      "pediatric_pressure_index": 0.437526850061433,
+      "school_absenteeism_proxy": 0.3820289695605977,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-31T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0651456677090236,
+      "new_hospital_admissions": 41,
+      "pediatric_pressure_index": 0.2081118407782968,
+      "school_absenteeism_proxy": 0.2357251321933602,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-31T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0688906949203761,
+      "new_hospital_admissions": 37,
+      "pediatric_pressure_index": 0.2631462038196124,
+      "school_absenteeism_proxy": 0.1953430273203874,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-24T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1481330776291835,
+      "new_hospital_admissions": 72,
+      "pediatric_pressure_index": 0.4427246332743665,
+      "school_absenteeism_proxy": 0.3301857957054315,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-24T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.1063753002899415,
+      "new_hospital_admissions": 33,
+      "pediatric_pressure_index": 0.3938212684627622,
+      "school_absenteeism_proxy": 0.2902290551217673,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-24T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0503591140418324,
+      "new_hospital_admissions": 36,
+      "pediatric_pressure_index": 0.150944077546939,
+      "school_absenteeism_proxy": 0.2066538300397522,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-24T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0839371993754368,
+      "new_hospital_admissions": 12,
+      "pediatric_pressure_index": 0.2917770409683796,
+      "school_absenteeism_proxy": 0.2409471057463627,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-17T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1534218232730467,
+      "new_hospital_admissions": 72,
+      "pediatric_pressure_index": 0.4842236150417436,
+      "school_absenteeism_proxy": 0.3874876194781924,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-17T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.1543944863791071,
+      "new_hospital_admissions": 24,
+      "pediatric_pressure_index": 0.5305587814723469,
+      "school_absenteeism_proxy": 0.3851761107565483,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-17T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0156210093722435,
+      "new_hospital_admissions": 48,
+      "pediatric_pressure_index": 0.0935184891356111,
+      "school_absenteeism_proxy": 0.1735286717651951,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-17T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.1256877782020283,
+      "new_hospital_admissions": 17,
+      "pediatric_pressure_index": 0.3833009834135023,
+      "school_absenteeism_proxy": 0.2689817538881202,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-10T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0768389352975094,
+      "new_hospital_admissions": 47,
+      "pediatric_pressure_index": 0.2219762603960942,
+      "school_absenteeism_proxy": 0.2609283160336647,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-10T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0929228230028187,
+      "new_hospital_admissions": 46,
+      "pediatric_pressure_index": 0.2385095815284105,
+      "school_absenteeism_proxy": 0.2392368363386232,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-10T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0522433689864164,
+      "new_hospital_admissions": 0,
+      "pediatric_pressure_index": 0.1686302734661463,
+      "school_absenteeism_proxy": 0.1603313310729431,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-10T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.062322294897429,
+      "new_hospital_admissions": 60,
+      "pediatric_pressure_index": 0.1638951477576044,
+      "school_absenteeism_proxy": 0.163664008748246,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-03T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1348619192028786,
+      "new_hospital_admissions": 47,
+      "pediatric_pressure_index": 0.4032155077399263,
+      "school_absenteeism_proxy": 0.3326825657677796,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-03T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0954111360919644,
+      "new_hospital_admissions": 36,
+      "pediatric_pressure_index": 0.3029003509214579,
+      "school_absenteeism_proxy": 0.2628540455984449,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-03T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0416625259449547,
+      "new_hospital_admissions": 42,
+      "pediatric_pressure_index": 0.1416848022399147,
+      "school_absenteeism_proxy": 0.1321463381975567,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-05-03T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0826555177853291,
+      "new_hospital_admissions": 28,
+      "pediatric_pressure_index": 0.3113278629166665,
+      "school_absenteeism_proxy": 0.2938072241292832,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-26T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1306477402079294,
+      "new_hospital_admissions": 20,
+      "pediatric_pressure_index": 0.4192882882086314,
+      "school_absenteeism_proxy": 0.2879521588460433,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-26T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0589131674497361,
+      "new_hospital_admissions": 31,
+      "pediatric_pressure_index": 0.2085247809814199,
+      "school_absenteeism_proxy": 0.2235588976978109,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-26T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0710639820357299,
+      "new_hospital_admissions": 32,
+      "pediatric_pressure_index": 0.2574014647926898,
+      "school_absenteeism_proxy": 0.2330754824423512,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-26T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0670478813099609,
+      "new_hospital_admissions": 15,
+      "pediatric_pressure_index": 0.2896688025922712,
+      "school_absenteeism_proxy": 0.2147611129359513,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-19T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1269841289870398,
+      "new_hospital_admissions": 40,
+      "pediatric_pressure_index": 0.4402493708497579,
+      "school_absenteeism_proxy": 0.3150615326084798,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-19T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0484038117649164,
+      "new_hospital_admissions": 32,
+      "pediatric_pressure_index": 0.14296338121466,
+      "school_absenteeism_proxy": 0.167725636199138,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-19T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0450842148654021,
+      "new_hospital_admissions": 35,
+      "pediatric_pressure_index": 0.1872225174431766,
+      "school_absenteeism_proxy": 0.1369927986101302,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-19T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0595385612849378,
+      "new_hospital_admissions": 29,
+      "pediatric_pressure_index": 0.23756974685169,
+      "school_absenteeism_proxy": 0.254120027324283,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-12T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0253938939692295,
+      "new_hospital_admissions": 16,
+      "pediatric_pressure_index": 0.1523368309968776,
+      "school_absenteeism_proxy": 0.2175131649335302,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-12T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0389663047303828,
+      "new_hospital_admissions": 33,
+      "pediatric_pressure_index": 0.1720688992800493,
+      "school_absenteeism_proxy": 0.1043365025926952,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-12T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.01,
+      "new_hospital_admissions": 9,
+      "pediatric_pressure_index": 0.0612266260934308,
+      "school_absenteeism_proxy": 0.0772812387322573,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-12T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0526367842299029,
+      "new_hospital_admissions": 16,
+      "pediatric_pressure_index": 0.1161361987550535,
+      "school_absenteeism_proxy": 0.1540308105722659,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-05T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1285633341695755,
+      "new_hospital_admissions": 16,
+      "pediatric_pressure_index": 0.4598615534125003,
+      "school_absenteeism_proxy": 0.3424499665216006,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-05T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0229190871109136,
+      "new_hospital_admissions": 18,
+      "pediatric_pressure_index": 0.0700860570175277,
+      "school_absenteeism_proxy": 0.113404039273915,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-05T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0603475675827945,
+      "new_hospital_admissions": 0,
+      "pediatric_pressure_index": 0.1777990493260255,
+      "school_absenteeism_proxy": 0.173311849280832,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-04-05T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.01,
+      "new_hospital_admissions": 18,
+      "pediatric_pressure_index": 0.023007102291205,
+      "school_absenteeism_proxy": 0.1251441313662668,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-29T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0469161151837136,
+      "new_hospital_admissions": 51,
+      "pediatric_pressure_index": 0.183558524710145,
+      "school_absenteeism_proxy": 0.0972460744459093,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-29T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0615812744848305,
+      "new_hospital_admissions": 14,
+      "pediatric_pressure_index": 0.2443215320409141,
+      "school_absenteeism_proxy": 0.1877805775918812,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-29T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0522490442386445,
+      "new_hospital_admissions": 15,
+      "pediatric_pressure_index": 0.1789609934532801,
+      "school_absenteeism_proxy": 0.1601401025161722,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-29T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0490410281263949,
+      "new_hospital_admissions": 22,
+      "pediatric_pressure_index": 0.1694324565375486,
+      "school_absenteeism_proxy": 0.0803484576244262,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-22T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0390643689727557,
+      "new_hospital_admissions": 43,
+      "pediatric_pressure_index": 0.177865364161443,
+      "school_absenteeism_proxy": 0.1317328741287119,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-22T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0790084568180449,
+      "new_hospital_admissions": 1,
+      "pediatric_pressure_index": 0.2538837492767176,
+      "school_absenteeism_proxy": 0.2783950186905548,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-22T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0951082161774805,
+      "new_hospital_admissions": 32,
+      "pediatric_pressure_index": 0.2521710224202967,
+      "school_absenteeism_proxy": 0.2267219384971607,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-22T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0662750482440569,
+      "new_hospital_admissions": 3,
+      "pediatric_pressure_index": 0.1816453149994589,
+      "school_absenteeism_proxy": 0.1945254080204844,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-15T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0763397102892434,
+      "new_hospital_admissions": 23,
+      "pediatric_pressure_index": 0.3306209416398259,
+      "school_absenteeism_proxy": 0.2215413858512405,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-15T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.079384697910953,
+      "new_hospital_admissions": 37,
+      "pediatric_pressure_index": 0.2718946710006656,
+      "school_absenteeism_proxy": 0.1985021343371693,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-15T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.01,
+      "new_hospital_admissions": 36,
+      "pediatric_pressure_index": 0.0735329384208755,
+      "school_absenteeism_proxy": 0.0904055294050651,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-15T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.035210847583897,
+      "new_hospital_admissions": 8,
+      "pediatric_pressure_index": 0.0891798819729585,
+      "school_absenteeism_proxy": 0.1230097162924605,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-08T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0761075249882793,
+      "new_hospital_admissions": 30,
+      "pediatric_pressure_index": 0.3129785884170171,
+      "school_absenteeism_proxy": 0.2497887950009889,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-08T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0535964353114763,
+      "new_hospital_admissions": 25,
+      "pediatric_pressure_index": 0.2529840160011393,
+      "school_absenteeism_proxy": 0.2642646552313777,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-08T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0508862048843232,
+      "new_hospital_admissions": 19,
+      "pediatric_pressure_index": 0.1810474364500577,
+      "school_absenteeism_proxy": 0.1177975987355422,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-08T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.033541109142327,
+      "new_hospital_admissions": 21,
+      "pediatric_pressure_index": 0.119561076388573,
+      "school_absenteeism_proxy": 0.1868499653240088,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-01T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0596776617798191,
+      "new_hospital_admissions": 27,
+      "pediatric_pressure_index": 0.2481492063692101,
+      "school_absenteeism_proxy": 0.1054316630332621,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-01T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0629531732680458,
+      "new_hospital_admissions": 17,
+      "pediatric_pressure_index": 0.2215788795840822,
+      "school_absenteeism_proxy": 0.1765969073679679,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-01T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0666476062011033,
+      "new_hospital_admissions": 26,
+      "pediatric_pressure_index": 0.2513457648440003,
+      "school_absenteeism_proxy": 0.2512673325409185,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-03-01T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0795387702686048,
+      "new_hospital_admissions": 27,
+      "pediatric_pressure_index": 0.2244286287295926,
+      "school_absenteeism_proxy": 0.2197680442031391,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-22T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.0807423643024466,
+      "new_hospital_admissions": 56,
+      "pediatric_pressure_index": 0.2266079987802572,
+      "school_absenteeism_proxy": 0.211718251849284,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-22T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0142580746591547,
+      "new_hospital_admissions": 21,
+      "pediatric_pressure_index": 0.0602374451013796,
+      "school_absenteeism_proxy": 0.1057595357509231,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-22T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.1140151976224538,
+      "new_hospital_admissions": 19,
+      "pediatric_pressure_index": 0.4313242570013975,
+      "school_absenteeism_proxy": 0.3482301101912214,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-22T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.087969095500255,
+      "new_hospital_admissions": 0,
+      "pediatric_pressure_index": 0.2638113638359303,
+      "school_absenteeism_proxy": 0.2096943740440118,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-15T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1281233971206716,
+      "new_hospital_admissions": 35,
+      "pediatric_pressure_index": 0.4128423775033985,
+      "school_absenteeism_proxy": 0.4091143830362316,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-15T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.1132327426015132,
+      "new_hospital_admissions": 19,
+      "pediatric_pressure_index": 0.3394028374075175,
+      "school_absenteeism_proxy": 0.2603019307486872,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-15T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.096792338054747,
+      "new_hospital_admissions": 34,
+      "pediatric_pressure_index": 0.3010005556389025,
+      "school_absenteeism_proxy": 0.2706707409521851,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-15T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0685542107783914,
+      "new_hospital_admissions": 21,
+      "pediatric_pressure_index": 0.2132176144669476,
+      "school_absenteeism_proxy": 0.2489781096414591,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-08T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1425058361451611,
+      "new_hospital_admissions": 27,
+      "pediatric_pressure_index": 0.4339606934121238,
+      "school_absenteeism_proxy": 0.3342565782576349,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-08T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.1394027712116193,
+      "new_hospital_admissions": 35,
+      "pediatric_pressure_index": 0.4748662431268054,
+      "school_absenteeism_proxy": 0.308050185122061,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-08T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.0695730351688851,
+      "new_hospital_admissions": 34,
+      "pediatric_pressure_index": 0.225568555801672,
+      "school_absenteeism_proxy": 0.22147002043667,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-08T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0972550897482748,
+      "new_hospital_admissions": 42,
+      "pediatric_pressure_index": 0.2908952968894767,
+      "school_absenteeism_proxy": 0.2886726864961846,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-01T00:00:00",
+      "pathogen": "RSV",
+      "test_positivity": 0.1671065721298604,
+      "new_hospital_admissions": 34,
+      "pediatric_pressure_index": 0.5636529793747,
+      "school_absenteeism_proxy": 0.4238378671393312,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-01T00:00:00",
+      "pathogen": "Influenza",
+      "test_positivity": 0.0913464633695313,
+      "new_hospital_admissions": 75,
+      "pediatric_pressure_index": 0.3140912042597387,
+      "school_absenteeism_proxy": 0.2103146150315017,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-01T00:00:00",
+      "pathogen": "COVID-19",
+      "test_positivity": 0.136665452291518,
+      "new_hospital_admissions": 39,
+      "pediatric_pressure_index": 0.392933429445533,
+      "school_absenteeism_proxy": 0.2779616039081325,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    },
+    {
+      "zone": "South",
+      "week_start": "2026-02-01T00:00:00",
+      "pathogen": "Other respiratory",
+      "test_positivity": 0.0229638117700224,
+      "new_hospital_admissions": 26,
+      "pediatric_pressure_index": 0.1927804738727971,
+      "school_absenteeism_proxy": 0.1570647449667165,
+      "source_category": "HYBRID_OPEN_SYNTHETIC"
+    }
+  ]
+}

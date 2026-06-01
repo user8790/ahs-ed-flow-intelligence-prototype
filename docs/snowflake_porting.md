@@ -21,6 +21,10 @@
 - `lineage_and_refresh_tables.sql`
 - `hybrid_open_internal_features.sql`
 - `simulation_feature_tables.sql`
+- `open_data_streams_and_refresh_log.sql`
+- `lineage_and_governance_tables.sql`
+- `streamlit_in_snowflake_setup.sql`
+- `container_runtime_option.sql`
 
 ## Day-One Activation Sequence
 
@@ -43,3 +47,9 @@ The app keeps dependencies Snowflake-friendly: Streamlit, pandas, numpy, scipy, 
 ## Secure Handling
 
 No PHI should leave governed Snowflake views. External model calls must be disabled unless approved for the exact data class and audited in `GOVERNANCE.MODEL_CALL_AUDIT_LOG`.
+
+## Action Intelligence Branch
+
+The Action Intelligence branch adds a separate Streamlit entry point at `apps/streamlit_action_intelligence/app.py`. Deploy it as a new Streamlit Cloud app or Streamlit in Snowflake object. Do not repoint the existing public prototype deployment.
+
+The shared `ed_flow_kernel` package should be staged or packaged with the app so Snowflake and local/public modes use the same contracts, forecasts, simulation interpretation, and public-artifact exporter.

@@ -27,3 +27,7 @@
 - Facility-level calibration may differ materially by site, season, triage mix, and inpatient capacity.
 - Arrival surges and boarding cascades can create nonlinear effects that simple models understate.
 - MRN/chart mapping errors would be high risk in chart-review workflows.
+
+## Action Intelligence and Public Showcase Limits
+
+The public Vercel showcase is visionary and public/synthetic only. It must not be interpreted as a live AHS operational dashboard. The Action Intelligence Streamlit app is also synthetic/local until deployed inside a governed Snowflake environment with approved internal data, RBAC, audit logging, and validation.

@@ -1,0 +1,902 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.190869+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "HYBRID_OPEN_SYNTHETIC",
+    "MODEL_OUTPUT"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included.",
+    "Forecast/scenario output is explanatory decision support and requires internal validation."
+  ],
+  "payload": {
+    "forecast": [
+      {
+        "timestamp": "2026-05-31T10:00:00",
+        "p10_pressure": 0.36248543866817695,
+        "p50_pressure": 0.43611336872897877,
+        "p90_pressure": 0.5097412987897806,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T11:00:00",
+        "p10_pressure": 0.41404473923157414,
+        "p50_pressure": 0.48767266929237596,
+        "p90_pressure": 0.5613005993531778,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T12:00:00",
+        "p10_pressure": 0.4574679623679103,
+        "p50_pressure": 0.5310958924287121,
+        "p90_pressure": 0.604723822489514,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T13:00:00",
+        "p10_pressure": 0.5098598588775264,
+        "p50_pressure": 0.5834877889383282,
+        "p90_pressure": 0.65711571899913,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T14:00:00",
+        "p10_pressure": 0.3627681673554408,
+        "p50_pressure": 0.43639609741624263,
+        "p90_pressure": 0.5100240274770445,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T15:00:00",
+        "p10_pressure": 0.481682896214223,
+        "p50_pressure": 0.5553108262750248,
+        "p90_pressure": 0.6289387563358266,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T16:00:00",
+        "p10_pressure": 0.39661160324292444,
+        "p50_pressure": 0.47023953330372625,
+        "p90_pressure": 0.5438674633645281,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T17:00:00",
+        "p10_pressure": 0.46272677466156686,
+        "p50_pressure": 0.5363547047223687,
+        "p90_pressure": 0.6099826347831705,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T18:00:00",
+        "p10_pressure": 0.44304334729568384,
+        "p50_pressure": 0.5166712773564857,
+        "p90_pressure": 0.5902992074172875,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T19:00:00",
+        "p10_pressure": 0.3758596175095007,
+        "p50_pressure": 0.4494875475703025,
+        "p90_pressure": 0.5231154776311043,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T20:00:00",
+        "p10_pressure": 0.38306880011885924,
+        "p50_pressure": 0.45669673017966106,
+        "p90_pressure": 0.5303246602404629,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T21:00:00",
+        "p10_pressure": 0.34194573468524125,
+        "p50_pressure": 0.41557366474604307,
+        "p90_pressure": 0.4892015948068449,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T22:00:00",
+        "p10_pressure": 0.2956707801018213,
+        "p50_pressure": 0.3692987101626231,
+        "p90_pressure": 0.44292664022342493,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T23:00:00",
+        "p10_pressure": 0.43662818232808975,
+        "p50_pressure": 0.5102561123888916,
+        "p90_pressure": 0.5838840424496934,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T00:00:00",
+        "p10_pressure": 0.20940883633513369,
+        "p50_pressure": 0.2830367663959355,
+        "p90_pressure": 0.3566646964567373,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T01:00:00",
+        "p10_pressure": 0.21738737839578626,
+        "p50_pressure": 0.2910153084565881,
+        "p90_pressure": 0.3646432385173899,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T02:00:00",
+        "p10_pressure": 0.20674968621227396,
+        "p50_pressure": 0.2803776162730758,
+        "p90_pressure": 0.3540055463338776,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T03:00:00",
+        "p10_pressure": 0.2695875315165017,
+        "p50_pressure": 0.34321546157730354,
+        "p90_pressure": 0.41684339163810535,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T04:00:00",
+        "p10_pressure": 0.22802569440334053,
+        "p50_pressure": 0.30165362446414234,
+        "p90_pressure": 0.37528155452494416,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T05:00:00",
+        "p10_pressure": 0.2561726697098988,
+        "p50_pressure": 0.32980059977070064,
+        "p90_pressure": 0.40342852983150246,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T06:00:00",
+        "p10_pressure": 0.3648777422812259,
+        "p50_pressure": 0.4385056723420277,
+        "p90_pressure": 0.5121336024028296,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T07:00:00",
+        "p10_pressure": 0.250624859223891,
+        "p50_pressure": 0.3242527892846928,
+        "p90_pressure": 0.3978807193454946,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T08:00:00",
+        "p10_pressure": 0.2625040471812001,
+        "p50_pressure": 0.3361319772420019,
+        "p90_pressure": 0.4097599073028037,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T09:00:00",
+        "p10_pressure": 0.498108062802494,
+        "p50_pressure": 0.5717359928632958,
+        "p90_pressure": 0.6453639229240976,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T10:00:00",
+        "p10_pressure": 0.3625347285384723,
+        "p50_pressure": 0.4361626585992741,
+        "p90_pressure": 0.509790588660076,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T11:00:00",
+        "p10_pressure": 0.41404511192861726,
+        "p50_pressure": 0.4876730419894191,
+        "p90_pressure": 0.5613009720502209,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T12:00:00",
+        "p10_pressure": 0.45746833506495344,
+        "p50_pressure": 0.5310962651257553,
+        "p90_pressure": 0.6047241951865571,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T13:00:00",
+        "p10_pressure": 0.5098602315745694,
+        "p50_pressure": 0.5834881616353712,
+        "p90_pressure": 0.657116091696173,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T14:00:00",
+        "p10_pressure": 0.3628174572257361,
+        "p50_pressure": 0.4364453872865379,
+        "p90_pressure": 0.5100733173473397,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T15:00:00",
+        "p10_pressure": 0.481683268911266,
+        "p50_pressure": 0.5553111989720678,
+        "p90_pressure": 0.6289391290328696,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T16:00:00",
+        "p10_pressure": 0.3966549090706666,
+        "p50_pressure": 0.4702828391314684,
+        "p90_pressure": 0.5439107691922702,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T17:00:00",
+        "p10_pressure": 0.46272714735861,
+        "p50_pressure": 0.5363550774194118,
+        "p90_pressure": 0.6099830074802136,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T18:00:00",
+        "p10_pressure": 0.44304371999272685,
+        "p50_pressure": 0.5166716500535287,
+        "p90_pressure": 0.5902995801143305,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T19:00:00",
+        "p10_pressure": 0.37589294993298755,
+        "p50_pressure": 0.44952087999378937,
+        "p90_pressure": 0.5231488100545912,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T20:00:00",
+        "p10_pressure": 0.38306223892532487,
+        "p50_pressure": 0.4566901689861267,
+        "p90_pressure": 0.5303180990469285,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T21:00:00",
+        "p10_pressure": 0.34192687295979185,
+        "p50_pressure": 0.41555480302059367,
+        "p90_pressure": 0.4891827330813955,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T22:00:00",
+        "p10_pressure": 0.29567115279886436,
+        "p50_pressure": 0.3692990828596662,
+        "p90_pressure": 0.442927012920468,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-01T23:00:00",
+        "p10_pressure": 0.43662855502513276,
+        "p50_pressure": 0.5102564850859346,
+        "p90_pressure": 0.5838844151467364,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T00:00:00",
+        "p10_pressure": 0.20940878309269895,
+        "p50_pressure": 0.28303671315350076,
+        "p90_pressure": 0.3566646432143026,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T01:00:00",
+        "p10_pressure": 0.21738732515335152,
+        "p50_pressure": 0.29101525521415333,
+        "p90_pressure": 0.36464318527495515,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T02:00:00",
+        "p10_pressure": 0.20674963296983923,
+        "p50_pressure": 0.28037756303064104,
+        "p90_pressure": 0.35400549309144286,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T03:00:00",
+        "p10_pressure": 0.26958747827406704,
+        "p50_pressure": 0.34321540833486885,
+        "p90_pressure": 0.41684333839567067,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T04:00:00",
+        "p10_pressure": 0.2280256411609058,
+        "p50_pressure": 0.3016535712217076,
+        "p90_pressure": 0.3752815012825094,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T05:00:00",
+        "p10_pressure": 0.2561726164674641,
+        "p50_pressure": 0.3298005465282659,
+        "p90_pressure": 0.4034284765890677,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T06:00:00",
+        "p10_pressure": 0.3648776890387912,
+        "p50_pressure": 0.438505619099593,
+        "p90_pressure": 0.5121335491603949,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T07:00:00",
+        "p10_pressure": 0.2506248059814563,
+        "p50_pressure": 0.3242527360422581,
+        "p90_pressure": 0.39788066610305994,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T08:00:00",
+        "p10_pressure": 0.26250399393876533,
+        "p50_pressure": 0.33613192399956715,
+        "p90_pressure": 0.40975985406036897,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T09:00:00",
+        "p10_pressure": 0.4981080095600593,
+        "p50_pressure": 0.5717359396208611,
+        "p90_pressure": 0.6453638696816629,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T10:00:00",
+        "p10_pressure": 0.36253467529603756,
+        "p50_pressure": 0.4361626053568394,
+        "p90_pressure": 0.5097905354176412,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T11:00:00",
+        "p10_pressure": 0.41404505868618247,
+        "p50_pressure": 0.4876729887469843,
+        "p90_pressure": 0.5613009188077861,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T12:00:00",
+        "p10_pressure": 0.45746828182251875,
+        "p50_pressure": 0.5310962118833206,
+        "p90_pressure": 0.6047241419441224,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T13:00:00",
+        "p10_pressure": 0.5098601783321347,
+        "p50_pressure": 0.5834881083929365,
+        "p90_pressure": 0.6571160384537383,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T14:00:00",
+        "p10_pressure": 0.3628174039833014,
+        "p50_pressure": 0.43644533404410324,
+        "p90_pressure": 0.510073264104905,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T15:00:00",
+        "p10_pressure": 0.4816832156688313,
+        "p50_pressure": 0.5553111457296331,
+        "p90_pressure": 0.628939075790435,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T16:00:00",
+        "p10_pressure": 0.3966548558282319,
+        "p50_pressure": 0.4702827858890337,
+        "p90_pressure": 0.5439107159498355,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T17:00:00",
+        "p10_pressure": 0.4627270941161752,
+        "p50_pressure": 0.536355024176977,
+        "p90_pressure": 0.6099829542377788,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T18:00:00",
+        "p10_pressure": 0.44304366675029216,
+        "p50_pressure": 0.516671596811094,
+        "p90_pressure": 0.5902995268718958,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T19:00:00",
+        "p10_pressure": 0.3758928966905528,
+        "p50_pressure": 0.44952082675135463,
+        "p90_pressure": 0.5231487568121564,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T20:00:00",
+        "p10_pressure": 0.3830621856828901,
+        "p50_pressure": 0.4566901157436919,
+        "p90_pressure": 0.5303180458044937,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T21:00:00",
+        "p10_pressure": 0.34192681971735717,
+        "p50_pressure": 0.415554749778159,
+        "p90_pressure": 0.4891826798389608,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T22:00:00",
+        "p10_pressure": 0.2956710995564296,
+        "p50_pressure": 0.36929902961723143,
+        "p90_pressure": 0.44292695967803325,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-02T23:00:00",
+        "p10_pressure": 0.43662850178269796,
+        "p50_pressure": 0.5102564318434998,
+        "p90_pressure": 0.5838843619043016,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T00:00:00",
+        "p10_pressure": 0.2094087298502642,
+        "p50_pressure": 0.283036659911066,
+        "p90_pressure": 0.35666458997186784,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T01:00:00",
+        "p10_pressure": 0.21738727191091678,
+        "p50_pressure": 0.2910152019717186,
+        "p90_pressure": 0.3646431320325204,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T02:00:00",
+        "p10_pressure": 0.20674957972740454,
+        "p50_pressure": 0.28037750978820636,
+        "p90_pressure": 0.3540054398490082,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T03:00:00",
+        "p10_pressure": 0.2695874250316323,
+        "p50_pressure": 0.3432153550924341,
+        "p90_pressure": 0.41684328515323593,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T04:00:00",
+        "p10_pressure": 0.22802558791847105,
+        "p50_pressure": 0.30165351797927287,
+        "p90_pressure": 0.3752814480400747,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T05:00:00",
+        "p10_pressure": 0.2561725632250294,
+        "p50_pressure": 0.3298004932858312,
+        "p90_pressure": 0.40342842334663304,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T06:00:00",
+        "p10_pressure": 0.3648776357963565,
+        "p50_pressure": 0.43850556585715833,
+        "p90_pressure": 0.5121334959179602,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T07:00:00",
+        "p10_pressure": 0.2506247527390216,
+        "p50_pressure": 0.3242526827998234,
+        "p90_pressure": 0.3978806128606252,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T08:00:00",
+        "p10_pressure": 0.26250394069633065,
+        "p50_pressure": 0.33613187075713247,
+        "p90_pressure": 0.4097598008179343,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-06-03T09:00:00",
+        "p10_pressure": 0.4981079563176246,
+        "p50_pressure": 0.5717358863784264,
+        "p90_pressure": 0.6453638164392282,
+        "scenario": "baseline"
+      },
+      {
+        "timestamp": "2026-05-31T10:00:00",
+        "p10_pressure": 0.41885192438107843,
+        "p50_pressure": 0.5039289975663349,
+        "p90_pressure": 0.5890060707515915,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T11:00:00",
+        "p10_pressure": 0.4784286961820839,
+        "p50_pressure": 0.5635057693673404,
+        "p90_pressure": 0.6485828425525969,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T12:00:00",
+        "p10_pressure": 0.5286042305161204,
+        "p50_pressure": 0.6136813037013769,
+        "p90_pressure": 0.6987583768866333,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T13:00:00",
+        "p10_pressure": 0.5891430669329817,
+        "p50_pressure": 0.6742201401182382,
+        "p90_pressure": 0.7592972133034948,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T14:00:00",
+        "p10_pressure": 0.41917861737921186,
+        "p50_pressure": 0.5042556905644684,
+        "p90_pressure": 0.5893327637497249,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T15:00:00",
+        "p10_pressure": 0.5565845865755347,
+        "p50_pressure": 0.6416616597607911,
+        "p90_pressure": 0.7267387329460476,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T16:00:00",
+        "p10_pressure": 0.4582847075471992,
+        "p50_pressure": 0.5433617807324557,
+        "p90_pressure": 0.6284388539177121,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T17:00:00",
+        "p10_pressure": 0.5346807881214405,
+        "p50_pressure": 0.619757861306697,
+        "p90_pressure": 0.7048349344919534,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T18:00:00",
+        "p10_pressure": 0.5119365878001627,
+        "p50_pressure": 0.5970136609854192,
+        "p90_pressure": 0.6820907341706757,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T19:00:00",
+        "p10_pressure": 0.434305788032228,
+        "p50_pressure": 0.5193828612174846,
+        "p90_pressure": 0.604459934402741,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T20:00:00",
+        "p10_pressure": 0.44263599853734187,
+        "p50_pressure": 0.5277130717225983,
+        "p90_pressure": 0.6127901449078549,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T21:00:00",
+        "p10_pressure": 0.39511829642879626,
+        "p50_pressure": 0.48019536961405274,
+        "p90_pressure": 0.5652724427993092,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T22:00:00",
+        "p10_pressure": 0.3416475864076545,
+        "p50_pressure": 0.426724659592911,
+        "p90_pressure": 0.5118017327781675,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-05-31T23:00:00",
+        "p10_pressure": 0.5045238646801077,
+        "p50_pressure": 0.5896009378653642,
+        "p90_pressure": 0.6746780110506206,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T00:00:00",
+        "p10_pressure": 0.24197191038524696,
+        "p50_pressure": 0.32704898357050344,
+        "p90_pressure": 0.41212605675576,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T01:00:00",
+        "p10_pressure": 0.251191115736331,
+        "p50_pressure": 0.3362681889215875,
+        "p90_pressure": 0.42134526210684403,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T02:00:00",
+        "p10_pressure": 0.23889926241828255,
+        "p50_pressure": 0.32397633560353906,
+        "p90_pressure": 0.40905340878879554,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T03:00:00",
+        "p10_pressure": 0.3115083926673177,
+        "p50_pressure": 0.3965854658525742,
+        "p90_pressure": 0.48166253903783074,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T04:00:00",
+        "p10_pressure": 0.26348368988306,
+        "p50_pressure": 0.34856076306831646,
+        "p90_pressure": 0.433637836253573,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T05:00:00",
+        "p10_pressure": 0.29600751984978807,
+        "p50_pressure": 0.3810845930350446,
+        "p90_pressure": 0.4661616662203011,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T06:00:00",
+        "p10_pressure": 0.4216162312059565,
+        "p50_pressure": 0.506693304391213,
+        "p90_pressure": 0.5917703775764696,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T07:00:00",
+        "p10_pressure": 0.28959702483320604,
+        "p50_pressure": 0.3746740980184625,
+        "p90_pressure": 0.45975117120371906,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T08:00:00",
+        "p10_pressure": 0.3033234265178767,
+        "p50_pressure": 0.3884004997031332,
+        "p90_pressure": 0.47347757288838965,
+        "scenario": "combined public stress"
+      },
+      {
+        "timestamp": "2026-06-01T09:00:00",
+        "p10_pressure": 0.5755638665682817,
+        "p50_pressure": 0.6606409397535383,
+        "p90_pressure": 0.7457180129387948,
+        "scenario": "combined public stress"
+      }
+    ],
+    "impact": [
+      {
+        "metric": "expected_pia_wait_mins",
+        "baseline": 87.04525563246855,
+        "scenario": 108.90250431886874,
+        "scenario_delta": 21.857248686400183,
+        "change_label": "+21.86",
+        "operational_interpretation": "PIA delay may move downstream bottlenecks unless physician capacity shifts."
+      },
+      {
+        "metric": "expected_arrivals",
+        "baseline": 41.845054627362266,
+        "scenario": 42.753960621917095,
+        "scenario_delta": 0.9089059945548286,
+        "change_label": "+0.91",
+        "operational_interpretation": "Higher arrivals increase front-end and rooming pressure."
+      },
+      {
+        "metric": "public_pressure_index",
+        "baseline": 0.4272700750995808,
+        "scenario": 0.4937105717775656,
+        "scenario_delta": 0.0664404966779848,
+        "change_label": "+0.07",
+        "operational_interpretation": "Scenario changes this operational signal."
+      },
+      {
+        "metric": "expected_lwbs_risk",
+        "baseline": 0.07418160600796647,
+        "scenario": 0.11674526861330788,
+        "scenario_delta": 0.042563662605341404,
+        "change_label": "+0.04",
+        "operational_interpretation": "LWBS risk rises with waiting time and crowding."
+      }
+    ],
+    "affected_stages": [
+      {
+        "stage": "diagnostics / consult",
+        "risk_score": 0.7837105717775656,
+        "why_it_matters": "higher acuity mix can increase diagnostic and consult load",
+        "watch_point": "diagnostic TAT and consult queue age",
+        "operational_lever": "pre-brief diagnostics/consult service constraints",
+        "confidence": "wide"
+      },
+      {
+        "stage": "arrival / first contact",
+        "risk_score": 0.7112105717775656,
+        "why_it_matters": "external arrivals may rise or cluster",
+        "watch_point": "front-door triage pace and EMS offload",
+        "operational_lever": "match triage/front-door staffing to arrival pulses",
+        "confidence": "wide"
+      },
+      {
+        "stage": "boarding",
+        "risk_score": 0.6862105717775656,
+        "why_it_matters": "front-end gains may stall if bed release is binding",
+        "watch_point": "DTA boarders and bed assignment age",
+        "operational_lever": "pending discharge and bed-cleaning acceleration",
+        "confidence": "wide"
+      },
+      {
+        "stage": "physician initial assessment",
+        "risk_score": 0.6337105717775656,
+        "why_it_matters": "PIA becomes sensitive when roomed-not-seen grows",
+        "watch_point": "PIA queue and physician utilization",
+        "operational_lever": "rapid assessment zone or shifted physician schedule",
+        "confidence": "moderate"
+      },
+      {
+        "stage": "waiting room",
+        "risk_score": 0.5987105717775656,
+        "why_it_matters": "wait-room crowding increases LWBS hazard",
+        "watch_point": "LWBS risk and reassessment intervals",
+        "operational_lever": "fast-track CTAS 4/5 and reassessment cadence",
+        "confidence": "moderate"
+      },
+      {
+        "stage": "rooming",
+        "risk_score": 0.5812105717775656,
+        "why_it_matters": "respiratory/heat patients may need spaces for longer",
+        "watch_point": "room turnover and respiratory cohort capacity",
+        "operational_lever": "cohort respiratory pathway and room turnover focus",
+        "confidence": "moderate"
+      }
+    ],
+    "ranking": [
+      {
+        "scenario": "access disruption response",
+        "expected_pressure_effect": 0.01749999999999985,
+        "uncertainty_penalty": 0.11884999999999996,
+        "implementation_friction": 0.25,
+        "impact_adjusted_score": -0.1388500000000001,
+        "interpretation": "Best when weather, traffic, or events may alter arrivals and staffing access."
+      },
+      {
+        "scenario": "respiratory pathway",
+        "expected_pressure_effect": 0.04800000000000004,
+        "uncertainty_penalty": 0.12556,
+        "implementation_friction": 0.45,
+        "impact_adjusted_score": -0.14505999999999997,
+        "interpretation": "Best when pediatric respiratory pressure is the dominant public driver."
+      },
+      {
+        "scenario": "fast-track capacity",
+        "expected_pressure_effect": 0.03499999999999992,
+        "uncertainty_penalty": 0.09769999999999998,
+        "implementation_friction": 0.55,
+        "impact_adjusted_score": -0.14520000000000005,
+        "interpretation": "Best when CTAS 4/5 rooming and PIA queues are binding before boarding."
+      },
+      {
+        "scenario": "bed release acceleration",
+        "expected_pressure_effect": 0.04899999999999993,
+        "uncertainty_penalty": 0.09077999999999999,
+        "implementation_friction": 0.72,
+        "impact_adjusted_score": -0.14978000000000005,
+        "interpretation": "Best when boarding dominates total delay and front-end gains would otherwise stall."
+      }
+    ],
+    "huddle": [
+      "Combined public pressure scenario: expected operational pressure is moderate-to-wide confidence.",
+      "expected_pia_wait_mins: +21.86.",
+      "Watch first: diagnostic TAT and consult queue age.",
+      "Consider lever: pre-brief diagnostics/consult service constraints.",
+      "Check internal data, staffing state, bed board, and clinical context before acting."
+    ]
+  }
+}

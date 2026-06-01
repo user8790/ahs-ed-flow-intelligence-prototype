@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.213233+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "SYNTHETIC_DATA",
+    "MODEL_OUTPUT"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included.",
+    "Synthetic future-state demonstration; not operational truth.",
+    "Forecast/scenario output is explanatory decision support and requires internal validation."
+  ],
+  "payload": [
+    {
+      "scenario": "physician +1",
+      "median_los_hrs": 6.908986464267913,
+      "p90_wait_hrs": 4.144938087569449,
+      "boarding_hours": 66.58224115686187,
+      "expected_los_improvement_hrs": 3.001436601846014,
+      "uncertainty_penalty": 0.7634068938007544,
+      "implementation_friction": 0.55,
+      "impact_adjusted_score": 2.656255223085863,
+      "meaningful": "yes"
+    },
+    {
+      "scenario": "diagnostic turnaround",
+      "median_los_hrs": 9.741280044259272,
+      "p90_wait_hrs": 12.07936402834905,
+      "boarding_hours": 55.39455193020191,
+      "expected_los_improvement_hrs": 0.16914302185465502,
+      "uncertainty_penalty": 0.8932580867361758,
+      "implementation_friction": 0.45,
+      "impact_adjusted_score": -0.16700859549258015,
+      "meaningful": "yes"
+    },
+    {
+      "scenario": "baseline",
+      "median_los_hrs": 9.910423066113927,
+      "p90_wait_hrs": 12.07936402834905,
+      "boarding_hours": 55.39455193020191,
+      "expected_los_improvement_hrs": 0.0,
+      "uncertainty_penalty": 0.8875281646025694,
+      "implementation_friction": 0.0,
+      "impact_adjusted_score": -0.1775056329205139,
+      "meaningful": "watch/limited"
+    },
+    {
+      "scenario": "triage nurse +1",
+      "median_los_hrs": 9.828941773286227,
+      "p90_wait_hrs": 11.99416997694014,
+      "boarding_hours": 55.39455193020191,
+      "expected_los_improvement_hrs": 0.0814812928277,
+      "uncertainty_penalty": 0.8895759877271241,
+      "implementation_friction": 0.35,
+      "impact_adjusted_score": -0.21893390471772484,
+      "meaningful": "watch/limited"
+    },
+    {
+      "scenario": "boarding reduction",
+      "median_los_hrs": 9.795172471828243,
+      "p90_wait_hrs": 12.07936402834905,
+      "boarding_hours": 39.41884740105003,
+      "expected_los_improvement_hrs": 0.1152505942856834,
+      "uncertainty_penalty": 0.8439971699040575,
+      "implementation_friction": 0.7,
+      "impact_adjusted_score": -0.2985488396951281,
+      "meaningful": "watch/limited"
+    },
+    {
+      "scenario": "consult turnaround",
+      "median_los_hrs": 9.878712885845864,
+      "p90_wait_hrs": 12.07936402834905,
+      "boarding_hours": 55.39455193020191,
+      "expected_los_improvement_hrs": 0.03171018026806216,
+      "uncertainty_penalty": 0.8704159441023019,
+      "implementation_friction": 0.5,
+      "impact_adjusted_score": -0.31737300855239825,
+      "meaningful": "watch/limited"
+    },
+    {
+      "scenario": "fast-track CTAS 4/5",
+      "median_los_hrs": 9.910423066113927,
+      "p90_wait_hrs": 12.07936402834905,
+      "boarding_hours": 55.39455193020191,
+      "expected_los_improvement_hrs": 0.0,
+      "uncertainty_penalty": 0.8875281646025694,
+      "implementation_friction": 0.5,
+      "impact_adjusted_score": -0.3525056329205139,
+      "meaningful": "watch/limited"
+    }
+  ]
+}

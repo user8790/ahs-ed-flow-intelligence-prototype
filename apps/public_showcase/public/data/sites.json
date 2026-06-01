@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:09.957888+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "OPEN_DATA",
+    "HYBRID_OPEN_SYNTHETIC"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included."
+  ],
+  "payload": [
+    {
+      "facility": "Stollery Children's Hospital",
+      "zone": "Edmonton",
+      "city": "Edmonton",
+      "latitude": 53.536,
+      "longitude": -113.5,
+      "peer_group": "Pediatric Academic",
+      "pediatric_site": true,
+      "public_pressure_index": 0.43972455742584476,
+      "estimated_wait_mins": 132
+    },
+    {
+      "facility": "Alberta Children's Hospital",
+      "zone": "Calgary",
+      "city": "Calgary",
+      "latitude": 51.074,
+      "longitude": -114.148,
+      "peer_group": "Pediatric Academic",
+      "pediatric_site": true,
+      "public_pressure_index": 0.3783467526618075,
+      "estimated_wait_mins": 107
+    },
+    {
+      "facility": "Royal Alexandra Hospital",
+      "zone": "Edmonton",
+      "city": "Edmonton",
+      "latitude": 53.558,
+      "longitude": -113.497,
+      "peer_group": "Urban Tertiary",
+      "pediatric_site": false,
+      "public_pressure_index": 0.4919924167235883,
+      "estimated_wait_mins": 137
+    },
+    {
+      "facility": "Foothills Medical Centre",
+      "zone": "Calgary",
+      "city": "Calgary",
+      "latitude": 51.065,
+      "longitude": -114.133,
+      "peer_group": "Urban Tertiary",
+      "pediatric_site": false,
+      "public_pressure_index": 0.39813058050850014,
+      "estimated_wait_mins": 122
+    },
+    {
+      "facility": "Red Deer Regional Hospital Centre",
+      "zone": "Central",
+      "city": "Red Deer",
+      "latitude": 52.269,
+      "longitude": -113.811,
+      "peer_group": "Regional",
+      "pediatric_site": false,
+      "public_pressure_index": 0.3350848515400683,
+      "estimated_wait_mins": 131
+    },
+    {
+      "facility": "Northeast Community Health Centre",
+      "zone": "Edmonton",
+      "city": "Edmonton",
+      "latitude": 53.596,
+      "longitude": -113.407,
+      "peer_group": "Urban Community",
+      "pediatric_site": false,
+      "public_pressure_index": 0.3799679607582578,
+      "estimated_wait_mins": 125
+    },
+    {
+      "facility": "South Calgary Ambulatory Care Centre",
+      "zone": "Calgary",
+      "city": "Calgary",
+      "latitude": 50.9,
+      "longitude": -114.063,
+      "peer_group": "Ambulatory",
+      "pediatric_site": false,
+      "public_pressure_index": 0.3132424383046388,
+      "estimated_wait_mins": 39
+    }
+  ]
+}

@@ -58,3 +58,7 @@ Interpretable empirical methods should be the baseline. AI-generated narratives 
 - Scenario outputs include uncertainty, implementation friction, watch-points, levers, and deterministic huddle briefs.
 - Simulation outputs include resource utilization, bottleneck migration, and pressure-to-action questions.
 - Lineage rows include grain, geography, downstream usage, activation status, internal activation needs, and blockers.
+
+## Action Intelligence and Showcase Boundary
+
+The public showcase consumes only exported static artifacts. The exporter validates the artifact envelope and applies public-safe redaction of internal identifier column names before writing JSON. The Action Intelligence app keeps human-in-the-loop framing visible in every scenario and simulation workflow.

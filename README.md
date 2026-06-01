@@ -6,6 +6,14 @@ Live app: [ahs-ed-flow-intelligence.streamlit.app](https://ahs-ed-flow-intellige
 
 This is an internal-capability prototype, not a vendor recommendation. It combines ED flow simulation, public/open contextual pressure signals, constrained `TB_ED_VISITS` analytics, MRN chart-summary workflow design, validation/governance, and Snowflake transfer readiness. It uses synthetic local data only and does not contain real PHI.
 
+Branch-only Action Intelligence work adds two new surfaces without repointing the existing live app:
+
+- Internal/Snowflake-portable app: **AHS ED Flow Action Intelligence** at `apps/streamlit_action_intelligence/app.py`
+- Public showcase: **Reimagining Alberta ED Flow Intelligence** at `apps/public_showcase`
+- Shared computation: `packages/ed_flow_kernel`
+
+The existing production Streamlit app remains on `main` with entry point `app.py`.
+
 ## Quick Start
 
 ```powershell
@@ -19,6 +27,28 @@ streamlit run app.py
 ```
 
 The first app run creates local CSVs under `data/synthetic/` and `data/open/` if they are missing.
+
+Run the new Action Intelligence app:
+
+```powershell
+streamlit run apps/streamlit_action_intelligence/app.py
+```
+
+Export public showcase artifacts:
+
+```powershell
+python -m ed_flow_kernel.exports.public_showcase_export --out apps/public_showcase/public/data --mode public_demo --seed 20260601
+```
+
+Run the public showcase:
+
+```powershell
+cd apps/public_showcase
+npm install
+npm run typecheck
+npm run build
+npm run dev
+```
 
 ## V2 App Surface
 
@@ -62,14 +92,27 @@ The app has 16 working tabs:
 ```text
 app.py
 config/data_sources.yml
-src/ed_flow/                    # v1 core, still used by v2
-src/ed_flow_intelligence/       # v2 public/open-data, lineage, forecasting, SQL helpers
+src/ed_flow/                    # original core, preserved for compatibility
+src/ed_flow_intelligence/       # vNext public/open-data, lineage, forecasting, SQL helpers
+packages/ed_flow_kernel/        # shared UI-independent capability kernel
+apps/streamlit_action_intelligence/
+apps/public_showcase/
 sql/snowflake/                  # Snowflake transfer templates
 tests/
 docs/
 data/synthetic/
 data/open/
 ```
+
+## Restore Point
+
+Before Action Intelligence work began, the colleague-portable state was preserved:
+
+- Restore branch: `restore/pre-action-intelligence-and-showcase-20260601-0726`
+- Restore tag: `restore-pre-action-intelligence-and-showcase-20260601-0726`
+- Bundle: `C:\Users\carrc\OneDrive\Documents\ahs-ed-flow-intelligence-restore-20260601-0726\repo.bundle`
+- Files backup: `C:\Users\carrc\OneDrive\Documents\ahs-ed-flow-intelligence-restore-20260601-0726\repo-files\`
+- Manifest: [restore_point_pre_action_intelligence_and_showcase_20260601_0726.md](docs/restore_point_pre_action_intelligence_and_showcase_20260601_0726.md)
 
 ## Snowflake Direction
 
@@ -100,7 +143,11 @@ Do not add real MRNs, PHNs, ULIs, birthdates, postal codes, patient IDs, provide
 ```powershell
 python -m pytest
 python -m compileall src app.py
+python -m compileall app.py apps packages src
 python -c "import app; print('app import ok')"
+cd apps/public_showcase
+npm run typecheck
+npm run build
 ```
 
 ## Known Limits

@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.228149+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "SYNTHETIC_DATA",
+    "MODEL_OUTPUT"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included.",
+    "Synthetic future-state demonstration; not operational truth."
+  ],
+  "payload": {
+    "label": "Synthetic future-state demonstration",
+    "pressure_cards": [
+      {
+        "label": "Alberta-wide pressure",
+        "value": 0.3909270797032437,
+        "trend": "+",
+        "confidence": "moderate",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "interpretation": "Province-level external stress context; not internal wait-time truth.",
+        "display_value": "0.39"
+      },
+      {
+        "label": "Selected site pressure",
+        "value": 0.43972455742584476,
+        "trend": "+",
+        "confidence": "moderate",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "interpretation": "Best current public/synthetic site pressure signal.",
+        "display_value": "0.44"
+      },
+      {
+        "label": "Pediatric pressure",
+        "value": 0.5056832410397214,
+        "trend": "+",
+        "confidence": "moderate",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "interpretation": "Pediatric site and respiratory context weighted pressure.",
+        "display_value": "0.51"
+      },
+      {
+        "label": "Respiratory surge",
+        "value": 0.3716266929611506,
+        "trend": "+",
+        "confidence": "moderate",
+        "lineage": "OPEN_DATA",
+        "interpretation": "RSV/influenza/COVID/syndromic synthetic-public composite.",
+        "display_value": "0.37"
+      },
+      {
+        "label": "Smoke/heat/weather stress",
+        "value": 0.3101425180957247,
+        "trend": "flat",
+        "confidence": "moderate",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "interpretation": "AQHI, smoke, heat/cold, wildfire and weather-alert fallback signal.",
+        "display_value": "0.31"
+      },
+      {
+        "label": "Travel/access friction",
+        "value": 0.585383161949285,
+        "trend": "flat",
+        "confidence": "moderate",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "interpretation": "Road, traffic, transit, event and weather access friction proxy.",
+        "display_value": "0.59"
+      },
+      {
+        "label": "Public wait-time signal",
+        "value": 132.0,
+        "trend": "+",
+        "confidence": "moderate",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "interpretation": "Synthetic fallback shaped like public posted wait-time signal.",
+        "display_value": "132 min"
+      },
+      {
+        "label": "Internal/synthetic flow state",
+        "value": 6.651286016527777,
+        "trend": "flat",
+        "confidence": "wide",
+        "lineage": "SYNTHETIC_DATA",
+        "interpretation": "Synthetic TB_ED_VISITS-shaped operational preview.",
+        "display_value": "6.7h LOS"
+      }
+    ],
+    "resource_utilization": [
+      {
+        "resource_pool": "ED rooms",
+        "utilization_index": 1.5,
+        "interpretation": "treatment-space occupancy",
+        "status": "binding"
+      },
+      {
+        "resource_pool": "physician capacity",
+        "utilization_index": 1.5,
+        "interpretation": "initial assessment capacity",
+        "status": "binding"
+      },
+      {
+        "resource_pool": "triage nurses",
+        "utilization_index": 0.8230093440711292,
+        "interpretation": "front-end triage capacity",
+        "status": "tight"
+      },
+      {
+        "resource_pool": "diagnostics",
+        "utilization_index": 0.7566802588442584,
+        "interpretation": "diagnostic turnaround",
+        "status": "tight"
+      },
+      {
+        "resource_pool": "consult capacity",
+        "utilization_index": 0.5235766409049392,
+        "interpretation": "consult turnaround",
+        "status": "available"
+      },
+      {
+        "resource_pool": "inpatient bed release",
+        "utilization_index": 0.4638220744412757,
+        "interpretation": "boarding and bed assignment",
+        "status": "available"
+      },
+      {
+        "resource_pool": "EMS offload",
+        "utilization_index": 0.11893180148540423,
+        "interpretation": "EMS offload process",
+        "status": "available"
+      }
+    ]
+  }
+}

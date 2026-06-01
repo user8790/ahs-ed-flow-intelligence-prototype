@@ -1,0 +1,355 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.235710+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "HYBRID_OPEN_SYNTHETIC",
+    "MODEL_OUTPUT"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included."
+  ],
+  "payload": {
+    "holdout_validation": [
+      {
+        "model": "seasonal_naive",
+        "mae": 0.12561374795417343,
+        "rmse": 0.13932484114157548,
+        "wape": 0.33965242964022896,
+        "mase": 1.1519699812382738,
+        "interval_coverage": 0.6153846153846154,
+        "top_decile_surge_recall": 1.0
+      },
+      {
+        "model": "moving_average",
+        "mae": 0.16346153846153846,
+        "rmse": 0.1788619918017603,
+        "wape": 0.44199070241456523,
+        "mase": 1.4990619136960606,
+        "interval_coverage": 0.6923076923076923,
+        "top_decile_surge_recall": 1.0
+      },
+      {
+        "model": "regression_ridge",
+        "mae": 6.662429200439306e-06,
+        "rmse": 7.383165763161527e-06,
+        "wape": 1.801482960337093e-05,
+        "mase": 6.10993507162239e-05,
+        "interval_coverage": 0.7692307692307693,
+        "top_decile_surge_recall": 1.0
+      },
+      {
+        "model": "random_forest",
+        "mae": 0.013989909506864252,
+        "rmse": 0.016481208742419956,
+        "wape": 0.03782791956965494,
+        "mase": 0.1282977066970966,
+        "interval_coverage": 0.7692307692307693,
+        "top_decile_surge_recall": 1.0
+      },
+      {
+        "model": "ensemble",
+        "mae": 0.05752182036000143,
+        "rmse": 0.06414300643439802,
+        "wape": 0.1555357304499102,
+        "mase": 0.5275171818380621,
+        "interval_coverage": 0.6923076923076923,
+        "top_decile_surge_recall": 1.0
+      }
+    ],
+    "model_registry": [
+      {
+        "model_name": "seasonal_naive",
+        "target": "external_pressure_index",
+        "features": [
+          "hour",
+          "day_of_week",
+          "is_weekend",
+          "estimated_wait_mins",
+          "environmental_stress_index",
+          "travel_friction_index",
+          "weather_alert_count",
+          "pediatric_pressure_index",
+          "school_in_session"
+        ],
+        "training_window": "2026-05-29 09:00:00 to 2026-05-31 09:00:00",
+        "validation_window": "last chronological holdout slice",
+        "metrics": {
+          "mae": 0.12561374795417343,
+          "rmse": 0.13932484114157548,
+          "wape": 0.33965242964022896,
+          "mase": 1.1519699812382738,
+          "interval_coverage": 0.6153846153846154,
+          "top_decile_surge_recall": 1.0
+        },
+        "limitations": "Baseline repeats recent seasonality; useful as a humility check.",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "capability_tier": "public prototype capability"
+      },
+      {
+        "model_name": "moving_average",
+        "target": "external_pressure_index",
+        "features": [
+          "hour",
+          "day_of_week",
+          "is_weekend",
+          "estimated_wait_mins",
+          "environmental_stress_index",
+          "travel_friction_index",
+          "weather_alert_count",
+          "pediatric_pressure_index",
+          "school_in_session"
+        ],
+        "training_window": "2026-05-29 09:00:00 to 2026-05-31 09:00:00",
+        "validation_window": "last chronological holdout slice",
+        "metrics": {
+          "mae": 0.16346153846153846,
+          "rmse": 0.1788619918017603,
+          "wape": 0.44199070241456523,
+          "mase": 1.4990619136960606,
+          "interval_coverage": 0.6923076923076923,
+          "top_decile_surge_recall": 1.0
+        },
+        "limitations": "Smooths recent pressure; slow to detect shocks.",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "capability_tier": "public prototype capability"
+      },
+      {
+        "model_name": "regression_ridge",
+        "target": "external_pressure_index",
+        "features": [
+          "hour",
+          "day_of_week",
+          "is_weekend",
+          "estimated_wait_mins",
+          "environmental_stress_index",
+          "travel_friction_index",
+          "weather_alert_count",
+          "pediatric_pressure_index",
+          "school_in_session"
+        ],
+        "training_window": "2026-05-29 09:00:00 to 2026-05-31 09:00:00",
+        "validation_window": "last chronological holdout slice",
+        "metrics": {
+          "mae": 6.662429200439306e-06,
+          "rmse": 7.383165763161527e-06,
+          "wape": 1.801482960337093e-05,
+          "mase": 6.10993507162239e-05,
+          "interval_coverage": 0.7692307692307693,
+          "top_decile_surge_recall": 1.0
+        },
+        "limitations": "Interpretable linear approximation on synthetic/public fallback features.",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "capability_tier": "public prototype capability"
+      },
+      {
+        "model_name": "random_forest",
+        "target": "external_pressure_index",
+        "features": [
+          "hour",
+          "day_of_week",
+          "is_weekend",
+          "estimated_wait_mins",
+          "environmental_stress_index",
+          "travel_friction_index",
+          "weather_alert_count",
+          "pediatric_pressure_index",
+          "school_in_session"
+        ],
+        "training_window": "2026-05-29 09:00:00 to 2026-05-31 09:00:00",
+        "validation_window": "last chronological holdout slice",
+        "metrics": {
+          "mae": 0.013989909506864252,
+          "rmse": 0.016481208742419956,
+          "wape": 0.03782791956965494,
+          "mase": 0.1282977066970966,
+          "interval_coverage": 0.7692307692307693,
+          "top_decile_surge_recall": 1.0
+        },
+        "limitations": "Captures nonlinear feature interactions but remains synthetic-demo only locally.",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "capability_tier": "public prototype capability"
+      },
+      {
+        "model_name": "ensemble",
+        "target": "external_pressure_index",
+        "features": [
+          "hour",
+          "day_of_week",
+          "is_weekend",
+          "estimated_wait_mins",
+          "environmental_stress_index",
+          "travel_friction_index",
+          "weather_alert_count",
+          "pediatric_pressure_index",
+          "school_in_session"
+        ],
+        "training_window": "2026-05-29 09:00:00 to 2026-05-31 09:00:00",
+        "validation_window": "last chronological holdout slice",
+        "metrics": {
+          "mae": 0.05752182036000143,
+          "rmse": 0.06414300643439802,
+          "wape": 0.1555357304499102,
+          "mase": 0.5275171818380621,
+          "interval_coverage": 0.6923076923076923,
+          "top_decile_surge_recall": 1.0
+        },
+        "limitations": "Combines baselines and richer models; requires real backtesting before operations use.",
+        "lineage": "HYBRID_OPEN_SYNTHETIC",
+        "capability_tier": "public prototype capability"
+      }
+    ],
+    "rolling_origin": [
+      {
+        "origin_timestamp": "2026-05-30T02:00:00",
+        "target_timestamp": "2026-05-30T03:00:00",
+        "actual": 0.183250886614565,
+        "prediction": 0.33945078934903505,
+        "absolute_error": 0.15619990273447004
+      },
+      {
+        "origin_timestamp": "2026-05-30T06:00:00",
+        "target_timestamp": "2026-05-30T07:00:00",
+        "actual": 0.34282535469967135,
+        "prediction": 0.32908482976214815,
+        "absolute_error": 0.013740524937523202
+      },
+      {
+        "origin_timestamp": "2026-05-30T10:00:00",
+        "target_timestamp": "2026-05-30T11:00:00",
+        "actual": 0.5183572695932884,
+        "prediction": 0.4855934153510323,
+        "absolute_error": 0.03276385424225614
+      },
+      {
+        "origin_timestamp": "2026-05-30T14:00:00",
+        "target_timestamp": "2026-05-30T15:00:00",
+        "actual": 0.5981445036358416,
+        "prediction": 0.543416276941017,
+        "absolute_error": 0.05472822669482458
+      },
+      {
+        "origin_timestamp": "2026-05-30T18:00:00",
+        "target_timestamp": "2026-05-30T19:00:00",
+        "actual": 0.4704849291677565,
+        "prediction": 0.46663481572958465,
+        "absolute_error": 0.003850113438171876
+      },
+      {
+        "origin_timestamp": "2026-05-30T22:00:00",
+        "target_timestamp": "2026-05-30T23:00:00",
+        "actual": 0.5449530142741394,
+        "prediction": 0.4940014347666677,
+        "absolute_error": 0.050951579507471756
+      },
+      {
+        "origin_timestamp": "2026-05-31T02:00:00",
+        "target_timestamp": "2026-05-31T03:00:00",
+        "actual": 0.34282535469967135,
+        "prediction": 0.323783010271925,
+        "absolute_error": 0.019042344427746327
+      },
+      {
+        "origin_timestamp": "2026-05-31T06:00:00",
+        "target_timestamp": "2026-05-31T07:00:00",
+        "actual": 0.31622961001882033,
+        "prediction": 0.3332193995185187,
+        "absolute_error": 0.01698978949969837
+      }
+    ],
+    "validation_required_in_snowflake": [
+      "facility-level calibration",
+      "holdout by date and season",
+      "admission/LWBS calibration",
+      "simulation replay against observed queues and LOS"
+    ]
+  }
+}

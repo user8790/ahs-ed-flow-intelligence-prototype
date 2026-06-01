@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.205282+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "SYNTHETIC_DATA",
+    "MODEL_OUTPUT"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included.",
+    "Synthetic future-state demonstration; not operational truth."
+  ],
+  "payload": {
+    "uncertainty": [
+      {
+        "metric": "median_wait_hrs",
+        "mean": 7.499940914022358,
+        "p10": 4.7515401800701556,
+        "p90": 10.219956752812568
+      },
+      {
+        "metric": "p90_wait_hrs",
+        "mean": 11.52512539699428,
+        "p10": 7.769482293246205,
+        "p90": 15.364908944770184
+      },
+      {
+        "metric": "median_ed_los_hrs",
+        "mean": 9.90930672351371,
+        "p10": 8.823347514572365,
+        "p90": 10.77414978472009
+      },
+      {
+        "metric": "p90_ed_los_hrs",
+        "mean": 16.351746110765227,
+        "p10": 13.632045695337538,
+        "p90": 19.679579759476205
+      },
+      {
+        "metric": "admitted_within_8_hours",
+        "mean": 0.03627039627039627,
+        "p10": 0.0,
+        "p90": 0.10818181818181831
+      },
+      {
+        "metric": "discharged_within_4_hours",
+        "mean": 0.004870951733897732,
+        "p10": 0.0,
+        "p90": 0.019730392156862748
+      },
+      {
+        "metric": "lwbs_risk",
+        "mean": 0.20614474338539518,
+        "p10": 0.1402963492101652,
+        "p90": 0.278928469509143
+      },
+      {
+        "metric": "boarding_hours",
+        "mean": 55.65864893295308,
+        "p10": 37.148485535208536,
+        "p90": 79.56705509415349
+      }
+    ],
+    "utilization": [
+      {
+        "resource_pool": "ED rooms",
+        "utilization_index": 1.5,
+        "interpretation": "treatment-space occupancy",
+        "status": "binding"
+      },
+      {
+        "resource_pool": "physician capacity",
+        "utilization_index": 1.5,
+        "interpretation": "initial assessment capacity",
+        "status": "binding"
+      },
+      {
+        "resource_pool": "triage nurses",
+        "utilization_index": 0.8230093440711292,
+        "interpretation": "front-end triage capacity",
+        "status": "tight"
+      },
+      {
+        "resource_pool": "diagnostics",
+        "utilization_index": 0.7566802588442584,
+        "interpretation": "diagnostic turnaround",
+        "status": "tight"
+      },
+      {
+        "resource_pool": "consult capacity",
+        "utilization_index": 0.5235766409049392,
+        "interpretation": "consult turnaround",
+        "status": "available"
+      },
+      {
+        "resource_pool": "inpatient bed release",
+        "utilization_index": 0.4638220744412757,
+        "interpretation": "boarding and bed assignment",
+        "status": "available"
+      },
+      {
+        "resource_pool": "EMS offload",
+        "utilization_index": 0.11893180148540423,
+        "interpretation": "EMS offload process",
+        "status": "available"
+      }
+    ],
+    "migration": [
+      {
+        "bottleneck": "Physician initial assessment",
+        "total_delay_hours": 13410.288404131876,
+        "share_of_delay": 0.7424268418754602,
+        "migration_signal": "primary binding or near-binding stage",
+        "operational_question": "Can PIA capacity shift without starving downstream treatment?"
+      },
+      {
+        "bottleneck": "Diagnostics",
+        "total_delay_hours": 2179.2391454714643,
+        "share_of_delay": 0.12064808658143794,
+        "migration_signal": "secondary stage that may bind after intervention",
+        "operational_question": "Can lab/imaging TAT support faster disposition?"
+      },
+      {
+        "bottleneck": "Boarding",
+        "total_delay_hours": 1113.1729786590615,
+        "share_of_delay": 0.061628018287235846,
+        "migration_signal": "secondary stage that may bind after intervention",
+        "operational_question": "Will inpatient bed release improve enough for front-end changes to matter?"
+      },
+      {
+        "bottleneck": "Consult delay",
+        "total_delay_hours": 1005.2671505374833,
+        "share_of_delay": 0.0556540838886605,
+        "migration_signal": "secondary stage that may bind after intervention",
+        "operational_question": "Can specialty response time be shortened for admission-likely routes?"
+      },
+      {
+        "bottleneck": "Rooming wait",
+        "total_delay_hours": 183.54472614027625,
+        "share_of_delay": 0.01016149148061838,
+        "migration_signal": "secondary stage that may bind after intervention",
+        "operational_question": "Can room turnover or fast-track reduce pre-rooming queues?"
+      },
+      {
+        "bottleneck": "EMS offload",
+        "total_delay_hours": 171.2617941389821,
+        "share_of_delay": 0.009481477886586943,
+        "migration_signal": "secondary stage that may bind after intervention",
+        "operational_question": "Can offload process capacity match arrival pulses?"
+      }
+    ],
+    "huddle": [
+      "Simulation scenario: expected operational pressure is moderate confidence.",
+      "median_wait_hrs: p50 7.50; P10-P90 4.75-10.22.",
+      "Watch first: If physician utilization is high, added triage capacity may move queues downstream unless PIA capacity shifts too..",
+      "Consider lever: physician +1.",
+      "Check internal data, staffing state, bed board, and clinical context before acting."
+    ]
+  }
+}

@@ -53,3 +53,7 @@ The Snowflake package now includes:
 - Model provider approval.
 - Audit-log dry run.
 - Drift and failure-mode review.
+
+## Action Intelligence Activation
+
+The new Action Intelligence app consumes internal-ready concepts through the shared kernel. The first internal pilot should activate constrained `TB_ED_VISITS` features, open-data refresh logs, and governance audit tables before adding richer operational feeds such as bed board, staffing, diagnostics, consult queues, EMS, and transfers.

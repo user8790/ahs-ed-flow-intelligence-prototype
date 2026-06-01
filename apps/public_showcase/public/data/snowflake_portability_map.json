@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:09.980839+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "SECURE_INTERNAL_READY_SCHEMA",
+    "SECURE_INTERNAL_PLACEHOLDER"
+  ],
+  "lineage": [
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "expanded_operational_feeds",
+      "category": "SECURE_INTERNAL_PLACEHOLDER",
+      "freshness_state": "secure placeholder",
+      "quality_score": 0.0,
+      "activation_status": "early feasible"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included."
+  ],
+  "payload": [
+    {
+      "component": "Capability kernel",
+      "local_mode": "Python package over synthetic/open cache",
+      "snowflake_mode": "Snowpark-compatible package behind Streamlit in Snowflake"
+    },
+    {
+      "component": "TB_ED_VISITS",
+      "local_mode": "synthetic contract-shaped CSV",
+      "snowflake_mode": "curated internal table with default filters"
+    },
+    {
+      "component": "Chart review",
+      "local_mode": "mock synthetic summaries",
+      "snowflake_mode": "semantic views with governed identifier mapping"
+    },
+    {
+      "component": "Open data",
+      "local_mode": "cached/synthetic public artifacts",
+      "snowflake_mode": "OPEN_DATA schema with tasks and refresh log"
+    },
+    {
+      "component": "Model layer",
+      "local_mode": "interpretable Python only",
+      "snowflake_mode": "Snowpark/Cortex/OpenAI interface only when approved"
+    }
+  ]
+}

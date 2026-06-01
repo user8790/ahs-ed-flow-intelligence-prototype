@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.219458+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "SYNTHETIC_DATA",
+    "MODEL_OUTPUT"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included.",
+    "Synthetic future-state demonstration; not operational truth."
+  ],
+  "payload": {
+    "title": "Synthetic future-state flow canvas",
+    "nodes": [
+      "community demand",
+      "arrival",
+      "triage",
+      "waiting room",
+      "rooming",
+      "physician assessment",
+      "diagnostics",
+      "consults",
+      "disposition",
+      "boarding",
+      "inpatient bed",
+      "discharge or transfer"
+    ],
+    "edges": [
+      {
+        "from": "community demand",
+        "to": "arrival",
+        "pressure_transfer": 0.35
+      },
+      {
+        "from": "arrival",
+        "to": "triage",
+        "pressure_transfer": 0.39
+      },
+      {
+        "from": "triage",
+        "to": "waiting room",
+        "pressure_transfer": 0.43
+      },
+      {
+        "from": "waiting room",
+        "to": "rooming",
+        "pressure_transfer": 0.47
+      },
+      {
+        "from": "rooming",
+        "to": "physician assessment",
+        "pressure_transfer": 0.51
+      },
+      {
+        "from": "physician assessment",
+        "to": "diagnostics",
+        "pressure_transfer": 0.55
+      },
+      {
+        "from": "diagnostics",
+        "to": "consults",
+        "pressure_transfer": 0.59
+      },
+      {
+        "from": "consults",
+        "to": "disposition",
+        "pressure_transfer": 0.63
+      },
+      {
+        "from": "disposition",
+        "to": "boarding",
+        "pressure_transfer": 0.67
+      },
+      {
+        "from": "boarding",
+        "to": "inpatient bed",
+        "pressure_transfer": 0.71
+      },
+      {
+        "from": "inpatient bed",
+        "to": "discharge or transfer",
+        "pressure_transfer": 0.75
+      }
+    ],
+    "label": "Synthetic future-state demonstration"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-01T14:52:10.281075+00:00",
+  "data_mode": "public_demo",
+  "source_categories": [
+    "OPEN_DATA",
+    "HYBRID_OPEN_SYNTHETIC"
+  ],
+  "lineage": [
+    {
+      "source_id": "ahs_public_wait_times",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "hqca_ed_metrics",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_respiratory_dashboard",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "eccc_geomet_weather_alerts",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_aqhi",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_wildfire",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "alberta_511_events",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "municipal_open_data_traffic",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "calgary_transit_gtfs",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "early feasible"
+    },
+    {
+      "source_id": "alberta_general_holidays",
+      "category": "OPEN_DATA",
+      "freshness_state": "synthetic fallback current",
+      "quality_score": 1.0,
+      "activation_status": "public fallback"
+    },
+    {
+      "source_id": "tb_ed_visits",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    },
+    {
+      "source_id": "chart_review_semantic_views",
+      "category": "SECURE_INTERNAL_READY_SCHEMA",
+      "freshness_state": "internal-ready schema",
+      "quality_score": 0.0,
+      "activation_status": "Snowflake day-one ready"
+    }
+  ],
+  "synthetic_flag": true,
+  "caveats": [
+    "Public artifact: open-data-shaped and synthetic demonstration values only.",
+    "No patient-level data, secure AHS data, or private endpoints are included."
+  ],
+  "payload": [
+    {
+      "research_insight": "Public-data external-pressure forecasting",
+      "implemented_capability": "Hybrid Forecasting Lab",
+      "module_or_component": "modeling.forecast_external_pressure",
+      "data_asset_or_chart": "data/open/*.csv",
+      "capability_tier": "Public prototype"
+    },
+    {
+      "research_insight": "Pediatric respiratory surge modelling",
+      "implemented_capability": "Pediatric Respiratory Surge",
+      "module_or_component": "respiratory scenario controls",
+      "data_asset_or_chart": "respiratory_surveillance.csv",
+      "capability_tier": "Public prototype"
+    },
+    {
+      "research_insight": "Weather, smoke, AQHI, wildfire, and heat stress",
+      "implemented_capability": "Smoke, Heat, Weather & Air Quality Stress",
+      "module_or_component": "environmental stress scenario",
+      "data_asset_or_chart": "environmental_stress.csv",
+      "capability_tier": "Public prototype"
+    },
+    {
+      "research_insight": "Travel-friction proxy",
+      "implemented_capability": "Travel Friction & Access Disruption",
+      "module_or_component": "travel scenario controls",
+      "data_asset_or_chart": "travel_friction.csv",
+      "capability_tier": "Public prototype"
+    },
+    {
+      "research_insight": "Scenario workbench combining shocks",
+      "implemented_capability": "Public Scenario Workbench",
+      "module_or_component": "run_combined_public_scenario",
+      "data_asset_or_chart": "public + synthetic capacity",
+      "capability_tier": "Public prototype"
+    },
+    {
+      "research_insight": "Probabilistic forecasting intervals",
+      "implemented_capability": "Hybrid Forecasting Lab",
+      "module_or_component": "P10/P50/P90 ensemble forecast",
+      "data_asset_or_chart": "model validation holdout",
+      "capability_tier": "Public prototype"
+    },
+    {
+      "research_insight": "Forecast-to-simulation pipeline",
+      "implemented_capability": "Simulation Lab",
+      "module_or_component": "external pressure multiplier into ScenarioConfig",
+      "data_asset_or_chart": "synthetic TB_ED_VISITS",
+      "capability_tier": "Day-one Snowflake ready"
+    },
+    {
+      "research_insight": "Lightweight queue simulation",
+      "implemented_capability": "Simulation Lab",
+      "module_or_component": "run_enhanced_simulation_summary",
+      "data_asset_or_chart": "simulation_feature_tables.sql",
+      "capability_tier": "Day-one Snowflake ready"
+    },
+    {
+      "research_insight": "Internal-state boundary",
+      "implemented_capability": "Snowflake Porting",
+      "module_or_component": "lineage and activation status",
+      "data_asset_or_chart": "TB_ED_VISITS + semantic views",
+      "capability_tier": "Snowflake"
+    },
+    {
+      "research_insight": "Validation discipline",
+      "implemented_capability": "Model Validation",
+      "module_or_component": "rolling_origin_backtest and validation metrics",
+      "data_asset_or_chart": "holdout synthetic/public data",
+      "capability_tier": "Day-one Snowflake ready"
+    },
+    {
+      "research_insight": "Operational interpretation",
+      "implemented_capability": "Executive/Scenario/Simulation tabs",
+      "module_or_component": "watchpoints, levers, huddle brief",
+      "data_asset_or_chart": "computed outputs",
+      "capability_tier": "Public and Snowflake"
+    }
+  ]
+}
