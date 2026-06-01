@@ -34,3 +34,9 @@ Preferred deployment is as a page inside the existing SAO Advisory website:
 `https://www.sao-advisory.com/Reimagining-Alberta-ED-Flow-Intelligence`
 
 If that repo is unavailable, deploy the standalone app as `reimagining-alberta-ed-flow-intelligence`. No secrets or environment variables are required.
+
+Current standalone deployment:
+
+`https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
+
+The SAO domain is currently attached in Vercel to an existing project, so this branch does not overwrite it.

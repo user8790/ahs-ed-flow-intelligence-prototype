@@ -1,6 +1,6 @@
 # SAO Advisory Integration Plan
 
-No local SAO Advisory website repository was found during restore-point discovery. The current branch therefore contains a standalone Next.js implementation that can be copied into the SAO site or deployed independently.
+No local SAO Advisory website repository was found during restore-point discovery. Vercel shows `www.sao-advisory.com` attached to an existing project, so this branch does not overwrite that production site. The current branch contains a standalone Next.js implementation that can be copied into the SAO site or deployed independently.
 
 ## Preferred Path
 
@@ -16,3 +16,7 @@ No local SAO Advisory website repository was found during restore-point discover
 ## Fallback Path
 
 Deploy `apps/public_showcase` as a standalone Vercel Hobby project named `reimagining-alberta-ed-flow-intelligence`, then link from SAO Advisory later.
+
+Current fallback deployment:
+
+`https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`

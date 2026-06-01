@@ -20,4 +20,8 @@ Suggested standalone project name:
 
 `reimagining-alberta-ed-flow-intelligence`
 
+Current standalone deployment:
+
+`https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
+
 No environment variables or secrets are required. Avoid paid Vercel features on the Hobby account.

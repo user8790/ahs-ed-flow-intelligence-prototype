@@ -25,6 +25,7 @@ Updated: 2026-06-01
 - Local mode: working with synthetic/public fallback data
 - Secrets required: none for local/public demo
 - Deployment status: ready for new Streamlit Cloud app creation from `feature/action-intelligence-kernel-and-showcase-v4`
+- Current blocker: Streamlit Cloud showed a sign-in screen in the in-app browser. User interactive sign-in is required before creating the new app.
 
 ## Public Showcase
 
@@ -33,7 +34,10 @@ Updated: 2026-06-01
 - Lowercase redirect: configured
 - Preferred SAO URL: `https://www.sao-advisory.com/Reimagining-Alberta-ED-Flow-Intelligence`
 - Local build: passing
-- Deployment status: standalone Vercel-ready; SAO integration awaits repo/project access
+- Standalone Vercel deployment: `https://reimagining-alberta-ed-flow-intelli.vercel.app/Reimagining-Alberta-ED-Flow-Intelligence`
+- Lowercase route verified: `https://reimagining-alberta-ed-flow-intelli.vercel.app/reimagining-alberta-ed-flow-intelligence`
+- Deployment status: standalone Vercel deployed; SAO integration awaits repo/project access
+- Vercel/SAO note: `www.sao-advisory.com` is currently aliased in Vercel to an existing project (`v0-image-analysis...`). This branch did not modify or replace that production site.
 
 ## Validation
 
@@ -44,4 +48,5 @@ Updated: 2026-06-01
 - Next audit: passed with `npm audit --audit-level=moderate`
 - Next build: passed with `npm run build`
 - Browser smoke: passed for local Action Intelligence Streamlit app and public showcase route
-- Vercel deployment: pending authentication/project step or final documented blocker
+- Vercel deployment: completed as standalone fallback
+- Streamlit deployment: blocked pending interactive Streamlit Cloud sign-in
