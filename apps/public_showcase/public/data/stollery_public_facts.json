@@ -1,0 +1,149 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "public_references_and_assumptions",
+  "source_type": "PUBLIC_FACTS",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "facts": [
+      {
+        "topic": "Pediatric ED role",
+        "classification": "Public fact",
+        "value": "The Stollery pediatric emergency department is described by AHS as the only specialized ED and referral centre for children in central and northern Alberta.",
+        "source_title": "AHS Emergency Department, Pediatric service listing",
+        "source_url": "https://www.albertahealthservices.ca/findhealth/Service.aspx?id=1067772&serviceAtFacilityID=1105308",
+        "showcase_implication": "The public demo is Stollery-only and pediatric-referral oriented."
+      },
+      {
+        "topic": "Location",
+        "classification": "Public fact",
+        "value": "8440 112 Street, Edmonton, Alberta.",
+        "source_title": "AHS Emergency Department, Pediatric service listing",
+        "source_url": "https://www.albertahealthservices.ca/findhealth/Service.aspx?id=1067772&serviceAtFacilityID=1105308",
+        "showcase_implication": "Open-data context focuses on Edmonton weather, access, AQHI, and Edmonton Zone ED signals."
+      },
+      {
+        "topic": "Service hours",
+        "classification": "Public fact",
+        "value": "24-hour pediatric emergency service.",
+        "source_title": "AHS Emergency Department, Pediatric service listing",
+        "source_url": "https://www.albertahealthservices.ca/findhealth/Service.aspx?id=1067772&serviceAtFacilityID=1105308",
+        "showcase_implication": "Forecasts use continuous hourly demand and staffing assumptions."
+      },
+      {
+        "topic": "Eligibility",
+        "classification": "Public fact",
+        "value": "Children from birth up to their 18th birthday.",
+        "source_title": "AHS Emergency Department, Pediatric service listing",
+        "source_url": "https://www.albertahealthservices.ca/findhealth/Service.aspx?id=1067772&serviceAtFacilityID=1105308",
+        "showcase_implication": "Synthetic age bands use newborn, neonate, infant, toddler, child, and adolescent cohorts."
+      },
+      {
+        "topic": "Wait-time definition",
+        "classification": "Public fact",
+        "value": "AHS estimated ED wait times represent time from triage assessment to physician assessment, not total hospital time.",
+        "source_title": "AHS estimated emergency department wait times",
+        "source_url": "https://www.albertahealthservices.ca/waittimes/waittimes.aspx",
+        "showcase_implication": "The public wait-time signal is shown as a front-door physician-wait proxy, not ED LOS."
+      },
+      {
+        "topic": "Triage workflow",
+        "classification": "Public fact",
+        "value": "The Stollery ED page says the first person families meet is a triage nurse, followed by registration and either a bed or the waiting room.",
+        "source_title": "AHS Stollery emergency department page",
+        "source_url": "https://www.albertahealthservices.ca/stollery/page14037.aspx",
+        "showcase_implication": "The synthetic flow board starts with triage, registration, waiting, rooming, and physician assessment."
+      },
+      {
+        "topic": "Hospital bed context",
+        "classification": "Public fact",
+        "value": "A public Stollery Foundation article described the Stollery as operating 236 beds across sites in 2021 planning material.",
+        "source_title": "Stollery Foundation stand-alone children's hospital article",
+        "source_url": "https://www.stollerykids.com/media-centre/exploring-a-new-stand-alone-childrens-hospital/",
+        "showcase_implication": "The unit grid uses 236 as public total-capacity context, while many service splits remain synthetic assumptions."
+      },
+      {
+        "topic": "Broad public bed split",
+        "classification": "Public fact",
+        "value": "The same public article listed 161 beds at Walter C. Mackenzie Health Sciences Centre, 69 neonatal intensive care beds at the Royal Alexandra site, and 6 intensive care beds at the Sturgeon Community Hospital NICU.",
+        "source_title": "Stollery Foundation stand-alone children's hospital article",
+        "source_url": "https://www.stollerykids.com/media-centre/exploring-a-new-stand-alone-childrens-hospital/",
+        "showcase_implication": "The synthetic bed grid avoids claiming unsupported exact unit splits beyond this broad public context."
+      },
+      {
+        "topic": "PICU room context",
+        "classification": "Public fact",
+        "value": "The Hiller PICU public article described 16 single-family rooms and noted a previous 12-bed open unit with four beds added in 2017.",
+        "source_title": "Stollery Foundation Hiller PICU article",
+        "source_url": "https://www.stollerykids.com/media-centre/new-stollery-picu/",
+        "showcase_implication": "PICU capacity is represented as a public-fact anchor while operating occupancy remains synthetic."
+      },
+      {
+        "topic": "ED performance reporting",
+        "classification": "Public fact",
+        "value": "AHS publishes a weekly Edmonton ED length-of-stay summary that includes Stollery Children's Hospital.",
+        "source_title": "AHS Weekly Emergency Department Length of Stay Summary - Edmonton",
+        "source_url": "https://www.albertahealthservices.ca/assets/about/data/ahs-data-er-wait-times-edmonton.pdf",
+        "showcase_implication": "Historical public performance context is represented as an open signal, not secure visit-level truth."
+      },
+      {
+        "topic": "Respiratory surveillance",
+        "classification": "Public fact",
+        "value": "Alberta publishes an aggregate respiratory virus dashboard covering viruses such as RSV, influenza, COVID-19, hMPV, parainfluenza, rhinovirus/enterovirus and others.",
+        "source_title": "Government of Alberta respiratory virus dashboard",
+        "source_url": "https://www.alberta.ca/stats/dashboard/respiratory-virus-dashboard.htm?data=data-notes",
+        "showcase_implication": "Respiratory pressure is a public driver blended with synthetic pediatric ED history."
+      },
+      {
+        "topic": "Edmonton AQHI",
+        "classification": "Public fact",
+        "value": "Environment Canada publishes Edmonton Air Quality Health Index observations and forecasts.",
+        "source_title": "Environment Canada Edmonton AQHI",
+        "source_url": "https://weather.gc.ca/airquality/pages/abaq-001_e.html",
+        "showcase_implication": "Smoke and air-quality stress are represented as pediatric respiratory demand modifiers."
+      },
+      {
+        "topic": "Road/access events",
+        "classification": "Public fact",
+        "value": "511 Alberta provides road conditions, events, alerts, weather stations, and related API documentation.",
+        "source_title": "511 Alberta API documentation",
+        "source_url": "https://511.alberta.ca/developers/doc",
+        "showcase_implication": "Travel/access friction is treated as a proxy for arrival timing and EMS offload variation, not an EMS feed."
+      }
+    ],
+    "assumptions": [
+      {
+        "topic": "Unit-level staffed beds",
+        "classification": "Synthetic planning assumption",
+        "value": "Specific current staffed-bed counts by pediatric service are not asserted as public facts. They are rounded synthetic planning values constrained to public total-capacity context."
+      },
+      {
+        "topic": "Current ED state",
+        "classification": "Demo-only invented value",
+        "value": "Current queues, wait times, boarders, resource utilization, and bottleneck calls are synthetic and regenerated deterministically from the export seed."
+      },
+      {
+        "topic": "Forecast and scenario outputs",
+        "classification": "Demo-only invented value",
+        "value": "Forecasts and scenario effects are synthetic model demonstrations intended to show product behavior, not operational truth."
+      }
+    ],
+    "source_urls": {
+      "ahs_pediatric_ed": "https://www.albertahealthservices.ca/findhealth/Service.aspx?id=1067772&serviceAtFacilityID=1105308",
+      "ahs_stollery_ed": "https://www.albertahealthservices.ca/stollery/page14037.aspx",
+      "ahs_wait_times": "https://www.albertahealthservices.ca/waittimes/waittimes.aspx",
+      "ahs_weekly_ed_los": "https://www.albertahealthservices.ca/assets/about/data/ahs-data-er-wait-times-edmonton.pdf",
+      "stollery_beds": "https://www.stollerykids.com/media-centre/exploring-a-new-stand-alone-childrens-hospital/",
+      "stollery_picu": "https://www.stollerykids.com/media-centre/new-stollery-picu/",
+      "alberta_respiratory_dashboard": "https://www.alberta.ca/stats/dashboard/respiratory-virus-dashboard.htm?data=data-notes",
+      "edmonton_aqhi": "https://weather.gc.ca/airquality/pages/abaq-001_e.html",
+      "alberta_511": "https://511.alberta.ca/developers/doc"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "deterministic_interpretation",
+  "source_type": "INTERPRETATION",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "baseline": [
+      "Stollery synthetic state is moderate-high pressure with boarding as the primary constraint.",
+      "Public pressure is not a live operations feed; it is context for demand sensitivity.",
+      "The next likely bottleneck is physician initial assessment if evening arrivals rise.",
+      "Highest-yield watch area is inpatient receiving capacity and discharge timing.",
+      "Use scenario comparisons as directional huddle support, not automated decision-making."
+    ],
+    "scenarios": {
+      "winter_respiratory": [
+        "Typical winter respiratory surge: physician wait changes by +61 minutes versus baseline.",
+        "Boarding changes by +182 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Integrated capacity huddle.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "severe_rsv": [
+        "Severe RSV week: physician wait changes by +80 minutes versus baseline.",
+        "Boarding changes by +265 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Integrated capacity huddle.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "smoke_respiratory": [
+        "Smoke plus respiratory sensitivity: physician wait changes by +32 minutes versus baseline.",
+        "Boarding changes by +55 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Integrated capacity huddle.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "snowstorm_access": [
+        "Snowstorm access disruption: physician wait changes by +30 minutes versus baseline.",
+        "Boarding changes by +163 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Integrated capacity huddle.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "boarding_heavy": [
+        "Boarding-heavy day: physician wait changes by +23 minutes versus baseline.",
+        "Boarding changes by +261 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Bed release and discharge timing.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "staffing_shortfall": [
+        "Staffing shortfall: physician wait changes by +20 minutes versus baseline.",
+        "Boarding changes by +0 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Integrated capacity huddle.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "discharge_acceleration": [
+        "Discharge acceleration: physician wait changes by +0 minutes versus baseline.",
+        "Boarding changes by -464 hours over 72 hours; bottleneck shifts toward Rooming and diagnostics.",
+        "Highest-yield lever to test first: Bed release and discharge timing.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "fast_track_expansion": [
+        "Fast-track expansion: physician wait changes by -28 minutes versus baseline.",
+        "Boarding changes by +0 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Fast-track streaming.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "rapid_assessment": [
+        "Rapid assessment intervention: physician wait changes by -56 minutes versus baseline.",
+        "Boarding changes by +0 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Rapid assessment / initial physician assessment.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ],
+      "combined_high_pressure": [
+        "Combined high-pressure week: physician wait changes by +115 minutes versus baseline.",
+        "Boarding changes by +432 hours over 72 hours; bottleneck shifts toward Inpatient receiving capacity.",
+        "Highest-yield lever to test first: Bed release and discharge timing.",
+        "Watch the next 4-12 hours for queue growth, room turnover, and inpatient bed timing.",
+        "This read can break if real-time acuity, staffing, diagnostics, or bed-board state differs from the synthetic assumptions."
+      ]
+    }
+  }
+}

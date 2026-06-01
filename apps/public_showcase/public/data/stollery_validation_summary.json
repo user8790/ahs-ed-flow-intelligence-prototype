@@ -1,0 +1,97 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "synthetic_validation_summary",
+  "source_type": "MODEL_VALIDATION_DEMO",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "holdout_window": "synthetic 2026-03-01 to 2026-05-31",
+    "holdout_metrics": [
+      {
+        "target": "daily arrivals",
+        "mae": 9.8,
+        "mape": 0.067,
+        "interval_coverage_p10_p90": 0.82
+      },
+      {
+        "target": "respiratory arrivals",
+        "mae": 4.1,
+        "mape": 0.118,
+        "interval_coverage_p10_p90": 0.79
+      },
+      {
+        "target": "physician wait",
+        "mae": 24.5,
+        "mape": 0.154,
+        "interval_coverage_p10_p90": 0.77
+      },
+      {
+        "target": "boarding hours",
+        "mae": 8.9,
+        "mape": 0.191,
+        "interval_coverage_p10_p90": 0.74
+      },
+      {
+        "target": "LWBS risk",
+        "mae": 0.008,
+        "mape": 0.18,
+        "interval_coverage_p10_p90": 0.8
+      }
+    ],
+    "calibration": [
+      {
+        "risk_bin": "0-20%",
+        "observed": 0.16,
+        "predicted": 0.15
+      },
+      {
+        "risk_bin": "20-40%",
+        "observed": 0.31,
+        "predicted": 0.34
+      },
+      {
+        "risk_bin": "40-60%",
+        "observed": 0.52,
+        "predicted": 0.5
+      },
+      {
+        "risk_bin": "60-80%",
+        "observed": 0.7,
+        "predicted": 0.72
+      },
+      {
+        "risk_bin": "80-100%",
+        "observed": 0.86,
+        "predicted": 0.84
+      }
+    ],
+    "drift_checks": [
+      {
+        "check": "arrival volume",
+        "status": "watch",
+        "note": "summer smoke season can shift arrivals outside winter-trained patterns"
+      },
+      {
+        "check": "respiratory mix",
+        "status": "stable",
+        "note": "synthetic off-season levels within historical range"
+      },
+      {
+        "check": "boarding relationship",
+        "status": "watch",
+        "note": "most sensitive to bed-board assumptions"
+      }
+    ],
+    "limitations": [
+      "Synthetic validation demonstrates product behavior only.",
+      "Real deployment needs calibrated holdout validation using governed internal data.",
+      "Scenario effects are directional and should not be treated as clinical recommendations."
+    ]
+  }
+}

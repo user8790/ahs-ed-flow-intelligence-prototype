@@ -1,0 +1,533 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "precomputed_preset_results",
+  "source_type": "MODEL_OUTPUT",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": [
+    {
+      "preset_id": "winter_respiratory",
+      "preset_name": "Typical winter respiratory surge",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 523.7,
+        "median_physician_wait_mins": 260.6,
+        "p90_physician_wait_mins": 425.9,
+        "boarding_hours_72h": 1680.6,
+        "lwbs_risk_peak": 0.067,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.21,
+        "effect_vector": {
+          "demand": 0.152,
+          "respiratory": 0.448,
+          "ctas12": 0.0,
+          "wait": 0.146,
+          "los": 0.0,
+          "boarding": 0.084,
+          "lwbs": 0.0,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.0,
+          "uncertainty": 0.129
+        }
+      },
+      "delta": {
+        "arrivals_72h": 69.3,
+        "median_physician_wait_mins": 61.3,
+        "p90_physician_wait_mins": 123.5,
+        "boarding_hours_72h": 182.2,
+        "lwbs_risk_peak": 0.009
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Integrated capacity huddle",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "severe_rsv",
+      "preset_name": "Severe RSV week",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 516.2,
+        "median_physician_wait_mins": 279.3,
+        "p90_physician_wait_mins": 464.8,
+        "boarding_hours_72h": 1763.3,
+        "lwbs_risk_peak": 0.07,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.28,
+        "effect_vector": {
+          "demand": 0.136,
+          "respiratory": 0.522,
+          "ctas12": 0.089,
+          "wait": 0.189,
+          "los": 0.018,
+          "boarding": 0.125,
+          "lwbs": 0.0,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.0,
+          "uncertainty": 0.161
+        }
+      },
+      "delta": {
+        "arrivals_72h": 61.8,
+        "median_physician_wait_mins": 80.0,
+        "p90_physician_wait_mins": 162.4,
+        "boarding_hours_72h": 264.9,
+        "lwbs_risk_peak": 0.012
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Integrated capacity huddle",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "smoke_respiratory",
+      "preset_name": "Smoke plus respiratory sensitivity",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 479.8,
+        "median_physician_wait_mins": 231.8,
+        "p90_physician_wait_mins": 383.3,
+        "boarding_hours_72h": 1553.1,
+        "lwbs_risk_peak": 0.064,
+        "primary_bottleneck": "Physician initial assessment",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.18,
+        "effect_vector": {
+          "demand": 0.056,
+          "respiratory": 0.243,
+          "ctas12": 0.0,
+          "wait": 0.107,
+          "los": 0.03,
+          "boarding": 0.023,
+          "lwbs": 0.0,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.0,
+          "uncertainty": 0.15
+        }
+      },
+      "delta": {
+        "arrivals_72h": 25.4,
+        "median_physician_wait_mins": 32.5,
+        "p90_physician_wait_mins": 80.9,
+        "boarding_hours_72h": 54.7,
+        "lwbs_risk_peak": 0.006
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Integrated capacity huddle",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "snowstorm_access",
+      "preset_name": "Snowstorm access disruption",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 444.4,
+        "median_physician_wait_mins": 228.8,
+        "p90_physician_wait_mins": 378.8,
+        "boarding_hours_72h": 1661.7,
+        "lwbs_risk_peak": 0.064,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.19,
+        "effect_vector": {
+          "demand": -0.022,
+          "respiratory": 0.0,
+          "ctas12": 0.03,
+          "wait": 0.109,
+          "los": 0.0,
+          "boarding": 0.108,
+          "lwbs": 0.0,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.0,
+          "uncertainty": 0.152
+        }
+      },
+      "delta": {
+        "arrivals_72h": -10.0,
+        "median_physician_wait_mins": 29.5,
+        "p90_physician_wait_mins": 76.4,
+        "boarding_hours_72h": 163.3,
+        "lwbs_risk_peak": 0.006
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Integrated capacity huddle",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "boarding_heavy",
+      "preset_name": "Boarding-heavy day",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 464.4,
+        "median_physician_wait_mins": 222.1,
+        "p90_physician_wait_mins": 352.1,
+        "boarding_hours_72h": 1759.1,
+        "lwbs_risk_peak": 0.063,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.14,
+        "effect_vector": {
+          "demand": 0.022,
+          "respiratory": 0.0,
+          "ctas12": 0.0,
+          "wait": 0.032,
+          "los": 0.016,
+          "boarding": 0.169,
+          "lwbs": 0.0,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.04,
+          "uncertainty": 0.075
+        }
+      },
+      "delta": {
+        "arrivals_72h": 10.0,
+        "median_physician_wait_mins": 22.8,
+        "p90_physician_wait_mins": 49.7,
+        "boarding_hours_72h": 260.7,
+        "lwbs_risk_peak": 0.005
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Bed release and discharge timing",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "staffing_shortfall",
+      "preset_name": "Staffing shortfall",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 219.5,
+        "p90_physician_wait_mins": 335.7,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.064,
+        "primary_bottleneck": "Physician initial assessment",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.01,
+        "effect_vector": {
+          "demand": 0.0,
+          "respiratory": 0.0,
+          "ctas12": 0.0,
+          "wait": 0.102,
+          "los": 0.016,
+          "boarding": 0.0,
+          "lwbs": 0.025,
+          "roomUtilization": 0.03,
+          "physicianUtilization": 0.027,
+          "inpatientUtilization": 0.0,
+          "uncertainty": 0.013
+        }
+      },
+      "delta": {
+        "arrivals_72h": 0.0,
+        "median_physician_wait_mins": 20.2,
+        "p90_physician_wait_mins": 33.3,
+        "boarding_hours_72h": 0.0,
+        "lwbs_risk_peak": 0.006
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Integrated capacity huddle",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "discharge_acceleration",
+      "preset_name": "Discharge acceleration",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1033.9,
+        "lwbs_risk_peak": 0.06,
+        "primary_bottleneck": "Rooming and diagnostics",
+        "next_bottleneck": "Physician initial assessment",
+        "uncertainty_width": 1.0,
+        "effect_vector": {
+          "demand": 0.0,
+          "respiratory": 0.0,
+          "ctas12": 0.0,
+          "wait": 0.0,
+          "los": -0.023,
+          "boarding": -0.31,
+          "lwbs": 0.0,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": -0.151,
+          "uncertainty": -0.041
+        }
+      },
+      "delta": {
+        "arrivals_72h": 0.0,
+        "median_physician_wait_mins": 0.0,
+        "p90_physician_wait_mins": 0.0,
+        "boarding_hours_72h": -464.5,
+        "lwbs_risk_peak": 0.002
+      },
+      "bottleneck_shift": "Rooming and diagnostics",
+      "highest_yield_lever": "Bed release and discharge timing",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "fast_track_expansion",
+      "preset_name": "Fast-track expansion",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 171.8,
+        "p90_physician_wait_mins": 260.7,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.051,
+        "primary_bottleneck": "Boarding remains downstream constraint",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.0,
+        "effect_vector": {
+          "demand": 0.0,
+          "respiratory": 0.0,
+          "ctas12": 0.0,
+          "wait": -0.138,
+          "los": -0.07,
+          "boarding": 0.0,
+          "lwbs": -0.117,
+          "roomUtilization": -0.016,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.0,
+          "uncertainty": -0.021
+        }
+      },
+      "delta": {
+        "arrivals_72h": 0.0,
+        "median_physician_wait_mins": -27.5,
+        "p90_physician_wait_mins": -41.7,
+        "boarding_hours_72h": 0.0,
+        "lwbs_risk_peak": -0.007
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Fast-track streaming",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "rapid_assessment",
+      "preset_name": "Rapid assessment intervention",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 143.5,
+        "p90_physician_wait_mins": 217.7,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.05,
+        "primary_bottleneck": "Boarding remains downstream constraint",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.0,
+        "effect_vector": {
+          "demand": 0.0,
+          "respiratory": 0.0,
+          "ctas12": 0.0,
+          "wait": -0.28,
+          "los": -0.022,
+          "boarding": 0.0,
+          "lwbs": -0.14,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.0,
+          "inpatientUtilization": 0.0,
+          "uncertainty": -0.051
+        }
+      },
+      "delta": {
+        "arrivals_72h": 0.0,
+        "median_physician_wait_mins": -55.8,
+        "p90_physician_wait_mins": -84.7,
+        "boarding_hours_72h": 0.0,
+        "lwbs_risk_peak": -0.008
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Rapid assessment / initial physician assessment",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    },
+    {
+      "preset_id": "combined_high_pressure",
+      "preset_name": "Combined high-pressure week",
+      "baseline": {
+        "arrivals_72h": 454.4,
+        "median_physician_wait_mins": 199.3,
+        "p90_physician_wait_mins": 302.4,
+        "boarding_hours_72h": 1498.4,
+        "lwbs_risk_peak": 0.058,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Physician initial assessment"
+      },
+      "scenario": {
+        "arrivals_72h": 539.1,
+        "median_physician_wait_mins": 314.0,
+        "p90_physician_wait_mins": 551.1,
+        "boarding_hours_72h": 1930.7,
+        "lwbs_risk_peak": 0.074,
+        "primary_bottleneck": "Inpatient receiving capacity",
+        "next_bottleneck": "Rooming and inpatient receiving",
+        "uncertainty_width": 1.44,
+        "effect_vector": {
+          "demand": 0.186,
+          "respiratory": 0.483,
+          "ctas12": 0.102,
+          "wait": 0.276,
+          "los": 0.033,
+          "boarding": 0.222,
+          "lwbs": 0.012,
+          "roomUtilization": 0.0,
+          "physicianUtilization": 0.018,
+          "inpatientUtilization": 0.03,
+          "uncertainty": 0.262
+        }
+      },
+      "delta": {
+        "arrivals_72h": 84.7,
+        "median_physician_wait_mins": 114.7,
+        "p90_physician_wait_mins": 248.7,
+        "boarding_hours_72h": 432.3,
+        "lwbs_risk_peak": 0.016
+      },
+      "bottleneck_shift": "Inpatient receiving capacity",
+      "highest_yield_lever": "Bed release and discharge timing",
+      "watch_points": [
+        "arrival shape after school/evening hours",
+        "CTAS 1-2 and respiratory cohort mix",
+        "decision-to-admit boarders and inpatient bed readiness",
+        "physician initial assessment queue and LWBS risk",
+        "whether the intervention moves the bottleneck downstream rather than removing it"
+      ]
+    }
+  ]
+}

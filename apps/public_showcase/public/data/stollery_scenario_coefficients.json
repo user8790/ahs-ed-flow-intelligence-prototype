@@ -1,0 +1,340 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "scenario_engine_contract",
+  "source_type": "SCENARIO_ENGINE",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "normalization": "percentage controls are interpreted as control value / 100; binary options are 0 or 1",
+    "metric_order": [
+      "arrivals",
+      "respiratory",
+      "ctas12",
+      "physicianWait",
+      "dischargedLos",
+      "admittedLos",
+      "boarding",
+      "lwbs",
+      "roomUtilization",
+      "physicianUtilization",
+      "inpatientUtilization"
+    ],
+    "controls": {
+      "rsvSurge": {
+        "demand": 0.16,
+        "respiratory": 0.42,
+        "wait": 0.12,
+        "boarding": 0.07,
+        "uncertainty": 0.1
+      },
+      "influenzaSurge": {
+        "demand": 0.12,
+        "respiratory": 0.28,
+        "wait": 0.09,
+        "boarding": 0.05,
+        "uncertainty": 0.08
+      },
+      "covidWave": {
+        "demand": 0.09,
+        "respiratory": 0.22,
+        "wait": 0.08,
+        "boarding": 0.06,
+        "uncertainty": 0.09
+      },
+      "measlesCluster": {
+        "demand": 0.04,
+        "respiratory": 0.08,
+        "wait": 0.06,
+        "boarding": 0.05,
+        "isolation": 0.2,
+        "uncertainty": 0.12
+      },
+      "schoolReopening": {
+        "demand": 0.09,
+        "respiratory": 0.08,
+        "wait": 0.05,
+        "boarding": 0.02,
+        "uncertainty": 0.04
+      },
+      "longWeekend": {
+        "demand": 0.06,
+        "wait": 0.04,
+        "boarding": 0.06,
+        "uncertainty": 0.04
+      },
+      "publicEvent": {
+        "demand": 0.05,
+        "ctas12": 0.03,
+        "wait": 0.04,
+        "uncertainty": 0.03
+      },
+      "smokeAqhi": {
+        "demand": 0.07,
+        "respiratory": 0.18,
+        "wait": 0.07,
+        "uncertainty": 0.12
+      },
+      "heatWave": {
+        "demand": 0.05,
+        "wait": 0.04,
+        "uncertainty": 0.06
+      },
+      "coldSnowstorm": {
+        "demand": -0.02,
+        "ctas12": 0.04,
+        "wait": 0.08,
+        "boarding": 0.07,
+        "uncertainty": 0.1
+      },
+      "travelDisruption": {
+        "demand": -0.01,
+        "wait": 0.07,
+        "boarding": 0.08,
+        "ems": 0.12,
+        "uncertainty": 0.11
+      },
+      "catchmentShift": {
+        "demand": 0.14,
+        "wait": 0.09,
+        "boarding": 0.07,
+        "uncertainty": 0.07
+      },
+      "ctas12Increase": {
+        "ctas12": 0.34,
+        "wait": 0.11,
+        "boarding": 0.08,
+        "los": 0.07,
+        "uncertainty": 0.06
+      },
+      "respiratoryCohorting": {
+        "respiratory": 0.22,
+        "wait": 0.08,
+        "boarding": 0.05,
+        "isolation": 0.21,
+        "uncertainty": 0.08
+      },
+      "mentalHealthIncrease": {
+        "wait": 0.05,
+        "boarding": 0.09,
+        "los": 0.12,
+        "uncertainty": 0.07
+      },
+      "traumaIncrease": {
+        "ctas12": 0.12,
+        "wait": 0.07,
+        "los": 0.06,
+        "boarding": 0.04,
+        "uncertainty": 0.05
+      },
+      "giOutbreak": {
+        "demand": 0.08,
+        "wait": 0.06,
+        "los": 0.04,
+        "uncertainty": 0.04
+      },
+      "oncologyPressure": {
+        "ctas12": 0.05,
+        "wait": 0.06,
+        "boarding": 0.12,
+        "los": 0.09,
+        "uncertainty": 0.08
+      },
+      "diagnosticHeavyMix": {
+        "wait": 0.06,
+        "los": 0.12,
+        "uncertainty": 0.07
+      },
+      "triageNurseChange": {
+        "wait": -0.1,
+        "frontDoor": -0.22,
+        "uncertainty": -0.02
+      },
+      "physicianCoverageChange": {
+        "wait": -0.28,
+        "lwbs": -0.12,
+        "physicianUtilization": -0.18,
+        "uncertainty": -0.03
+      },
+      "edNurseStaffingChange": {
+        "wait": -0.12,
+        "los": -0.09,
+        "roomUtilization": -0.08,
+        "uncertainty": -0.02
+      },
+      "roomAvailabilityChange": {
+        "wait": -0.18,
+        "roomUtilization": -0.16,
+        "lwbs": -0.07,
+        "uncertainty": -0.01
+      },
+      "resusOccupancy": {
+        "ctas12": 0.08,
+        "wait": 0.11,
+        "boarding": 0.08,
+        "uncertainty": 0.07
+      },
+      "rapidAssessmentCapacity": {
+        "wait": -0.2,
+        "lwbs": -0.09,
+        "los": -0.04,
+        "uncertainty": -0.02
+      },
+      "fastTrackCapacity": {
+        "wait": -0.12,
+        "lwbs": -0.12,
+        "los": -0.08,
+        "uncertainty": -0.02
+      },
+      "respiratoryPathwayCapacity": {
+        "respiratory": -0.04,
+        "wait": -0.08,
+        "los": -0.06,
+        "uncertainty": -0.02
+      },
+      "diagnosticTurnaround": {
+        "los": -0.14,
+        "wait": -0.03,
+        "boarding": -0.02,
+        "uncertainty": -0.02
+      },
+      "consultTurnaround": {
+        "los": -0.09,
+        "boarding": -0.07,
+        "uncertainty": -0.02
+      },
+      "mentalHealthSupport": {
+        "los": -0.08,
+        "boarding": -0.05,
+        "uncertainty": -0.02
+      },
+      "emsOffloadImprovement": {
+        "wait": -0.04,
+        "ems": -0.22,
+        "uncertainty": -0.01
+      },
+      "dischargeAcceleration": {
+        "boarding": -0.24,
+        "inpatientUtilization": -0.12,
+        "los": -0.05,
+        "uncertainty": -0.03
+      },
+      "staffedBedAvailability": {
+        "boarding": -0.26,
+        "inpatientUtilization": -0.2,
+        "los": -0.08,
+        "uncertainty": -0.03
+      },
+      "medicineBedRelease": {
+        "boarding": -0.18,
+        "inpatientUtilization": -0.11,
+        "los": -0.05,
+        "uncertainty": -0.02
+      },
+      "picuCapacity": {
+        "boarding": -0.08,
+        "ctas12": -0.04,
+        "uncertainty": -0.01
+      },
+      "surgeryCapacity": {
+        "boarding": -0.08,
+        "los": -0.03,
+        "uncertainty": -0.01
+      },
+      "oncologyCapacity": {
+        "boarding": -0.07,
+        "los": -0.03,
+        "uncertainty": -0.01
+      },
+      "mentalHealthCapacity": {
+        "boarding": -0.08,
+        "los": -0.04,
+        "uncertainty": -0.01
+      },
+      "bedCleaningTurnaround": {
+        "boarding": -0.12,
+        "inpatientUtilization": -0.05,
+        "uncertainty": -0.02
+      },
+      "transferOutThroughput": {
+        "boarding": -0.06,
+        "inpatientUtilization": -0.05,
+        "uncertainty": -0.01
+      },
+      "transferInPressure": {
+        "demand": 0.04,
+        "boarding": 0.13,
+        "uncertainty": 0.06
+      },
+      "isolationSeverity": {
+        "wait": 0.07,
+        "boarding": 0.1,
+        "isolation": 0.22,
+        "uncertainty": 0.08
+      },
+      "respiratorySurgePathway": {
+        "respiratory": -0.04,
+        "wait": -0.07,
+        "los": -0.05,
+        "uncertainty": -0.02
+      },
+      "extendFastTrack": {
+        "wait": -0.06,
+        "lwbs": -0.05,
+        "los": -0.03,
+        "uncertainty": -0.01
+      },
+      "rapidAssessmentProvider": {
+        "wait": -0.09,
+        "lwbs": -0.04,
+        "uncertainty": -0.02
+      },
+      "pullToFull": {
+        "wait": -0.07,
+        "roomUtilization": 0.04,
+        "uncertainty": 0.01
+      },
+      "physicianInTriage": {
+        "wait": -0.08,
+        "lwbs": -0.05,
+        "uncertainty": -0.02
+      },
+      "earlyBedHuddle": {
+        "boarding": -0.08,
+        "inpatientUtilization": -0.03,
+        "uncertainty": -0.01
+      },
+      "dischargeBeforeNoon": {
+        "boarding": -0.08,
+        "inpatientUtilization": -0.05,
+        "uncertainty": -0.01
+      },
+      "consultantResponseTarget": {
+        "boarding": -0.05,
+        "los": -0.04,
+        "uncertainty": -0.01
+      },
+      "diagnosticPrioritization": {
+        "los": -0.06,
+        "boarding": -0.03,
+        "uncertainty": -0.01
+      },
+      "temporaryFlexSpace": {
+        "wait": -0.06,
+        "roomUtilization": -0.04,
+        "uncertainty": 0.02
+      }
+    },
+    "nonlinear_rules": [
+      "resource improvements are dampened when inpatient receiving capacity remains binding",
+      "severe external shocks widen uncertainty more than moderate shocks",
+      "LWBS hazard responds more strongly after physician wait exceeds 180 minutes",
+      "boarding improvements can reveal physician assessment or rooming as the next bottleneck"
+    ]
+  }
+}

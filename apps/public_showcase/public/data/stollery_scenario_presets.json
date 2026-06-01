@@ -1,0 +1,124 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "scenario_preset_contract",
+  "source_type": "SCENARIO_DEFINITION",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": [
+    {
+      "id": "winter_respiratory",
+      "name": "Typical winter respiratory surge",
+      "description": "Moderate RSV/influenza rise with school-week pressure.",
+      "controls": {
+        "rsvSurge": 55,
+        "influenzaSurge": 35,
+        "schoolReopening": 25,
+        "respiratoryCohorting": 45
+      }
+    },
+    {
+      "id": "severe_rsv",
+      "name": "Severe RSV week",
+      "description": "High RSV, respiratory cohorting, and PICU-sensitive demand.",
+      "controls": {
+        "rsvSurge": 85,
+        "respiratoryCohorting": 75,
+        "ctas12Increase": 25,
+        "picuCapacity": -10
+      }
+    },
+    {
+      "id": "smoke_respiratory",
+      "name": "Smoke plus respiratory sensitivity",
+      "description": "AQHI deterioration layered onto respiratory-vulnerable demand.",
+      "controls": {
+        "smokeAqhi": 80,
+        "respiratoryCohorting": 45,
+        "diagnosticHeavyMix": 25
+      }
+    },
+    {
+      "id": "snowstorm_access",
+      "name": "Snowstorm access disruption",
+      "description": "Access friction and lumpy arrivals with offload sensitivity.",
+      "controls": {
+        "coldSnowstorm": 75,
+        "travelDisruption": 70,
+        "emsOffloadImprovement": 0
+      }
+    },
+    {
+      "id": "boarding_heavy",
+      "name": "Boarding-heavy day",
+      "description": "Inpatient receiving pressure dominates the ED operating picture.",
+      "controls": {
+        "staffedBedAvailability": -20,
+        "transferInPressure": 55,
+        "isolationSeverity": 45
+      }
+    },
+    {
+      "id": "staffing_shortfall",
+      "name": "Staffing shortfall",
+      "description": "ED nursing, physician, and triage capacity under baseline.",
+      "controls": {
+        "triageNurseChange": -20,
+        "physicianCoverageChange": -15,
+        "edNurseStaffingChange": -18,
+        "roomAvailabilityChange": -10
+      }
+    },
+    {
+      "id": "discharge_acceleration",
+      "name": "Discharge acceleration",
+      "description": "Bed release, cleaning, and early huddle pull capacity forward.",
+      "controls": {
+        "dischargeAcceleration": 45,
+        "bedCleaningTurnaround": 35,
+        "earlyBedHuddle": 1,
+        "dischargeBeforeNoon": 1
+      }
+    },
+    {
+      "id": "fast_track_expansion",
+      "name": "Fast-track expansion",
+      "description": "Low-acuity streaming and extended fast-track hours.",
+      "controls": {
+        "fastTrackCapacity": 50,
+        "extendFastTrack": 1,
+        "roomAvailabilityChange": 10
+      }
+    },
+    {
+      "id": "rapid_assessment",
+      "name": "Rapid assessment intervention",
+      "description": "Front-door physician/rapid-assessment capacity to reduce initial waits.",
+      "controls": {
+        "rapidAssessmentCapacity": 55,
+        "rapidAssessmentProvider": 1,
+        "physicianInTriage": 1
+      }
+    },
+    {
+      "id": "combined_high_pressure",
+      "name": "Combined high-pressure week",
+      "description": "Respiratory, access, staffing, and boarding pressure at once.",
+      "controls": {
+        "rsvSurge": 70,
+        "influenzaSurge": 45,
+        "smokeAqhi": 35,
+        "travelDisruption": 40,
+        "ctas12Increase": 30,
+        "physicianCoverageChange": -10,
+        "staffedBedAvailability": -15,
+        "isolationSeverity": 55
+      }
+    }
+  ]
+}

@@ -1,0 +1,559 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "scenario_control_contract",
+  "source_type": "SCENARIO_DEFINITION",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "groups": [
+      {
+        "name": "External Demand Shocks",
+        "control_count": 12
+      },
+      {
+        "name": "Case-Mix and Acuity Shocks",
+        "control_count": 7
+      },
+      {
+        "name": "ED Resource Levers",
+        "control_count": 12
+      },
+      {
+        "name": "Inpatient and System Levers",
+        "control_count": 11
+      },
+      {
+        "name": "Operational Workflow Options",
+        "control_count": 10
+      }
+    ],
+    "controls": [
+      {
+        "id": "rsvSurge",
+        "label": "RSV surge intensity",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Increases pediatric respiratory arrivals and cohorting pressure.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "influenzaSurge",
+        "label": "Influenza surge intensity",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Increases infectious/respiratory arrivals and admission-likely cases.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "covidWave",
+        "label": "COVID wave intensity",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises respiratory isolation and diagnostics demand.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "measlesCluster",
+        "label": "Measles exposure cluster",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Adds isolation and public-health-sensitive throughput friction.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "schoolReopening",
+        "label": "School reopening effect",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Increases infectious, injury, and evening arrival patterns.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "longWeekend",
+        "label": "Long weekend effect",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Shifts arrival timing and discharge/bed availability.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "publicEvent",
+        "label": "Large public event",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises injury and access timing pressure.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "smokeAqhi",
+        "label": "Smoke/AQHI deterioration",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises asthma/respiratory sensitivity and uncertainty.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "heatWave",
+        "label": "Heat wave",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Adds dehydration and outdoor activity stress.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "coldSnowstorm",
+        "label": "Extreme cold/snowstorm",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Adds access friction and acuity timing changes.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "travelDisruption",
+        "label": "Travel/access disruption",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Clusters arrivals and interfacility movement delays.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "catchmentShift",
+        "label": "Population/catchment demand shift",
+        "group": "External Demand Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Sustained demand increase across all arrival streams.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "ctas12Increase",
+        "label": "CTAS 1-2 increase",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises resuscitation, physician, diagnostics, and admission pressure.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "respiratoryCohorting",
+        "label": "Respiratory cohorting demand",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Consumes isolation and respiratory cohort space.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "mentalHealthIncrease",
+        "label": "Mental health presentation increase",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Lengthens consult and disposition pathways.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "traumaIncrease",
+        "label": "Trauma/injury increase",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises imaging, procedure, and critical-care pressure.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "giOutbreak",
+        "label": "Dehydration/GI outbreak",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises arrivals and treatment-room dwell time.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "oncologyPressure",
+        "label": "Oncology/immunocompromised pathway pressure",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises admission-likely and isolation-sensitive flows.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "diagnosticHeavyMix",
+        "label": "Diagnostic-heavy case mix increase",
+        "group": "Case-Mix and Acuity Shocks",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises diagnostic queue and LOS.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "triageNurseChange",
+        "label": "Triage nurse capacity change",
+        "group": "ED Resource Levers",
+        "min": -40,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes triage service capacity.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "physicianCoverageChange",
+        "label": "Physician coverage change",
+        "group": "ED Resource Levers",
+        "min": -40,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes initial assessment throughput.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "edNurseStaffingChange",
+        "label": "ED nurse staffing change",
+        "group": "ED Resource Levers",
+        "min": -40,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes room turnover and treatment throughput.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "roomAvailabilityChange",
+        "label": "Room availability change",
+        "group": "ED Resource Levers",
+        "min": -40,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes pull from waiting room.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "resusOccupancy",
+        "label": "Resuscitation space occupancy",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Consumes critical care spaces.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "rapidAssessmentCapacity",
+        "label": "Rapid assessment zone capacity",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Improves initial assessment and low/moderate-acuity streaming.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "fastTrackCapacity",
+        "label": "Fast-track capacity",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Shortens CTAS 4/5 waits and discharged LOS.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "respiratoryPathwayCapacity",
+        "label": "Respiratory cohort pathway capacity",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Improves respiratory cohort throughput.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "diagnosticTurnaround",
+        "label": "Diagnostics turnaround improvement",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Reduces diagnostic delay.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "consultTurnaround",
+        "label": "Consult turnaround improvement",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Reduces consult delay and disposition waits.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "mentalHealthSupport",
+        "label": "Social work/mental health support availability",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Reduces mental-health consult and disposition friction.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "emsOffloadImprovement",
+        "label": "EMS offload process improvement",
+        "group": "ED Resource Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Improves ambulance handoff and front-door smoothing.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "dischargeAcceleration",
+        "label": "Discharge acceleration",
+        "group": "Inpatient and System Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Brings inpatient bed availability forward.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "staffedBedAvailability",
+        "label": "Inpatient staffed-bed availability",
+        "group": "Inpatient and System Levers",
+        "min": -30,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes receiving capacity.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "medicineBedRelease",
+        "label": "Pediatric medicine bed release",
+        "group": "Inpatient and System Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Targets highest-volume receiving service.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "picuCapacity",
+        "label": "PICU receiving capacity",
+        "group": "Inpatient and System Levers",
+        "min": -30,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes critical-care admission constraint.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "surgeryCapacity",
+        "label": "Surgery receiving capacity",
+        "group": "Inpatient and System Levers",
+        "min": -30,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes surgical boarding risk.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "oncologyCapacity",
+        "label": "Oncology receiving capacity",
+        "group": "Inpatient and System Levers",
+        "min": -30,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes specialty admission constraint.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "mentalHealthCapacity",
+        "label": "Mental health receiving capacity",
+        "group": "Inpatient and System Levers",
+        "min": -30,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Changes mental-health disposition constraint.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "bedCleaningTurnaround",
+        "label": "Bed-cleaning turnaround",
+        "group": "Inpatient and System Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Improves bed readiness timing.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "transferOutThroughput",
+        "label": "Transfer-out throughput",
+        "group": "Inpatient and System Levers",
+        "min": 0,
+        "max": 60,
+        "default": 0,
+        "mechanism": "Relieves ED/inpatient congestion where transfer is appropriate.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "transferInPressure",
+        "label": "Transfer-in pressure",
+        "group": "Inpatient and System Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Raises tertiary referral and bed pressure.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "isolationSeverity",
+        "label": "Isolation constraint severity",
+        "group": "Inpatient and System Levers",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "mechanism": "Reduces flexible bed and room matching.",
+        "uncertainty_effect": "widens uncertainty under severe shocks"
+      },
+      {
+        "id": "respiratorySurgePathway",
+        "label": "Activate respiratory surge pathway",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; improves respiratory cohort throughput.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "extendFastTrack",
+        "label": "Extend fast-track hours",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; improves evening low-acuity flow.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "rapidAssessmentProvider",
+        "label": "Add rapid assessment provider",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; improves initial assessment.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "pullToFull",
+        "label": "Pull-to-full rooming",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; pulls waiting patients into rooms if nursing capacity supports it.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "physicianInTriage",
+        "label": "Physician-in-triage style model",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; reduces front-door physician wait for selected patients.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "earlyBedHuddle",
+        "label": "Early inpatient bed huddle",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; improves bed assignment timing.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "dischargeBeforeNoon",
+        "label": "Discharge-before-noon improvement",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; brings bed capacity forward.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "consultantResponseTarget",
+        "label": "Consultant response target",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; improves consult turnaround.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "diagnosticPrioritization",
+        "label": "Diagnostic prioritization for admission-likely patients",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; reduces admission decision delay.",
+        "uncertainty_effect": "modest uncertainty change"
+      },
+      {
+        "id": "temporaryFlexSpace",
+        "label": "Temporary flex space",
+        "group": "Operational Workflow Options",
+        "min": 0,
+        "max": 1,
+        "default": 0,
+        "mechanism": "Switch; increases short-term rooming capacity with staffing caveat.",
+        "uncertainty_effect": "modest uncertainty change"
+      }
+    ]
+  }
+}

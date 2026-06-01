@@ -1,0 +1,43 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "public_showcase_copy",
+  "source_type": "COPY",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "hero": {
+      "title": "Reimagining Alberta ED Flow Intelligence",
+      "subtitle": "A Stollery-focused public showcase of open-data pressure signals, synthetic operating state, predictive modelling, and scenario-based flow intelligence.",
+      "caveat": "Public + synthetic demonstration. No real patient data."
+    },
+    "sections": [
+      {
+        "id": "open-data",
+        "label": "Open Data Context",
+        "nav": "Open Data"
+      },
+      {
+        "id": "synthetic-state",
+        "label": "Synthetic Stollery ED Operating Reality",
+        "nav": "Synthetic ED State"
+      },
+      {
+        "id": "predictive-intelligence",
+        "label": "Blended Predictive Intelligence",
+        "nav": "Predictive Intelligence"
+      },
+      {
+        "id": "scenario-studio",
+        "label": "Scenario & What-If Studio",
+        "nav": "Scenario Studio"
+      }
+    ],
+    "tone": "confident, honest, executive-friendly, pediatric, operationally useful"
+  }
+}

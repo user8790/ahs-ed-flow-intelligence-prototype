@@ -1,0 +1,276 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "synthetic_current_ed_snapshot",
+  "source_type": "SYNTHETIC_INTERNAL",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "snapshot_timestamp": "2026-06-01T12:00:00-06:00",
+    "site": "Stollery Children's Hospital",
+    "headline": {
+      "current_patients_in_ed": 119,
+      "waiting_room_count": 42,
+      "waiting_to_triage": 7,
+      "ctas_1_2_active": 15,
+      "room_occupancy": 0.92,
+      "boarders": 19,
+      "ems_offload_queue": 4,
+      "physician_queue": 13,
+      "diagnostic_queue": 15,
+      "consult_queue": 9,
+      "expected_admissions_next_12h": 18,
+      "expected_discharges_next_12h": 44,
+      "current_bottleneck": "Inpatient receiving capacity and ED boarding",
+      "next_likely_bottleneck": "Physician initial assessment if arrivals rise after 16:00",
+      "synthetic_flag": true
+    },
+    "stages": [
+      {
+        "stage": "waiting-to-triage",
+        "queue": 3,
+        "occupied": 7,
+        "capacity": 2,
+        "utilization": 3.5,
+        "pressure": 1.5,
+        "binding_risk": "high",
+        "operational_note": "front-door triage smoothing"
+      },
+      {
+        "stage": "triaged waiting",
+        "queue": 18,
+        "occupied": 42,
+        "capacity": 16,
+        "utilization": 2.62,
+        "pressure": 1.5,
+        "binding_risk": "high",
+        "operational_note": "waiting-room and room availability"
+      },
+      {
+        "stage": "roomed not yet seen",
+        "queue": 7,
+        "occupied": 48,
+        "capacity": 8,
+        "utilization": 6.0,
+        "pressure": 1.5,
+        "binding_risk": "high",
+        "operational_note": "physician initial assessment"
+      },
+      {
+        "stage": "physician assessment queue",
+        "queue": 13,
+        "occupied": 11,
+        "capacity": 9,
+        "utilization": 1.22,
+        "pressure": 1.2,
+        "binding_risk": "high",
+        "operational_note": "provider coverage and acuity mix"
+      },
+      {
+        "stage": "diagnostics queue",
+        "queue": 15,
+        "occupied": 12,
+        "capacity": 8,
+        "utilization": 1.5,
+        "pressure": 1.43,
+        "binding_risk": "high",
+        "operational_note": "lab/imaging turnaround"
+      },
+      {
+        "stage": "consult queue",
+        "queue": 9,
+        "occupied": 7,
+        "capacity": 6,
+        "utilization": 1.17,
+        "pressure": 0.98,
+        "binding_risk": "high",
+        "operational_note": "specialty response and admission-likely cases"
+      },
+      {
+        "stage": "disposition pending",
+        "queue": 12,
+        "occupied": 10,
+        "capacity": 7,
+        "utilization": 1.43,
+        "pressure": 1.24,
+        "binding_risk": "high",
+        "operational_note": "decision-making and discharge execution"
+      },
+      {
+        "stage": "admitted boarding",
+        "queue": 19,
+        "occupied": 16,
+        "capacity": 15,
+        "utilization": 1.07,
+        "pressure": 1.43,
+        "binding_risk": "high",
+        "operational_note": "inpatient receiving capacity"
+      },
+      {
+        "stage": "transfer pending",
+        "queue": 4,
+        "occupied": 3,
+        "capacity": 2,
+        "utilization": 1.5,
+        "pressure": 0.88,
+        "binding_risk": "high",
+        "operational_note": "interfacility logistics"
+      },
+      {
+        "stage": "discharge pending",
+        "queue": 11,
+        "occupied": 9,
+        "capacity": 5,
+        "utilization": 1.8,
+        "pressure": 1.36,
+        "binding_risk": "high",
+        "operational_note": "family readiness and final orders"
+      }
+    ],
+    "resource_pools": [
+      {
+        "resource": "triage nurses",
+        "baseline_capacity": 4,
+        "current_capacity": 3,
+        "utilization": 0.88,
+        "label": "synthetic planning assumption"
+      },
+      {
+        "resource": "treatment rooms",
+        "baseline_capacity": 48,
+        "current_capacity": 45,
+        "utilization": 0.92,
+        "label": "synthetic planning assumption"
+      },
+      {
+        "resource": "resuscitation/critical spaces",
+        "baseline_capacity": 8,
+        "current_capacity": 7,
+        "utilization": 0.86,
+        "label": "synthetic planning assumption"
+      },
+      {
+        "resource": "fast-track spaces",
+        "baseline_capacity": 8,
+        "current_capacity": 6,
+        "utilization": 0.74,
+        "label": "synthetic planning assumption"
+      },
+      {
+        "resource": "respiratory cohort spaces",
+        "baseline_capacity": 12,
+        "current_capacity": 11,
+        "utilization": 0.96,
+        "label": "synthetic planning assumption"
+      },
+      {
+        "resource": "physician coverage",
+        "baseline_capacity": 7,
+        "current_capacity": 6,
+        "utilization": 0.91,
+        "label": "synthetic planning assumption"
+      },
+      {
+        "resource": "diagnostic throughput",
+        "baseline_capacity": 1.0,
+        "current_capacity": 0.86,
+        "utilization": 0.89,
+        "label": "abstract synthetic capacity"
+      },
+      {
+        "resource": "consult throughput",
+        "baseline_capacity": 1.0,
+        "current_capacity": 0.82,
+        "utilization": 0.94,
+        "label": "abstract synthetic capacity"
+      },
+      {
+        "resource": "EMS offload bays",
+        "baseline_capacity": 5,
+        "current_capacity": 4,
+        "utilization": 0.81,
+        "label": "synthetic planning assumption"
+      }
+    ],
+    "bottleneck_timeline": [
+      {
+        "hour": "12:00",
+        "primary": "boarding",
+        "risk": 0.84
+      },
+      {
+        "hour": "14:00",
+        "primary": "boarding",
+        "risk": 0.82
+      },
+      {
+        "hour": "16:00",
+        "primary": "physician assessment",
+        "risk": 0.78
+      },
+      {
+        "hour": "18:00",
+        "primary": "rooming",
+        "risk": 0.76
+      },
+      {
+        "hour": "20:00",
+        "primary": "diagnostics",
+        "risk": 0.68
+      },
+      {
+        "hour": "22:00",
+        "primary": "boarding",
+        "risk": 0.73
+      },
+      {
+        "hour": "00:00",
+        "primary": "boarding",
+        "risk": 0.8
+      }
+    ],
+    "patient_flow_ribbon": [
+      {
+        "from": "arrival",
+        "to": "triage",
+        "rate_per_hour": 6.8
+      },
+      {
+        "from": "triage",
+        "to": "waiting",
+        "rate_per_hour": 5.9
+      },
+      {
+        "from": "waiting",
+        "to": "rooming",
+        "rate_per_hour": 4.6
+      },
+      {
+        "from": "rooming",
+        "to": "physician",
+        "rate_per_hour": 4.4
+      },
+      {
+        "from": "physician",
+        "to": "diagnostics/consult",
+        "rate_per_hour": 3.8
+      },
+      {
+        "from": "disposition",
+        "to": "discharge",
+        "rate_per_hour": 3.2
+      },
+      {
+        "from": "decision-to-admit",
+        "to": "inpatient bed",
+        "rate_per_hour": 1.2
+      }
+    ],
+    "synthetic_variation_seed": 8047
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-06-01T12:00:00+00:00",
+  "focus_site": "Stollery Children's Hospital",
+  "data_mode": "synthetic_model_summary",
+  "source_type": "MODEL_OUTPUT",
+  "synthetic_flag": true,
+  "caveats": [
+    "Public showcase only. No real patient data, secure AHS data, private Snowflake data, or private AHS endpoints are used.",
+    "Internal ED operating state, model outputs, scenario effects, and unit-level operating values are synthetic demonstration values.",
+    "Public facts are used only where cited. Unit-level values without public evidence are labelled synthetic planning assumptions."
+  ],
+  "data": {
+    "public_drivers": [
+      {
+        "driver": "respiratory activity",
+        "importance": 0.84,
+        "direction": "higher increases arrivals and respiratory cohort demand"
+      },
+      {
+        "driver": "school calendar",
+        "importance": 0.71,
+        "direction": "school weeks increase infectious and injury timing"
+      },
+      {
+        "driver": "weather/AQHI/smoke",
+        "importance": 0.67,
+        "direction": "smoke and cold shift respiratory and asthma load"
+      },
+      {
+        "driver": "traffic/access",
+        "importance": 0.58,
+        "direction": "access friction clusters arrivals and transfer delays"
+      },
+      {
+        "driver": "holiday/events",
+        "importance": 0.43,
+        "direction": "holidays and events change time-of-day arrival shape"
+      }
+    ],
+    "synthetic_internal_drivers": [
+      {
+        "driver": "current queue",
+        "importance": 0.88,
+        "direction": "front-door backlog raises wait and LWBS risk"
+      },
+      {
+        "driver": "CTAS mix",
+        "importance": 0.82,
+        "direction": "higher acuity consumes room, physician, diagnostic, and critical-care resources"
+      },
+      {
+        "driver": "room occupancy",
+        "importance": 0.77,
+        "direction": "limits pull from waiting room"
+      },
+      {
+        "driver": "physician utilization",
+        "importance": 0.74,
+        "direction": "raises time to initial assessment"
+      },
+      {
+        "driver": "inpatient receiving capacity",
+        "importance": 0.91,
+        "direction": "drives boarding and admitted LOS"
+      },
+      {
+        "driver": "pending discharges",
+        "importance": 0.66,
+        "direction": "bed availability timing relieves boarding"
+      },
+      {
+        "driver": "boarding hours",
+        "importance": 0.86,
+        "direction": "ties up rooms and shifts bottleneck upstream"
+      }
+    ],
+    "confidence": {
+      "demand_forecast": "medium-high in synthetic validation",
+      "wait_forecast": "medium; sensitive to current queues and staffing",
+      "boarding_forecast": "medium-low; needs real ADT and bed-board validation",
+      "scenario_effects": "directional demonstration only"
+    },
+    "what_would_improve_confidence": [
+      "real-time ED location and queue timestamps",
+      "validated staffed-bed and pending-discharge feeds",
+      "diagnostic and consult turnaround feeds",
+      "holdout replay by season and facility"
+    ]
+  }
+}
